@@ -13,8 +13,17 @@ thérapeutique en consultation.
   (infarctus, AVC) à 10 ans, chez un sujet **apparemment sain**.
 - Bascule automatiquement entre SCORE2 (40–69 ans) et SCORE2-OP (≥ 70 ans).
 - Classe le risque selon les catégories ESC 2021 (dépendantes de l'âge).
-- Affiche une **courbe risque = f(LDL)** avec les cibles LDL de l'ESC, et chiffre
-  la réduction absolue (points de %) et relative attendue quand on abaisse le LDL.
+- **Simulation multi-paramètres** : fait varier en direct le **LDL**, la **pression
+  artérielle systolique** et le **tabagisme**, et chiffre la variation absolue
+  (points de %) et relative du SCORE2. La courbe risque = f(LDL) trace la situation
+  actuelle du patient (pointillé) et la situation simulée (PAS/tabac choisis), avec
+  les cibles LDL de l'ESC.
+- **Module mode de vie** (pédagogique) : traduit une évolution du **poids**, de
+  l'**IMC** et de l'adhérence au **régime méditerranéen** en variation de risque,
+  sous forme d'une cascade « risque actuel → facteurs de risque améliorés → +
+  bénéfice résiduel du régime ».
+- **Affichage responsive** : la mise en page s'ajuste à la largeur de l'écran
+  (aucun débordement horizontal sur smartphone).
 
 ## Modèle scientifique
 
@@ -45,6 +54,23 @@ Material, p. 9) :
 - **Simulation LDL.** `non-HDL = LDL + VLDL` ; à HDL et triglycérides (donc VLDL)
   constants, `Δnon-HDL = ΔLDL`. La courbe recalcule le risque pour chaque valeur
   de LDL.
+- **Simulation PAS / tabac.** Ces deux variables étant des paramètres directs de
+  SCORE2, la simulation recalcule simplement l'algorithme avec la valeur choisie.
+- **Module mode de vie (illustratif, hors SCORE2).** SCORE2 n'intègre **ni** le
+  poids, **ni** l'IMC, **ni** l'alimentation. Le module traduit une perte de poids
+  et l'adhérence au régime méditerranéen en variations plausibles de la **PAS** et
+  du **LDL** (recalculées par SCORE2), puis applique un **bénéfice résiduel** propre
+  au régime méditerranéen. Ordres de grandeur retenus :
+  - perte de poids → PAS : ≈ 1 mmHg/kg (*Neter et al., Hypertension 2003*) ;
+  - perte de poids → LDL : ≈ 0,005 g/L par kg (effet modeste) ;
+  - régime méditerranéen : baisse de quelques mmHg de PAS et de ~0,05–0,10 g/L de
+    LDL selon l'adhérence, plus un **RR résiduel ≈ 0,85** (forte adhérence), fraction
+    conservatrice du bénéfice de l'essai **PREDIMED** (*Estruch et al., NEJM 2018*,
+    HR global ≈ 0,70).
+
+  Il s'agit d'**ordres de grandeur pédagogiques**, non d'une prédiction individuelle.
+  Un modèle dédié à la trajectoire au long cours (*LIFE-CVD*) pourrait être intégré
+  ultérieurement.
 
 ### Catégories de risque (ESC 2021)
 
@@ -69,9 +95,10 @@ ne remplace ni le jugement clinique ni les recommandations en vigueur.
 
 ```
 index.html        Interface + verrou d'accès SSO du portail Dr ONKH
-css/style.css     Styles (thème clair/sombre)
+css/style.css     Styles (thème clair/sombre, mise en page responsive)
 js/score2.js      Moteur de calcul SCORE2 / SCORE2-OP (+ auto-tests)
-js/app.js         Interface, jauge, simulation LDL, graphique
+js/lifestyle.js   Couche pédagogique poids / IMC / régime méditerranéen
+js/app.js         Interface, jauge, simulations (LDL · PAS · tabac · mode de vie)
 ```
 
 ## Déploiement

@@ -53,9 +53,13 @@ body {
   background: var(--bg);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  /* Filet de sécurité : aucun débordement horizontal sur mobile. */
+  overflow-x: hidden;
 }
 
-.wrap { width: min(1080px, 92vw); margin-inline: auto; }
+/* Largeur pilotée sur le conteneur réel (hors barre de défilement),
+   plus fiable que 92vw qui inclut la scrollbar et peut déborder. */
+.wrap { width: min(1080px, 100% - 28px); margin-inline: auto; }
 
 /* --- Écran de reconnexion (après déconnexion volontaire) ------------------- */
 #logoutScreen {
@@ -152,14 +156,17 @@ header.site {
   box-shadow: var(--shadow);
 }
 
-.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* minmax(0,1fr) évite le débordement : sinon les colonnes prennent la
+   largeur intrinsèque minimale des <input> et dépassent l'écran. */
+.row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.field { min-width: 0; }
 
-input[type="number"], select {
-  width: 100%; font: inherit; font-size: .95rem; color: var(--ink);
+input[type="number"], input[type="text"], select {
+  width: 100%; min-width: 0; font: inherit; font-size: .95rem; color: var(--ink);
   background: var(--bg); border: 1px solid var(--border);
   border-radius: 11px; padding: 11px 12px; transition: border-color .18s, box-shadow .18s;
 }
-input[type="number"]:focus, select:focus {
+input[type="number"]:focus, input[type="text"]:focus, select:focus {
   outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--brand-soft);
 }
 .inline-unit { position: relative; }
@@ -317,3 +324,80 @@ footer a:hover { color: var(--brand); }
   padding: 14px 16px; margin-top: 18px;
 }
 .disclaimer b { color: var(--ink-soft); }
+
+/* --- Simulation multi-paramètres (LDL · PAS · tabac) ---------------------- */
+.sim-controls { display: grid; gap: 15px; margin: 14px 0 6px; }
+.sim-ctrl-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .82rem; font-weight: 600; color: var(--ink);
+}
+.sim-ctrl-head b { color: var(--brand); font-size: .92rem; letter-spacing: -.01em; }
+.sim-ctrl .seg { margin-top: 2px; }
+.sim-ctrl input[type="range"] { margin: 6px 0 0; }
+
+.sim-out { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+.reset-btn {
+  appearance: none; cursor: pointer; font: inherit; font-size: .8rem; font-weight: 600;
+  color: var(--ink-soft); background: var(--bg); border: 1px solid var(--border);
+  border-radius: 9px; padding: 7px 12px; margin-top: 8px; transition: border-color .18s, color .18s;
+}
+.reset-btn:hover { color: var(--brand); border-color: var(--ring); }
+
+.chart-legend {
+  display: flex; gap: 16px; flex-wrap: wrap; font-size: .74rem;
+  color: var(--ink-soft); margin-top: 8px;
+}
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-legend i { display: inline-block; width: 16px; height: 0; border-top: 2.5px solid currentColor; }
+.chart-legend .dot-s { width: 9px; height: 9px; border-radius: 50%; border: 0; background: currentColor; }
+.chart .curve-base { fill: none; stroke: var(--ink-faint); stroke-width: 1.6; stroke-dasharray: 4 4; opacity: .7; }
+.chart .pt-base { fill: var(--bg-2); stroke: var(--ink-faint); stroke-width: 2; }
+
+/* --- Carte mode de vie (poids · IMC · régime) ----------------------------- */
+.lifestyle { margin: 4px 0 10px; }
+.ls-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 22px; align-items: start; }
+@media (max-width: 620px) { .ls-grid { grid-template-columns: 1fr; } }
+
+.bmi-readout {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  background: var(--bg); border: 1px dashed var(--border); border-radius: 10px;
+  padding: 10px 13px; margin-top: 4px;
+}
+.bmi-readout .bmi-v { font-size: 1.35rem; font-weight: 800; letter-spacing: -.02em; }
+.bmi-readout .bmi-v small { font-size: .5em; font-weight: 700; color: var(--ink-faint); }
+.bmi-chip {
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: .78rem;
+  padding: 4px 10px; border-radius: 999px;
+}
+.bmi-chip .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.bmi-normal { color: var(--ok);     background: rgba(16,185,129,.12); }
+.bmi-over   { color: var(--warn);   background: rgba(245,158,11,.14); }
+.bmi-ob     { color: var(--danger); background: rgba(220,38,38,.13); }
+.bmi-low    { color: var(--ink-soft); background: var(--bg); border: 1px solid var(--border); }
+.bmi-arrow { color: var(--ink-faint); font-weight: 700; }
+
+/* Cascade de risque : actuel → facteurs de risque → + régime */
+.waterfall { display: grid; gap: 10px; margin-top: 6px; }
+.wf-step { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; }
+.wf-label { font-size: .82rem; color: var(--ink-soft); }
+.wf-label b { color: var(--ink); font-weight: 700; }
+.wf-bar-wrap { grid-column: 1 / -1; height: 12px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+.wf-bar { height: 100%; border-radius: 999px; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+.wf-bar.b-now  { background: var(--ink-faint); }
+.wf-bar.b-rf   { background: var(--warn); }
+.wf-bar.b-diet { background: var(--ok); }
+.wf-val { font-size: .95rem; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
+.wf-val small { font-size: .6em; font-weight: 700; color: var(--ink-faint); }
+
+/* --- Ajustements responsives (smartphone) --------------------------------- */
+@media (max-width: 560px) {
+  .card { padding: 16px; }
+  .hero { padding: 22px 0 4px; }
+  .layout { gap: 16px; padding: 18px 0 40px; }
+  .header-in { gap: 10px; }
+  .brand { gap: 10px; }
+  .portal-link { padding: 7px 10px; }
+  .sim-metric { min-width: 110px; }
+  .seg button { padding: 9px 6px; font-size: .84rem; }
+  .about .body { font-size: .85rem; }
+}
