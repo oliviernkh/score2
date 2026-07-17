@@ -113,6 +113,17 @@
     els.riskCap.textContent =
       "Risque d'événement cardiovasculaire (fatal ou non fatal) à 10 ans — région à bas risque (France).";
 
+    // Mention explicite lors de la bascule automatique vers SCORE2-OP (≥ 70 ans).
+    if (res.model === "SCORE2-OP") {
+      els.opNote.classList.add("show");
+      els.opNote.innerHTML =
+        "<b>Modèle SCORE2-OP appliqué.</b> À partir de 70 ans, le calcul bascule " +
+        "automatiquement sur l'algorithme dédié aux personnes âgées (Older Persons), " +
+        "distinct de SCORE2 (40–69 ans).";
+    } else {
+      els.opNote.classList.remove("show");
+    }
+
     renderGauge(res);
   }
 
@@ -260,6 +271,7 @@
     els.riskBig = $("riskBig");
     els.catBadge = $("catBadge");
     els.riskCap = $("riskCap");
+    els.opNote = $("opNote");
     els.gaugeTrack = $("gaugeTrack");
     els.gaugeScale = $("gaugeScale");
     els.ldl = $("ldl");

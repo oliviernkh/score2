@@ -228,6 +228,16 @@ details.adv .body { padding-top: 12px; }
 .cat-high     { color: var(--warn);   background: rgba(245,158,11,.14); }
 .cat-veryhigh { color: var(--danger); background: rgba(220,38,38,.13); }
 
+/* Bandeau : bascule vers SCORE2-OP (≥ 70 ans) */
+.op-note {
+  display: none;
+  font-size: .82rem; color: var(--ink-soft);
+  background: var(--brand-soft); border: 1px solid var(--ring);
+  border-radius: 10px; padding: 10px 13px; margin-top: 12px;
+}
+.op-note.show { display: block; }
+.op-note b { color: var(--brand); }
+
 /* Jauge segmentée */
 .gauge { margin: 18px 0 6px; }
 .gauge-track {
