@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    /* Verrou d'accès : redirige vers le portail Dr ONKH si l'utilisateur n'a
+       pas de jeton de connexion valide (comptes partagés SSO). Après une
+       déconnexion volontaire, on n'effectue plus la redirection silencieuse :
+       on affiche un écran demandant un clic manuel. (Schéma identique aux
+       autres sites du portail.) */
+    (function () {
+      var PORTAIL = "https://deploy-portail.vercel.app";
+      var TKEY = "dr_onkh_tok";
+      var LOGOUT_KEY = "dr_onkh_manual_logout";
+      function valid(tok) {
+        if (!tok) return false;
+        try {
+          var p = JSON.parse(atob(tok.split(".")[1].replace(/-/g, "+").replace(/_/g, "/")));
+          return !!(p.exp && p.exp * 1000 > Date.now());
+        } catch (e) { return false; }
+      }
+      function goToPortal() {
+        location.replace(PORTAIL + "/?redirect=" + encodeURIComponent(location.origin + location.pathname + location.search + location.hash));
+      }
+      window.__drOnkh = { valid: valid, goToPortal: goToPortal, TKEY: TKEY, LOGOUT_KEY: LOGOUT_KEY, PORTAIL: PORTAIL };
+
+      var u = new URL(location.href);
+      var t = u.searchParams.get("t");
+      if (t) {
+        localStorage.setItem(TKEY, t);
+        localStorage.removeItem(LOGOUT_KEY);
+        u.searchParams.delete("t");
+        history.replaceState({}, "", u.pathname + (u.searchParams.toString() ? "?" + u.searchParams.toString() : "") + u.hash);
+      }
+      if (!valid(localStorage.getItem(TKEY))) {
+        localStorage.removeItem(TKEY);
+        if (localStorage.getItem(LOGOUT_KEY) === "1") {
+          window.__drOnkhLoggedOut = true;
+        } else {
+          goToPortal();
+        }
+      }
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SCORE2 &amp; SCORE2-OP — Risque cardiovasculaire | Dr ONKH</title>
+  <meta name="description" content="Calcul du risque cardiovasculaire à 10 ans (SCORE2 et SCORE2-OP, ESC 2021/2023) pour la France, et simulation pédagogique de l'effet d'une baisse du LDL cholestérol, en appui à l'éducation thérapeutique.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='82' font-size='82'>❤️</text></svg>">
+</head>
+<body>
+
+  <!-- Écran de reconnexion après déconnexion volontaire -->
+  <div id="logoutScreen">
+    <div class="box">
+      <h2 style="margin:0 0 8px">Vous êtes déconnecté</h2>
+      <p class="sub" style="margin:0 0 18px">Reconnectez-vous au portail Dr ONKH pour accéder à l'outil.</p>
+      <a class="portal-link" id="reconnectBtn" href="#" style="justify-content:center">Se reconnecter</a>
+    </div>
+  </div>
+
+  <header class="site">
+    <div class="wrap header-in">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.8 5.6a5.5 5.5 0 0 0-8.8-1.4L12 5l-.7-.8A5.5 5.5 0 0 0 2.5 5.6c-1.9 2.6-1.3 6 .9 8.2L12 21l8.6-7.2c2.2-2.2 2.8-5.6.9-8.2Z"/>
+            <path d="M3.5 12.5h4l1.5-3 2.5 6 1.6-3.4H21" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <b>SCORE2 &amp; SCORE2-OP</b>
+          <span>Risque cardiovasculaire · ESC 2021/2023</span>
+        </div>
+      </div>
+      <a class="portal-link" href="https://deploy-portail.vercel.app" title="Retour au portail Dr ONKH">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        Portail
+      </a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">Aide à la décision · Prévention primaire</span>
+      <h1>Risque cardiovasculaire à 10 ans, et effet d'une baisse du LDL</h1>
+      <p class="lead">
+        Estimation du risque d'événement cardiovasculaire fatal ou non fatal selon
+        les algorithmes <b>SCORE2</b> (40–69 ans) et <b>SCORE2-OP</b> (≥ 70 ans),
+        calibrés pour la <b>France</b> (région à bas risque). L'outil illustre en
+        temps réel comment la modification du LDL déplace le risque — un support
+        concret pour l'éducation thérapeutique en consultation.
+      </p>
+    </section>
+
+    <div class="layout">
+      <!-- ================= COLONNE SAISIE ================= -->
+      <section class="card" aria-labelledby="t-saisie">
+        <h2 id="t-saisie">Paramètres du patient</h2>
+        <p class="sub">Sujet apparemment sain, sans antécédent cardiovasculaire ni diabète.</p>
+
+        <div class="field">
+          <label class="lbl">Sexe</label>
+          <div class="seg" id="sexSeg" role="group" aria-label="Sexe">
+            <button type="button" data-val="male" aria-pressed="true">Homme</button>
+            <button type="button" data-val="female" aria-pressed="false">Femme</button>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label class="lbl" for="age">Âge <span class="hint">40–89 ans</span></label>
+            <div class="inline-unit">
+              <input type="number" id="age" min="40" max="89" step="1" inputmode="numeric">
+              <span class="u">ans</span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="sbp">Pression systolique <span class="hint">PAS</span></label>
+            <div class="inline-unit">
+              <input type="number" id="sbp" min="80" max="220" step="1" inputmode="numeric">
+              <span class="u">mmHg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="lbl">Tabagisme actif</label>
+          <div class="seg" id="smokeSeg" role="group" aria-label="Tabagisme actif">
+            <button type="button" data-val="0" aria-pressed="true">Non-fumeur</button>
+            <button type="button" data-val="1" aria-pressed="false">Fumeur</button>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label class="lbl" for="nonhdl">Cholestérol non-HDL</label>
+            <div class="inline-unit">
+              <input type="text" id="nonhdl" inputmode="decimal" autocomplete="off">
+              <span class="u">g/L</span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="lbl" for="hdl">HDL-cholestérol <span class="hint">requis</span></label>
+            <div class="inline-unit">
+              <input type="text" id="hdl" inputmode="decimal" autocomplete="off">
+              <span class="u">g/L</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="lbl" for="ldl">LDL-cholestérol actuel <span class="hint">pour la simulation</span></label>
+          <div class="inline-unit">
+            <input type="text" id="ldl" inputmode="decimal" autocomplete="off">
+            <span class="u">g/L</span>
+          </div>
+          <div class="warnmsg" id="ldlWarn"></div>
+        </div>
+
+        <div class="derived" id="derived"></div>
+
+        <details class="adv">
+          <summary>Région de risque (avancé)</summary>
+          <div class="body">
+            <label class="lbl" for="region" style="margin-bottom:6px">Région de calibration</label>
+            <select id="region">
+              <option value="Low" selected>Bas risque — France (défaut)</option>
+              <option value="Moderate">Risque modéré</option>
+              <option value="High">Risque élevé</option>
+              <option value="Very high">Risque très élevé</option>
+            </select>
+            <p class="sub" style="margin:8px 0 0">
+              La France appartient au groupe à <b>bas risque</b> de la classification ESC 2021.
+              Ne modifiez ce paramètre que pour un patient relevant d'une autre région.
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <!-- ================= COLONNE RÉSULTAT ================= -->
+      <section class="card" aria-labelledby="t-res">
+        <div class="result-head">
+          <div>
+            <h2 id="t-res">Risque estimé</h2>
+            <p class="sub" style="margin-bottom:0">10-year CVD risk</p>
+          </div>
+          <span class="model-badge" id="modelBadge">SCORE2</span>
+        </div>
+
+        <div id="resultPlaceholder" class="placeholder">Renseignez les paramètres pour afficher le risque.</div>
+
+        <div id="resultBody" style="display:none">
+          <div class="risk-big" id="riskBig"></div>
+          <p class="risk-cap" id="riskCap"></p>
+          <span class="cat-badge" id="catBadge"></span>
+
+          <div class="gauge">
+            <div class="gauge-track" id="gaugeTrack"></div>
+            <div class="gauge-scale" id="gaugeScale"></div>
+          </div>
+
+          <!-- ============ Simulation pédagogique LDL ============ -->
+          <div class="edu">
+            <h2 style="font-size:.98rem">Simulation : effet d'une baisse du LDL</h2>
+            <p class="sub">
+              Faites varier la cible de LDL. À HDL et triglycérides constants, le
+              non-HDL baisse d'autant, ce qui déplace le risque SCORE2.
+            </p>
+
+            <input type="range" id="ldlSlider" aria-label="LDL cible simulé">
+
+            <div class="simrow" style="margin-top:8px">
+              <div class="sim-metric">
+                <div class="k">LDL cible</div>
+                <div class="v" id="simLdlVal"></div>
+              </div>
+              <div class="sim-metric">
+                <div class="k">Risque simulé</div>
+                <div class="v" id="simRiskVal"></div>
+              </div>
+            </div>
+            <div style="margin:6px 0 4px"><span class="delta-pill" id="simDelta"></span></div>
+
+            <div class="chart-wrap"><div id="chart"></div></div>
+
+            <div class="note">
+              <b>Lecture pédagogique.</b> La courbe montre le risque en fonction du LDL.
+              Les repères verticaux correspondent aux <b>cibles LDL de l'ESC</b>
+              (&lt; 1,00 · &lt; 0,70 · &lt; 0,55 g/L selon la catégorie de risque).
+              Le point noir = situation actuelle, le point rouge = cible simulée.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ================= À PROPOS / MÉTHODE ================= -->
+    <section class="about">
+      <details>
+        <summary>Modèle scientifique &amp; méthode de calcul</summary>
+        <div class="body">
+          <p>
+            L'outil implémente les équations officielles publiées par les groupes de
+            travail SCORE2 et SCORE2-OP (European Society of Cardiology, 2021),
+            réaffirmées par les recommandations ESC 2023. Le risque estimé est celui
+            d'un <b>premier événement cardiovasculaire fatal ou non fatal</b>
+            (infarctus, AVC) à 10 ans.
+          </p>
+          <ul>
+            <li><b>SCORE2</b> pour 40–69 ans ; <b>SCORE2-OP</b> pour ≥ 70 ans (bascule automatique).</li>
+            <li>Recalibration <b>région à bas risque</b> = France.</li>
+            <li>
+              Variable lipidique : le modèle utilise le <b>cholestérol total et le HDL</b>
+              (le HDL est donc indispensable). Le cholestérol total est reconstitué à
+              partir du non-HDL saisi : CT = non-HDL + HDL.
+            </li>
+            <li>Conversion g/L → mmol/L : × 100 ⁄ 38,67 (≈ × 2,586).</li>
+            <li>
+              Simulation LDL : non-HDL = LDL + VLDL, avec VLDL (≈ TG⁄5) et HDL supposés
+              constants, donc Δnon-HDL = ΔLDL. La courbe recalcule le risque pour chaque
+              valeur de LDL.
+            </li>
+          </ul>
+          <p>
+            Catégories ESC 2021 selon l'âge — 40–49 ans : &lt; 2,5 % faible-modéré,
+            2,5–7,5 % élevé, ≥ 7,5 % très élevé ; 50–69 ans : &lt; 5 % / 5–10 % / ≥ 10 % ;
+            ≥ 70 ans : &lt; 7,5 % / 7,5–15 % / ≥ 15 %.
+          </p>
+          <p style="font-size:.82rem;color:var(--ink-faint)">
+            Références : SCORE2 working group &amp; ESC Cardiovascular Risk Collaboration,
+            <i>Eur Heart J</i> 2021;42:2439–2454 ; SCORE2-OP working group,
+            <i>Eur Heart J</i> 2021;42:2455–2467 ; ESC Guidelines on CVD prevention 2021 ;
+            ESC/EAS Guidelines dyslipidaemias 2019.
+          </p>
+        </div>
+      </details>
+
+      <div class="disclaimer">
+        <b>Avertissement.</b> Outil d'aide à la décision et à l'éducation thérapeutique,
+        destiné à un usage par des professionnels de santé. Il ne remplace pas le jugement
+        clinique ni les recommandations en vigueur. SCORE2/SCORE2-OP s'appliquent aux
+        <b>sujets apparemment sains</b> : ne pas utiliser en cas de maladie cardiovasculaire
+        établie, de diabète (utiliser SCORE2-Diabetes), d'insuffisance rénale chronique,
+        d'hypercholestérolémie familiale ou de grossesse. La simulation de baisse du LDL
+        est une illustration pédagogique du bénéfice relatif attendu, non une prédiction
+        individuelle garantie.
+      </div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap foot">
+      <div><span class="monogram">ONKH</span> Portail du Dr ONKH — Le Havre, Seine-Maritime</div>
+      <div><a href="https://deploy-portail.vercel.app">↩ Retour au portail</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Gestion de l'écran de reconnexion (déconnexion volontaire).
+    (function () {
+      if (window.__drOnkhLoggedOut) {
+        var s = document.getElementById("logoutScreen");
+        if (s) s.classList.add("show");
+        var b = document.getElementById("reconnectBtn");
+        if (b) b.addEventListener("click", function (e) {
+          e.preventDefault();
+          localStorage.removeItem(window.__drOnkh.LOGOUT_KEY);
+          window.__drOnkh.goToPortal();
+        });
+      }
+    })();
+  </script>
+  <script src="js/score2.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

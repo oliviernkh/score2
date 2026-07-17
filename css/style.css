@@ -1,0 +1,309 @@
+/* =============================================================================
+   SCORE2 / SCORE2-OP — feuille de style
+   Aligné sur l'esthétique du portail Dr ONKH (Inter, cartes arrondies,
+   ombres douces). Accent cardiovasculaire : rose/rouge.
+   Thème clair/sombre automatique.
+   ========================================================================== */
+
+:root {
+  --brand:      #e11d48;   /* rose-600, accent cardiovasculaire */
+  --brand-2:    #be123c;
+  --brand-soft: rgba(225, 29, 72, .10);
+  --ring:       rgba(225, 29, 72, .45);
+
+  --ok:      #10b981;
+  --warn:    #f59e0b;
+  --danger:  #dc2626;
+
+  --bg:        #f7f7f9;
+  --bg-2:      #ffffff;
+  --ink:       #14151a;
+  --ink-soft:  #4b5060;
+  --ink-faint: #868b99;
+  --border:    #e7e8ee;
+  --border-2:  #eff0f4;
+  --shadow:    0 1px 2px rgba(16,18,27,.04), 0 8px 24px rgba(16,18,27,.06);
+  --shadow-lg: 0 12px 40px rgba(16,18,27,.12);
+  --radius:    16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0e0f13;
+    --bg-2:      #171922;
+    --ink:       #eef0f6;
+    --ink-soft:  #b6bccb;
+    --ink-faint: #7d8496;
+    --border:    #262a36;
+    --border-2:  #20242f;
+    --brand-soft: rgba(244, 63, 94, .14);
+    --shadow:    0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.4);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,.55);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { width: min(1080px, 92vw); margin-inline: auto; }
+
+/* --- Écran de reconnexion (après déconnexion volontaire) ------------------- */
+#logoutScreen {
+  position: fixed; inset: 0; display: none; place-items: center;
+  background: var(--bg); z-index: 100; padding: 24px;
+}
+#logoutScreen.show { display: grid; }
+#logoutScreen .box {
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 32px; max-width: 380px; text-align: center; box-shadow: var(--shadow);
+}
+
+/* --- En-tête --------------------------------------------------------------- */
+header.site {
+  background: linear-gradient(180deg, var(--bg-2), var(--bg-2));
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 20;
+  backdrop-filter: saturate(1.2) blur(8px);
+}
+.header-in {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 0; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center; color: #fff;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 4px 14px var(--ring);
+}
+.brand-logo svg { width: 24px; height: 24px; }
+.brand-text b { display: block; font-size: 1.02rem; letter-spacing: -.01em; }
+.brand-text span { display: block; font-size: .78rem; color: var(--ink-faint); }
+.portal-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .86rem; font-weight: 600; color: var(--ink-soft);
+  text-decoration: none; padding: 8px 12px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg);
+  transition: border-color .2s, color .2s;
+}
+.portal-link:hover { color: var(--brand); border-color: var(--ring); }
+
+/* --- Hero ------------------------------------------------------------------ */
+.hero { padding: 34px 0 8px; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--brand); background: var(--brand-soft);
+  padding: 5px 11px; border-radius: 999px;
+}
+.hero h1 {
+  font-size: clamp(1.55rem, 3.4vw, 2.15rem); letter-spacing: -.02em;
+  margin: 14px 0 8px; line-height: 1.12;
+}
+.hero p.lead { color: var(--ink-soft); max-width: 62ch; margin: 0; }
+
+/* --- Grille principale ----------------------------------------------------- */
+.layout {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 22px; padding: 26px 0 60px; align-items: start;
+}
+@media (max-width: 880px) { .layout { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px;
+}
+.card h2 {
+  font-size: 1.05rem; margin: 0 0 4px; letter-spacing: -.01em;
+  display: flex; align-items: center; gap: 8px;
+}
+.card .sub { color: var(--ink-faint); font-size: .84rem; margin: 0 0 18px; }
+
+/* --- Formulaire ------------------------------------------------------------ */
+.field { margin-bottom: 18px; }
+.field > label.lbl {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: .84rem; font-weight: 600; margin-bottom: 7px; color: var(--ink);
+}
+.field .hint { color: var(--ink-faint); font-weight: 500; font-size: .76rem; }
+
+.seg {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  gap: 4px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 4px;
+}
+.seg button {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  font: inherit; font-weight: 600; font-size: .88rem; color: var(--ink-soft);
+  padding: 9px 8px; border-radius: 9px; transition: background .18s, color .18s;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--bg-2); color: var(--brand);
+  box-shadow: var(--shadow);
+}
+
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+input[type="number"], select {
+  width: 100%; font: inherit; font-size: .95rem; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: 11px; padding: 11px 12px; transition: border-color .18s, box-shadow .18s;
+}
+input[type="number"]:focus, select:focus {
+  outline: none; border-color: var(--ring); box-shadow: 0 0 0 3px var(--brand-soft);
+}
+.inline-unit { position: relative; }
+.inline-unit .u {
+  position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  color: var(--ink-faint); font-size: .8rem; pointer-events: none;
+}
+.inline-unit input { padding-right: 44px; }
+
+input[type="range"] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 6px;
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand) var(--pct,50%), var(--border) var(--pct,50%));
+  border-radius: 999px; outline: none; margin: 10px 0 2px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+  border-radius: 50%; background: var(--bg-2); border: 3px solid var(--brand);
+  box-shadow: var(--shadow); cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%; background: var(--bg-2);
+  border: 3px solid var(--brand); box-shadow: var(--shadow); cursor: pointer;
+}
+
+.warnmsg {
+  font-size: .8rem; color: var(--warn); margin-top: 6px; display: none;
+}
+.warnmsg.show { display: block; }
+
+.derived {
+  font-size: .82rem; color: var(--ink-soft); background: var(--bg);
+  border: 1px dashed var(--border); border-radius: 10px; padding: 9px 12px; margin-top: 4px;
+}
+.derived b { color: var(--ink); }
+
+details.adv { margin-top: 6px; }
+details.adv summary {
+  cursor: pointer; font-size: .82rem; color: var(--ink-faint); font-weight: 600;
+  list-style: none; user-select: none;
+}
+details.adv summary::-webkit-details-marker { display: none; }
+details.adv summary::before { content: "▸ "; }
+details.adv[open] summary::before { content: "▾ "; }
+details.adv .body { padding-top: 12px; }
+
+/* --- Résultat -------------------------------------------------------------- */
+.result-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.model-badge {
+  font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--ink-soft); background: var(--bg); border: 1px solid var(--border);
+  padding: 4px 9px; border-radius: 999px;
+}
+.risk-big {
+  font-size: clamp(2.6rem, 8vw, 3.6rem); font-weight: 800; letter-spacing: -.03em;
+  line-height: 1; margin: 8px 0 2px;
+}
+.risk-big small { font-size: .34em; font-weight: 700; color: var(--ink-faint); }
+.risk-cap { font-size: .86rem; color: var(--ink-soft); margin-bottom: 14px; }
+
+.cat-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: .9rem; padding: 8px 14px; border-radius: 999px;
+}
+.cat-badge .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+.cat-low      { color: var(--ok);     background: rgba(16,185,129,.12); }
+.cat-high     { color: var(--warn);   background: rgba(245,158,11,.14); }
+.cat-veryhigh { color: var(--danger); background: rgba(220,38,38,.13); }
+
+/* Jauge segmentée */
+.gauge { margin: 18px 0 6px; }
+.gauge-track {
+  position: relative; height: 12px; border-radius: 999px; overflow: hidden;
+  display: flex;
+}
+.gauge-track span { height: 100%; }
+.gauge-marker {
+  position: absolute; top: -5px; width: 3px; height: 22px; border-radius: 2px;
+  background: var(--ink); box-shadow: 0 0 0 2px var(--bg-2);
+  transition: left .4s cubic-bezier(.2,.8,.2,1);
+}
+.gauge-scale { display: flex; justify-content: space-between; font-size: .72rem; color: var(--ink-faint); margin-top: 6px; }
+
+/* --- Section pédagogique LDL ---------------------------------------------- */
+.edu { margin-top: 22px; }
+.edu .simrow { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+.sim-metric { flex: 1; min-width: 130px; }
+.sim-metric .k { font-size: .74rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .04em; }
+.sim-metric .v { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
+.sim-metric .v small { font-size: .5em; font-weight: 700; color: var(--ink-faint); }
+.delta-pill {
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: .84rem;
+  padding: 5px 11px; border-radius: 999px; background: rgba(16,185,129,.12); color: var(--ok);
+}
+.delta-pill.up { background: rgba(220,38,38,.12); color: var(--danger); }
+
+.chart-wrap { margin-top: 10px; overflow-x: auto; }
+svg.chart { width: 100%; height: auto; display: block; }
+.chart .grid-line { stroke: var(--border); stroke-width: 1; }
+.chart .axis-txt { fill: var(--ink-faint); font-size: 11px; }
+.chart .area { fill: var(--brand-soft); }
+.chart .curve { fill: none; stroke: var(--brand); stroke-width: 2.5; }
+.chart .target-line { stroke: var(--ink-faint); stroke-width: 1; stroke-dasharray: 4 4; }
+.chart .target-txt { fill: var(--ink-faint); font-size: 9.5px; }
+.chart .pt-current { fill: var(--ink); }
+.chart .pt-target { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
+.chart .pt-label { font-size: 10.5px; font-weight: 700; }
+
+/* --- Encadrés & notes ------------------------------------------------------ */
+.note {
+  font-size: .82rem; color: var(--ink-soft); background: var(--bg);
+  border: 1px solid var(--border); border-left: 3px solid var(--brand);
+  border-radius: 10px; padding: 11px 14px; margin-top: 16px;
+}
+.note b { color: var(--ink); }
+
+.placeholder {
+  color: var(--ink-faint); font-size: .9rem; text-align: center;
+  padding: 40px 12px; border: 1px dashed var(--border); border-radius: 12px;
+}
+
+/* --- À propos / références -------------------------------------------------- */
+.about { padding: 8px 0 40px; }
+.about details { border-top: 1px solid var(--border); padding: 14px 0; }
+.about summary { cursor: pointer; font-weight: 600; font-size: .95rem; }
+.about .body { color: var(--ink-soft); font-size: .88rem; padding-top: 10px; }
+.about .body ul { padding-left: 18px; }
+.about .body a { color: var(--brand); }
+
+/* --- Pied ------------------------------------------------------------------ */
+footer.site {
+  border-top: 1px solid var(--border); padding: 22px 0 40px;
+  color: var(--ink-faint); font-size: .82rem;
+}
+footer .foot { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; align-items: center; }
+footer a { color: var(--ink-soft); text-decoration: none; }
+footer a:hover { color: var(--brand); }
+.monogram {
+  font-weight: 800; letter-spacing: .06em; color: var(--brand);
+  border: 1px solid var(--ring); border-radius: 7px; padding: 2px 7px; margin-right: 8px;
+}
+
+.disclaimer {
+  font-size: .78rem; color: var(--ink-faint); line-height: 1.5;
+  background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 16px; margin-top: 18px;
+}
+.disclaimer b { color: var(--ink-soft); }
