@@ -205,40 +205,160 @@
             <div class="gauge-scale" id="gaugeScale"></div>
           </div>
 
-          <!-- ============ Simulation pédagogique LDL ============ -->
+          <!-- ============ Simulation multi-paramètres SCORE2 ============ -->
           <div class="edu">
-            <h2 style="font-size:.98rem">Simulation : effet d'une baisse du LDL</h2>
+            <h2 style="font-size:.98rem">Simulation : LDL, pression artérielle &amp; tabac</h2>
             <p class="sub">
-              Faites varier la cible de LDL. À HDL et triglycérides constants, le
-              non-HDL baisse d'autant, ce qui déplace le risque SCORE2.
+              Faites varier chaque facteur pour montrer au patient comment il déplace
+              le SCORE2. Le risque « simulé » recalcule l'algorithme avec ces valeurs ;
+              le risque « actuel » reste celui du patient.
             </p>
 
-            <input type="range" id="ldlSlider" aria-label="LDL cible simulé">
+            <div class="sim-controls">
+              <div class="sim-ctrl">
+                <div class="sim-ctrl-head"><span>LDL-cholestérol cible</span><b id="simLdlVal"></b></div>
+                <input type="range" id="ldlSlider" aria-label="LDL cible simulé">
+              </div>
+              <div class="sim-ctrl">
+                <div class="sim-ctrl-head"><span>Pression artérielle systolique</span><b id="simSbpVal"></b></div>
+                <input type="range" id="sbpSlider" min="100" max="200" step="1" aria-label="Pression systolique simulée">
+              </div>
+              <div class="sim-ctrl">
+                <div class="sim-ctrl-head"><span>Tabagisme</span></div>
+                <div class="seg" id="simSmokeSeg" role="group" aria-label="Tabagisme simulé">
+                  <button type="button" data-val="0" aria-pressed="true">Non-fumeur</button>
+                  <button type="button" data-val="1" aria-pressed="false">Fumeur</button>
+                </div>
+              </div>
+            </div>
 
-            <div class="simrow" style="margin-top:8px">
+            <div class="sim-out">
               <div class="sim-metric">
-                <div class="k">LDL cible</div>
-                <div class="v" id="simLdlVal"></div>
+                <div class="k">Risque actuel</div>
+                <div class="v" id="simBaseVal"></div>
               </div>
               <div class="sim-metric">
                 <div class="k">Risque simulé</div>
                 <div class="v" id="simRiskVal"></div>
               </div>
             </div>
-            <div style="margin:6px 0 4px"><span class="delta-pill" id="simDelta"></span></div>
+            <div style="margin:8px 0 2px"><span class="delta-pill" id="simDelta"></span></div>
+            <div><button type="button" class="reset-btn" id="simReset">↺ Réinitialiser sur le patient</button></div>
 
             <div class="chart-wrap"><div id="chart"></div></div>
+            <div class="chart-legend">
+              <span style="color:var(--brand)"><i></i> Courbe simulée (PAS/tabac choisis)</span>
+              <span style="color:var(--ink-faint)"><i style="border-top-style:dashed"></i> Situation actuelle</span>
+              <span style="color:var(--brand)"><i class="dot-s"></i> LDL cible</span>
+            </div>
 
             <div class="note">
-              <b>Lecture pédagogique.</b> La courbe montre le risque en fonction du LDL.
-              Les repères verticaux correspondent aux <b>cibles LDL de l'ESC</b>
-              (&lt; 1,00 · &lt; 0,70 · &lt; 0,55 g/L selon la catégorie de risque).
-              Le point noir = situation actuelle, le point rouge = cible simulée.
+              <b>Lecture pédagogique.</b> La courbe montre le risque en fonction du LDL,
+              aux valeurs de PAS et de tabagisme choisies. Les repères verticaux sont les
+              <b>cibles LDL de l'ESC</b> (&lt; 1,00 · &lt; 0,70 · &lt; 0,55 g/L selon la
+              catégorie de risque). La courbe pointillée et le point clair rappellent la
+              situation actuelle du patient ; le point rouge = valeurs simulées.
             </div>
           </div>
         </div>
       </section>
     </div>
+
+    <!-- ================= MODE DE VIE : POIDS · IMC · RÉGIME ================= -->
+    <section class="card lifestyle" aria-labelledby="t-ls">
+      <div class="result-head">
+        <div>
+          <h2 id="t-ls">Mode de vie : poids, IMC &amp; alimentation</h2>
+          <p class="sub" style="margin-bottom:0">Évolution du risque cardiovasculaire selon le poids et le régime</p>
+        </div>
+        <span class="model-badge">Pédagogique</span>
+      </div>
+
+      <div id="lsPlaceholder" class="placeholder">Renseignez d'abord les paramètres du patient ci-dessus.</div>
+
+      <div id="lsBody" style="display:none">
+        <div class="ls-grid">
+          <!-- Colonne saisie -->
+          <div>
+            <div class="row2">
+              <div class="field" style="margin-bottom:14px">
+                <label class="lbl" for="weight">Poids actuel</label>
+                <div class="inline-unit">
+                  <input type="number" id="weight" min="35" max="250" step="1" inputmode="numeric">
+                  <span class="u">kg</span>
+                </div>
+              </div>
+              <div class="field" style="margin-bottom:14px">
+                <label class="lbl" for="height">Taille</label>
+                <div class="inline-unit">
+                  <input type="number" id="height" min="130" max="220" step="1" inputmode="numeric">
+                  <span class="u">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lbl" for="weightSlider">Poids cible <span class="hint" id="weightTargetLbl"></span></label>
+              <input type="range" id="weightSlider" aria-label="Poids cible simulé">
+            </div>
+
+            <div class="field" style="margin-bottom:8px">
+              <label class="lbl">Régime méditerranéen <span class="hint">adhérence</span></label>
+              <div class="seg" id="dietSeg" role="group" aria-label="Adhérence au régime méditerranéen">
+                <button type="button" data-val="0" aria-pressed="true">Habituel</button>
+                <button type="button" data-val="1" aria-pressed="false">Modérée</button>
+                <button type="button" data-val="2" aria-pressed="false">Élevée</button>
+              </div>
+            </div>
+
+            <div class="bmi-readout">
+              <span class="bmi-v" id="bmiNow"></span>
+              <span class="bmi-chip" id="bmiChipNow"></span>
+              <span class="bmi-arrow" id="bmiArrow" style="display:none">→</span>
+              <span class="bmi-v" id="bmiTarget" style="display:none"></span>
+              <span class="bmi-chip" id="bmiChipTarget" style="display:none"></span>
+            </div>
+          </div>
+
+          <!-- Colonne résultat : cascade -->
+          <div>
+            <div class="waterfall">
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">Risque <b>actuel</b></span>
+                  <span class="wf-val" id="wfNow"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-now" id="wfNowBar"></div></div>
+              </div>
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">+ <b>poids &amp; PAS/LDL</b> améliorés</span>
+                  <span class="wf-val" id="wfRf"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-rf" id="wfRfBar"></div></div>
+              </div>
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">+ <b>régime méditerranéen</b> (bénéfice résiduel)</span>
+                  <span class="wf-val" id="wfDiet"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-diet" id="wfDietBar"></div></div>
+              </div>
+            </div>
+            <div style="margin-top:12px"><span class="delta-pill" id="lsDelta"></span></div>
+          </div>
+        </div>
+
+        <div class="note">
+          <b>Comment lire cette carte.</b> SCORE2 n'intègre pas directement le poids, l'IMC
+          ni l'alimentation. Ici, une perte de poids et l'adhérence au régime méditerranéen
+          sont traduites en baisse plausible de la <b>PAS</b> et du <b>LDL</b> (recalculées
+          par SCORE2), puis un <b>bénéfice résiduel</b> du régime méditerranéen (essai
+          PREDIMED) est appliqué en plus. C'est une <b>illustration</b> des ordres de
+          grandeur attendus, pas une prédiction individuelle.
+        </div>
+      </div>
+    </section>
 
     <!-- ================= À PROPOS / MÉTHODE ================= -->
     <section class="about">
@@ -281,6 +401,38 @@
         </div>
       </details>
 
+      <details>
+        <summary>Simulation mode de vie (poids, IMC, régime) — base &amp; limites</summary>
+        <div class="body">
+          <p>
+            <b>SCORE2 / SCORE2-OP n'intègrent pas</b> le poids, l'IMC ni l'alimentation.
+            La carte « Mode de vie » est une couche <b>pédagogique</b> ajoutée à l'outil,
+            qui traduit une évolution du mode de vie en variations plausibles des seuls
+            facteurs pris en compte par SCORE2 (PAS et LDL/non-HDL), puis applique un
+            bénéfice <b>résiduel</b> propre au régime méditerranéen.
+          </p>
+          <ul>
+            <li><b>Perte de poids → PAS</b> : ≈ 1 mmHg de PAS par kg perdu (Neter <i>et al.</i>, <i>Hypertension</i> 2003;42:878).</li>
+            <li><b>Perte de poids → LDL</b> : effet modeste, ≈ 0,005 g/L par kg (l'amaigrissement agit surtout sur triglycérides et HDL).</li>
+            <li><b>Régime méditerranéen → PAS/LDL</b> : baisse de quelques mmHg et de ~0,05–0,10 g/L de LDL selon l'adhérence.</li>
+            <li>
+              <b>Bénéfice résiduel du régime méditerranéen</b> : au-delà des facteurs de
+              risque, un risque relatif ≈ 0,85 (forte adhérence) est appliqué — fraction
+              conservatrice du bénéfice de l'essai <b>PREDIMED</b> (Estruch <i>et al.</i>,
+              <i>N Engl J Med</i> 2018;378:e34, HR global ≈ 0,70).
+            </li>
+          </ul>
+          <p>
+            L'IMC est classé selon les seuils OMS. Ces valeurs sont des <b>ordres de
+            grandeur</b> destinés à illustrer la direction et l'échelle de l'effet
+            attendu, <b>non une prédiction individuelle</b>. Des modèles dédiés à la
+            trajectoire au long cours (p. ex. <i>LIFE-CVD</i>) existent et pourraient
+            être intégrés ultérieurement pour un raisonnement « bénéfice sur la vie
+            entière ».
+          </p>
+        </div>
+      </details>
+
       <div class="disclaimer">
         <b>Avertissement.</b> Outil d'aide à la décision et à l'éducation thérapeutique,
         destiné à un usage par des professionnels de santé. Il ne remplace pas le jugement
@@ -317,6 +469,7 @@
     })();
   </script>
   <script src="js/score2.js"></script>
+  <script src="js/lifestyle.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
