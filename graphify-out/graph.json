@@ -4,6 +4,19 @@
   "graph": {
     "hyperedges": [
       {
+        "id": "claude_auto_debug_flow",
+        "label": "Claude Auto-Debug Flow",
+        "nodes": [
+          "github_workflows_claude_auto_debug_debug_ci_failure",
+          "github_workflows_claude_auto_debug_triage_issue",
+          "anthropics_claude_code_action_v1"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.8,
+        "source_file": ".github/workflows/claude-auto-debug.yml"
+      },
+      {
         "id": "graphify_core_components",
         "label": "Graphify Core Components",
         "nodes": [
@@ -305,7 +318,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 7,
+      "community": 8,
       "norm_label": "lifestyle.js",
       "community_name": "Lifestyle Metrics Module",
       "id": "js_lifestyle"
@@ -316,7 +329,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 7,
+      "community": 8,
       "norm_label": "bmi()",
       "community_name": "Lifestyle Metrics Module",
       "id": "js_lifestyle_bmi"
@@ -327,7 +340,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L51",
       "_origin": "ast",
-      "community": 7,
+      "community": 8,
       "norm_label": "bmiclass()",
       "community_name": "Lifestyle Metrics Module",
       "id": "js_lifestyle_bmiclass"
@@ -338,7 +351,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 7,
+      "community": 8,
       "norm_label": "modifiers()",
       "community_name": "Lifestyle Metrics Module",
       "id": "js_lifestyle_modifiers"
@@ -547,7 +560,7 @@
       "label": "index.html",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 12,
+      "community": 14,
       "norm_label": "index.html",
       "community_name": "Main Application Page",
       "id": "index_html"
@@ -566,7 +579,7 @@
       "label": "Sex Selection Segment",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 29,
+      "community": 31,
       "norm_label": "sex selection segment",
       "community_name": "Sex Selection Control",
       "id": "index_html_sex_seg"
@@ -575,7 +588,7 @@
       "label": "Age Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 13,
+      "community": 15,
       "norm_label": "age input",
       "community_name": "Age Input Field",
       "id": "index_html_age_input"
@@ -584,7 +597,7 @@
       "label": "Systolic Blood Pressure Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 27,
+      "community": 29,
       "norm_label": "systolic blood pressure input",
       "community_name": "Blood Pressure Input",
       "id": "index_html_sbp_input"
@@ -594,7 +607,7 @@
       "file_type": "code",
       "source_file": "index.html",
       "verification": "unverified",
-      "community": 32,
+      "community": 34,
       "norm_label": "smoking status segment",
       "community_name": "Smoking Status Input",
       "id": "index_html_smoke_seg"
@@ -603,7 +616,7 @@
       "label": "Non-HDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 23,
+      "community": 25,
       "norm_label": "non-hdl cholesterol input",
       "community_name": "Non-HDL Input Field",
       "id": "index_html_nonhdl_input"
@@ -612,7 +625,7 @@
       "label": "HDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 18,
+      "community": 20,
       "norm_label": "hdl cholesterol input",
       "community_name": "HDL Input Field",
       "id": "index_html_hdl_input"
@@ -621,7 +634,7 @@
       "label": "LDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 20,
+      "community": 22,
       "norm_label": "ldl cholesterol input",
       "community_name": "LDL Input Field",
       "id": "index_html_ldl_input"
@@ -630,7 +643,7 @@
       "label": "Risk Region Selector",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 24,
+      "community": 26,
       "norm_label": "risk region selector",
       "community_name": "Region Selector",
       "id": "index_html_region_select"
@@ -639,7 +652,7 @@
       "label": "Risk Result Display",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 25,
+      "community": 27,
       "norm_label": "risk result display",
       "community_name": "Risk Result Output",
       "id": "index_html_result_body"
@@ -648,7 +661,7 @@
       "label": "Model Badge (SCORE2/SCORE2-OP)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 22,
+      "community": 24,
       "norm_label": "model badge (score2/score2-op)",
       "community_name": "Model Selection Badge",
       "id": "index_html_model_badge"
@@ -657,7 +670,7 @@
       "label": "Big Risk Display",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 26,
+      "community": 28,
       "norm_label": "big risk display",
       "community_name": "Primary Risk Display",
       "id": "index_html_risk_big"
@@ -666,7 +679,7 @@
       "label": "Risk Category Badge",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 14,
+      "community": 16,
       "norm_label": "risk category badge",
       "community_name": "Risk Category Display",
       "id": "index_html_cat_badge"
@@ -675,7 +688,7 @@
       "label": "Risk Gauge Track",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 17,
+      "community": 19,
       "norm_label": "risk gauge track",
       "community_name": "Risk Gauge Component",
       "id": "index_html_gauge_track"
@@ -684,7 +697,7 @@
       "label": "LDL Simulation Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 21,
+      "community": 23,
       "norm_label": "ldl simulation slider",
       "community_name": "LDL Simulation Control",
       "id": "index_html_ldl_slider"
@@ -693,7 +706,7 @@
       "label": "Systolic BP Simulation Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 28,
+      "community": 30,
       "norm_label": "systolic bp simulation slider",
       "community_name": "BP Simulation Control",
       "id": "index_html_sbp_slider"
@@ -703,7 +716,7 @@
       "file_type": "code",
       "source_file": "index.html",
       "verification": "unverified",
-      "community": 31,
+      "community": 33,
       "norm_label": "simulated smoking segment",
       "community_name": "Smoking Simulation Control",
       "id": "index_html_sim_smoke_seg"
@@ -712,7 +725,7 @@
       "label": "Simulation Reset Button",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 30,
+      "community": 32,
       "norm_label": "simulation reset button",
       "community_name": "Simulation Reset",
       "id": "index_html_sim_reset"
@@ -721,7 +734,7 @@
       "label": "LDL Risk Curve Chart",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 15,
+      "community": 17,
       "norm_label": "ldl risk curve chart",
       "community_name": "LDL Risk Visualization",
       "id": "index_html_chart"
@@ -730,7 +743,7 @@
       "label": "Weight Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 33,
+      "community": 35,
       "norm_label": "weight input",
       "community_name": "Weight Input Field",
       "id": "index_html_weight_input"
@@ -739,7 +752,7 @@
       "label": "Height Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 19,
+      "community": 21,
       "norm_label": "height input",
       "community_name": "Height Input Field",
       "id": "index_html_height_input"
@@ -748,7 +761,7 @@
       "label": "Weight Target Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 34,
+      "community": 36,
       "norm_label": "weight target slider",
       "community_name": "Weight Target Control",
       "id": "index_html_weight_slider"
@@ -757,7 +770,7 @@
       "label": "Mediterranean Diet Adherence Segment",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 16,
+      "community": 18,
       "norm_label": "mediterranean diet adherence segment",
       "community_name": "Diet Adherence Control",
       "id": "index_html_diet_seg"
@@ -766,7 +779,7 @@
       "label": "Current Risk (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 36,
+      "community": 38,
       "norm_label": "current risk (waterfall)",
       "community_name": "Current Risk Visualization",
       "id": "index_html_wf_now"
@@ -775,7 +788,7 @@
       "label": "Risk with Improved Weight/PAS/LDL (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 37,
+      "community": 39,
       "norm_label": "risk with improved weight/pas/ldl (waterfall)",
       "community_name": "Risk Improvement Visualization",
       "id": "index_html_wf_rf"
@@ -784,7 +797,7 @@
       "label": "Risk with Mediterranean Diet (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 35,
+      "community": 37,
       "norm_label": "risk with mediterranean diet (waterfall)",
       "community_name": "Diet Impact Visualization",
       "id": "index_html_wf_diet"
@@ -798,9 +811,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_graphify",
       "community": 1,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "claude_graphify"
     },
     {
       "label": "Knowledge Graph",
@@ -811,9 +824,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_knowledge_graph",
       "community": 1,
-      "norm_label": "knowledge graph"
+      "norm_label": "knowledge graph",
+      "id": "claude_skills_graphify_skill_knowledge_graph"
     },
     {
       "label": "Community Detection",
@@ -824,9 +837,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_community_detection",
       "community": 1,
-      "norm_label": "community detection"
+      "norm_label": "community detection",
+      "id": "claude_skills_graphify_skill_community_detection"
     },
     {
       "label": "Cross-File Relationships",
@@ -837,9 +850,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_cross_file_relationships",
       "community": 1,
-      "norm_label": "cross-file relationships"
+      "norm_label": "cross-file relationships",
+      "id": "claude_skills_graphify_skill_cross_file_relationships"
     },
     {
       "label": "graphify query",
@@ -850,9 +863,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graphify_query",
-      "community": 6,
-      "norm_label": "graphify query"
+      "community": 7,
+      "norm_label": "graphify query",
+      "id": "claude_skills_graphify_skill_graphify_query"
     },
     {
       "label": "graphify path",
@@ -863,9 +876,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graphify_path",
-      "community": 6,
-      "norm_label": "graphify path"
+      "community": 7,
+      "norm_label": "graphify path",
+      "id": "claude_skills_graphify_skill_graphify_path"
     },
     {
       "label": "graphify explain",
@@ -876,9 +889,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graphify_explain",
-      "community": 6,
-      "norm_label": "graphify explain"
+      "community": 7,
+      "norm_label": "graphify explain",
+      "id": "claude_skills_graphify_skill_graphify_explain"
     },
     {
       "label": "graphify update",
@@ -889,9 +902,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graphify_update",
-      "community": 10,
-      "norm_label": "graphify update"
+      "community": 11,
+      "norm_label": "graphify update",
+      "id": "claude_skills_graphify_skill_graphify_update"
     },
     {
       "label": "Extraction (AST + Semantic)",
@@ -902,9 +915,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_extraction",
       "community": 5,
-      "norm_label": "extraction (ast + semantic)"
+      "norm_label": "extraction (ast + semantic)",
+      "id": "claude_skills_graphify_skill_extraction"
     },
     {
       "label": "Structural Extraction (AST)",
@@ -915,9 +928,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_structural_extraction",
       "community": 5,
-      "norm_label": "structural extraction (ast)"
+      "norm_label": "structural extraction (ast)",
+      "id": "claude_skills_graphify_skill_structural_extraction"
     },
     {
       "label": "Semantic Extraction (LLM)",
@@ -928,9 +941,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_semantic_extraction",
       "community": 5,
-      "norm_label": "semantic extraction (llm)"
+      "norm_label": "semantic extraction (llm)",
+      "id": "claude_skills_graphify_skill_semantic_extraction"
     },
     {
       "label": "Gemini Backend",
@@ -941,9 +954,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_gemini_backend",
       "community": 5,
-      "norm_label": "gemini backend"
+      "norm_label": "gemini backend",
+      "id": "claude_skills_graphify_skill_gemini_backend"
     },
     {
       "label": "Hyperedges",
@@ -954,9 +967,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_hyperedges",
       "community": 1,
-      "norm_label": "hyperedges"
+      "norm_label": "hyperedges",
+      "id": "claude_skills_graphify_skill_hyperedges"
     },
     {
       "label": "Community Labeling",
@@ -967,9 +980,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_community_labeling",
       "community": 1,
-      "norm_label": "community labeling"
+      "norm_label": "community labeling",
+      "id": "claude_skills_graphify_skill_community_labeling"
     },
     {
       "label": "Obsidian Vault Export",
@@ -980,9 +993,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_obsidian_vault",
       "community": 1,
-      "norm_label": "obsidian vault export"
+      "norm_label": "obsidian vault export",
+      "id": "claude_skills_graphify_skill_obsidian_vault"
     },
     {
       "label": "HTML Export",
@@ -993,9 +1006,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_html_export",
       "community": 1,
-      "norm_label": "html export"
+      "norm_label": "html export",
+      "id": "claude_skills_graphify_skill_html_export"
     },
     {
       "label": "Wiki Export",
@@ -1006,9 +1019,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_wiki_export",
       "community": 4,
-      "norm_label": "wiki export"
+      "norm_label": "wiki export",
+      "id": "claude_skills_graphify_skill_wiki_export"
     },
     {
       "label": "Neo4j Export",
@@ -1019,9 +1032,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_neo4j_export",
       "community": 4,
-      "norm_label": "neo4j export"
+      "norm_label": "neo4j export",
+      "id": "claude_skills_graphify_skill_neo4j_export"
     },
     {
       "label": "FalkorDB Export",
@@ -1032,9 +1045,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_falkordb_export",
       "community": 4,
-      "norm_label": "falkordb export"
+      "norm_label": "falkordb export",
+      "id": "claude_skills_graphify_skill_falkordb_export"
     },
     {
       "label": "SVG Export",
@@ -1045,9 +1058,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_svg_export",
       "community": 4,
-      "norm_label": "svg export"
+      "norm_label": "svg export",
+      "id": "claude_skills_graphify_skill_svg_export"
     },
     {
       "label": "GraphML Export",
@@ -1058,9 +1071,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graphml_export",
       "community": 4,
-      "norm_label": "graphml export"
+      "norm_label": "graphml export",
+      "id": "claude_skills_graphify_skill_graphml_export"
     },
     {
       "label": "MCP Server",
@@ -1071,9 +1084,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_mcp_server",
       "community": 4,
-      "norm_label": "mcp server"
+      "norm_label": "mcp server",
+      "id": "claude_skills_graphify_skill_mcp_server"
     },
     {
       "label": "Token Reduction Benchmark",
@@ -1084,9 +1097,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_token_reduction_benchmark",
       "community": 4,
-      "norm_label": "token reduction benchmark"
+      "norm_label": "token reduction benchmark",
+      "id": "claude_skills_graphify_skill_token_reduction_benchmark"
     },
     {
       "label": "GitHub Clone",
@@ -1097,9 +1110,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_github_clone",
-      "community": 8,
-      "norm_label": "github clone"
+      "community": 9,
+      "norm_label": "github clone",
+      "id": "claude_skills_graphify_skill_github_clone"
     },
     {
       "label": "Cross-Repo Merge",
@@ -1110,9 +1123,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_cross_repo_merge",
-      "community": 8,
-      "norm_label": "cross-repo merge"
+      "community": 9,
+      "norm_label": "cross-repo merge",
+      "id": "claude_skills_graphify_skill_cross_repo_merge"
     },
     {
       "label": "Git Commit Hook",
@@ -1123,9 +1136,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_git_commit_hook",
-      "community": 9,
-      "norm_label": "git commit hook"
+      "community": 10,
+      "norm_label": "git commit hook",
+      "id": "claude_skills_graphify_skill_git_commit_hook"
     },
     {
       "label": "CLAUDE.md Integration",
@@ -1136,9 +1149,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_claude_integration",
-      "community": 9,
-      "norm_label": "claude.md integration"
+      "community": 10,
+      "norm_label": "claude.md integration",
+      "id": "claude_skills_graphify_skill_claude_integration"
     },
     {
       "label": "Honesty Rules",
@@ -1149,9 +1162,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_honesty_rules",
       "community": 1,
-      "norm_label": "honesty rules"
+      "norm_label": "honesty rules",
+      "id": "claude_skills_graphify_skill_honesty_rules"
     },
     {
       "label": "Extraction Specification",
@@ -1162,9 +1175,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_extraction_spec",
       "community": 5,
-      "norm_label": "extraction specification"
+      "norm_label": "extraction specification",
+      "id": "claude_skills_graphify_references_extraction_spec"
     },
     {
       "label": "GitHub and Merge Reference",
@@ -1175,9 +1188,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_github_and_merge",
-      "community": 8,
-      "norm_label": "github and merge reference"
+      "community": 9,
+      "norm_label": "github and merge reference",
+      "id": "claude_skills_graphify_references_github_and_merge"
     },
     {
       "label": "Add/Watch Reference",
@@ -1188,9 +1201,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_add_watch",
       "community": 1,
-      "norm_label": "add/watch reference"
+      "norm_label": "add/watch reference",
+      "id": "claude_skills_graphify_references_add_watch"
     },
     {
       "label": "Exports Reference",
@@ -1201,9 +1214,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_exports",
       "community": 4,
-      "norm_label": "exports reference"
+      "norm_label": "exports reference",
+      "id": "claude_skills_graphify_references_exports"
     },
     {
       "label": "Transcribe Reference",
@@ -1214,9 +1227,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_transcribe",
-      "community": 11,
-      "norm_label": "transcribe reference"
+      "community": 13,
+      "norm_label": "transcribe reference",
+      "id": "claude_skills_graphify_references_transcribe"
     },
     {
       "label": "Update Reference",
@@ -1227,9 +1240,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_update",
-      "community": 10,
-      "norm_label": "update reference"
+      "community": 11,
+      "norm_label": "update reference",
+      "id": "claude_skills_graphify_references_update"
     },
     {
       "label": "Query Reference",
@@ -1240,9 +1253,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_query",
-      "community": 6,
-      "norm_label": "query reference"
+      "community": 7,
+      "norm_label": "query reference",
+      "id": "claude_skills_graphify_references_query"
     },
     {
       "label": "Hooks Reference",
@@ -1253,9 +1266,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_references_hooks",
-      "community": 9,
-      "norm_label": "hooks reference"
+      "community": 10,
+      "norm_label": "hooks reference",
+      "id": "claude_skills_graphify_references_hooks"
     },
     {
       "label": "Update Graphify Knowledge Graph Job",
@@ -1266,9 +1279,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "github_workflows_graphify_yml_update_graph_job",
       "community": 5,
-      "norm_label": "update graphify knowledge graph job"
+      "norm_label": "update graphify knowledge graph job",
+      "id": "github_workflows_graphify_yml_update_graph_job"
     },
     {
       "label": "Mistral Backend",
@@ -1279,9 +1292,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "github_workflows_graphify_yml_mistral_backend",
       "community": 5,
-      "norm_label": "mistral backend"
+      "norm_label": "mistral backend",
+      "id": "github_workflows_graphify_yml_mistral_backend"
     },
     {
       "label": "Deep Mode",
@@ -1292,9 +1305,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_deep_mode",
       "community": 1,
-      "norm_label": "deep mode"
+      "norm_label": "deep mode",
+      "id": "claude_skills_graphify_skill_deep_mode"
     },
     {
       "label": "Directed Graph",
@@ -1305,9 +1318,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_directed_graph",
       "community": 1,
-      "norm_label": "directed graph"
+      "norm_label": "directed graph",
+      "id": "claude_skills_graphify_skill_directed_graph"
     },
     {
       "label": "Whisper Model",
@@ -1318,9 +1331,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_whisper_model",
       "community": 1,
-      "norm_label": "whisper model"
+      "norm_label": "whisper model",
+      "id": "claude_skills_graphify_skill_whisper_model"
     },
     {
       "label": "Cluster-Only Mode",
@@ -1331,9 +1344,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_cluster_only",
-      "community": 10,
-      "norm_label": "cluster-only mode"
+      "community": 11,
+      "norm_label": "cluster-only mode",
+      "id": "claude_skills_graphify_skill_cluster_only"
     },
     {
       "label": "Graph Health Check",
@@ -1344,9 +1357,99 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "claude_skills_graphify_skill_graph_health_check",
       "community": 1,
-      "norm_label": "graph health check"
+      "norm_label": "graph health check",
+      "id": "claude_skills_graphify_skill_graph_health_check"
+    },
+    {
+      "label": "Claude Auto-Debug Workflow",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_claude_auto_debug",
+      "community": 12,
+      "norm_label": "claude auto-debug workflow"
+    },
+    {
+      "label": "debug-ci-failure Job",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_claude_auto_debug_debug_ci_failure",
+      "community": 6,
+      "norm_label": "debug-ci-failure job"
+    },
+    {
+      "label": "triage-issue Job",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_claude_auto_debug_triage_issue",
+      "community": 6,
+      "norm_label": "triage-issue job"
+    },
+    {
+      "label": "actions/checkout@v4",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "actions_checkout_v4",
+      "community": 6,
+      "norm_label": "actions/checkout@v4"
+    },
+    {
+      "label": "anthropics/claude-code-action@v1",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "anthropics_claude_code_action_v1",
+      "community": 6,
+      "norm_label": "anthropics/claude-code-action@v1"
+    },
+    {
+      "label": "CI Workflow",
+      "file_type": "code",
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_ci",
+      "community": 12,
+      "norm_label": "ci workflow"
+    },
+    {
+      "label": "oliviernkh/claude/auto-debug/README.md",
+      "file_type": "document",
+      "source_file": "oliviernkh/claude/auto-debug/README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "oliviernkh_claude_auto_debug_readme",
+      "community": 12,
+      "norm_label": "oliviernkh/claude/auto-debug/readme.md"
     }
   ],
   "links": [
@@ -2818,9 +2921,82 @@
       "weight": 1.0,
       "source": "github_workflows_graphify_yml_update_graph_job",
       "target": "github_workflows_graphify_yml_mistral_backend"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug",
+      "target": "github_workflows_ci"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug",
+      "target": "oliviernkh_claude_auto_debug_readme"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug_debug_ci_failure",
+      "target": "actions_checkout_v4"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug_debug_ci_failure",
+      "target": "anthropics_claude_code_action_v1"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug_triage_issue",
+      "target": "actions_checkout_v4"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/claude-auto-debug.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_claude_auto_debug_triage_issue",
+      "target": "anthropics_claude_code_action_v1"
     }
   ],
   "hyperedges": [
+    {
+      "id": "claude_auto_debug_flow",
+      "label": "Claude Auto-Debug Flow",
+      "nodes": [
+        "github_workflows_claude_auto_debug_debug_ci_failure",
+        "github_workflows_claude_auto_debug_triage_issue",
+        "anthropics_claude_code_action_v1"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": ".github/workflows/claude-auto-debug.yml"
+    },
     {
       "id": "graphify_core_components",
       "label": "Graphify Core Components",
@@ -2873,5 +3049,5 @@
       "source_file": ".claude/skills/graphify/SKILL.md"
     }
   ],
-  "built_at_commit": "2b29e7c24db3b930f91969d207b602f1228c125f"
+  "built_at_commit": "2dec2c6b357b0b5d9448415607ba6be98ec918f3"
 }
