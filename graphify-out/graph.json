@@ -1,7 +1,61 @@
 {
   "directed": false,
   "multigraph": false,
-  "graph": {},
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "graphify_core_components",
+        "label": "Graphify Core Components",
+        "nodes": [
+          "claude_skills_graphify_skill_knowledge_graph",
+          "claude_skills_graphify_skill_community_detection",
+          "claude_skills_graphify_skill_cross_file_relationships",
+          "claude_skills_graphify_skill_extraction",
+          "claude_skills_graphify_skill_structural_extraction",
+          "claude_skills_graphify_skill_semantic_extraction"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": ".claude/skills/graphify/SKILL.md"
+      },
+      {
+        "id": "graphify_export_formats",
+        "label": "Graphify Export Formats",
+        "nodes": [
+          "claude_skills_graphify_skill_obsidian_vault",
+          "claude_skills_graphify_skill_html_export",
+          "claude_skills_graphify_skill_wiki_export",
+          "claude_skills_graphify_skill_neo4j_export",
+          "claude_skills_graphify_skill_falkordb_export",
+          "claude_skills_graphify_skill_svg_export",
+          "claude_skills_graphify_skill_graphml_export"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": ".claude/skills/graphify/SKILL.md"
+      },
+      {
+        "id": "graphify_reference_documents",
+        "label": "Graphify Reference Documents",
+        "nodes": [
+          "claude_skills_graphify_references_extraction_spec",
+          "claude_skills_graphify_references_github_and_merge",
+          "claude_skills_graphify_references_add_watch",
+          "claude_skills_graphify_references_exports",
+          "claude_skills_graphify_references_transcribe",
+          "claude_skills_graphify_references_update",
+          "claude_skills_graphify_references_query",
+          "claude_skills_graphify_references_hooks"
+        ],
+        "relation": "form",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": ".claude/skills/graphify/SKILL.md"
+      }
+    ]
+  },
   "nodes": [
     {
       "label": "app.js",
@@ -11,8 +65,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "app.js",
-      "id": "js_app",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app"
     },
     {
       "label": "fmtPct()",
@@ -20,10 +74,10 @@
       "source_file": "js/app.js",
       "source_location": "L56",
       "_origin": "ast",
-      "community": 3,
+      "community": 0,
       "norm_label": "fmtpct()",
-      "id": "js_app_fmtpct",
-      "community_name": "UI Rendering Utilities"
+      "community_name": "UI Rendering Utilities",
+      "id": "js_app_fmtpct"
     },
     {
       "label": "fmtG()",
@@ -33,8 +87,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "fmtg()",
-      "id": "js_app_fmtg",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_fmtg"
     },
     {
       "label": "fmt1()",
@@ -42,10 +96,10 @@
       "source_file": "js/app.js",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 3,
+      "community": 0,
       "norm_label": "fmt1()",
-      "id": "js_app_fmt1",
-      "community_name": "UI Rendering Utilities"
+      "community_name": "UI Rendering Utilities",
+      "id": "js_app_fmt1"
     },
     {
       "label": "bindSeg()",
@@ -55,8 +109,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "bindseg()",
-      "id": "js_app_bindseg",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_bindseg"
     },
     {
       "label": "setSegPressed()",
@@ -66,8 +120,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "setsegpressed()",
-      "id": "js_app_setsegpressed",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_setsegpressed"
     },
     {
       "label": "num()",
@@ -77,8 +131,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "num()",
-      "id": "js_app_num",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_num"
     },
     {
       "label": "anchorLdl()",
@@ -88,8 +142,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "anchorldl()",
-      "id": "js_app_anchorldl",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_anchorldl"
     },
     {
       "label": "patientParams()",
@@ -99,8 +153,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "patientparams()",
-      "id": "js_app_patientparams",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_patientparams"
     },
     {
       "label": "simChartParams()",
@@ -110,8 +164,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "simchartparams()",
-      "id": "js_app_simchartparams",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_simchartparams"
     },
     {
       "label": "recompute()",
@@ -121,8 +175,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "recompute()",
-      "id": "js_app_recompute",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_recompute"
     },
     {
       "label": "renderResult()",
@@ -130,10 +184,10 @@
       "source_file": "js/app.js",
       "source_location": "L139",
       "_origin": "ast",
-      "community": 3,
+      "community": 0,
       "norm_label": "renderresult()",
-      "id": "js_app_renderresult",
-      "community_name": "UI Rendering Utilities"
+      "community_name": "UI Rendering Utilities",
+      "id": "js_app_renderresult"
     },
     {
       "label": "renderGauge()",
@@ -141,10 +195,10 @@
       "source_file": "js/app.js",
       "source_location": "L167",
       "_origin": "ast",
-      "community": 3,
+      "community": 0,
       "norm_label": "rendergauge()",
-      "id": "js_app_rendergauge",
-      "community_name": "UI Rendering Utilities"
+      "community_name": "UI Rendering Utilities",
+      "id": "js_app_rendergauge"
     },
     {
       "label": "simulatedRisk()",
@@ -154,8 +208,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "simulatedrisk()",
-      "id": "js_app_simulatedrisk",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_simulatedrisk"
     },
     {
       "label": "renderEducation()",
@@ -165,8 +219,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "rendereducation()",
-      "id": "js_app_rendereducation",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_rendereducation"
     },
     {
       "label": "renderChart()",
@@ -176,8 +230,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "renderchart()",
-      "id": "js_app_renderchart",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_renderchart"
     },
     {
       "label": "renderLifestyle()",
@@ -185,10 +239,10 @@
       "source_file": "js/app.js",
       "source_location": "L316",
       "_origin": "ast",
-      "community": 3,
+      "community": 0,
       "norm_label": "renderlifestyle()",
-      "id": "js_app_renderlifestyle",
-      "community_name": "UI Rendering Utilities"
+      "community_name": "UI Rendering Utilities",
+      "id": "js_app_renderlifestyle"
     },
     {
       "label": "syncTargetSlider()",
@@ -198,8 +252,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "synctargetslider()",
-      "id": "js_app_synctargetslider",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_synctargetslider"
     },
     {
       "label": "syncSbpSlider()",
@@ -209,8 +263,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "syncsbpslider()",
-      "id": "js_app_syncsbpslider",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_syncsbpslider"
     },
     {
       "label": "syncWeightSlider()",
@@ -220,8 +274,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "syncweightslider()",
-      "id": "js_app_syncweightslider",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_syncweightslider"
     },
     {
       "label": "pctOfSlider()",
@@ -231,8 +285,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "pctofslider()",
-      "id": "js_app_pctofslider",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_pctofslider"
     },
     {
       "label": "init()",
@@ -242,8 +296,8 @@
       "_origin": "ast",
       "community": 0,
       "norm_label": "init()",
-      "id": "js_app_init",
-      "community_name": "Chart Rendering Logic"
+      "community_name": "Chart Rendering Logic",
+      "id": "js_app_init"
     },
     {
       "label": "lifestyle.js",
@@ -251,10 +305,10 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 4,
+      "community": 7,
       "norm_label": "lifestyle.js",
-      "id": "js_lifestyle",
-      "community_name": "Lifestyle Metrics Module"
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle"
     },
     {
       "label": "bmi()",
@@ -262,10 +316,10 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L45",
       "_origin": "ast",
-      "community": 4,
+      "community": 7,
       "norm_label": "bmi()",
-      "id": "js_lifestyle_bmi",
-      "community_name": "Lifestyle Metrics Module"
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_bmi"
     },
     {
       "label": "bmiClass()",
@@ -273,10 +327,10 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L51",
       "_origin": "ast",
-      "community": 4,
+      "community": 7,
       "norm_label": "bmiclass()",
-      "id": "js_lifestyle_bmiclass",
-      "community_name": "Lifestyle Metrics Module"
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_bmiclass"
     },
     {
       "label": "modifiers()",
@@ -284,10 +338,10 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 4,
+      "community": 7,
       "norm_label": "modifiers()",
-      "id": "js_lifestyle_modifiers",
-      "community_name": "Lifestyle Metrics Module"
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_modifiers"
     },
     {
       "label": "score2.js",
@@ -295,10 +349,10 @@
       "source_file": "js/score2.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "score2.js",
-      "id": "js_score2",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2"
     },
     {
       "label": "cholGLtoMmol()",
@@ -306,10 +360,10 @@
       "source_file": "js/score2.js",
       "source_location": "L89",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "cholgltommol()",
-      "id": "js_score2_cholgltommol",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_cholgltommol"
     },
     {
       "label": "cholMmolToGL()",
@@ -317,10 +371,10 @@
       "source_file": "js/score2.js",
       "source_location": "L90",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "cholmmoltogl()",
-      "id": "js_score2_cholmmoltogl",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_cholmmoltogl"
     },
     {
       "label": "riskFraction()",
@@ -328,10 +382,10 @@
       "source_file": "js/score2.js",
       "source_location": "L105",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "riskfraction()",
-      "id": "js_score2_riskfraction",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_riskfraction"
     },
     {
       "label": "riskCategory()",
@@ -339,10 +393,10 @@
       "source_file": "js/score2.js",
       "source_location": "L172",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "riskcategory()",
-      "id": "js_score2_riskcategory",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_riskcategory"
     },
     {
       "label": "categoryBounds()",
@@ -350,10 +404,10 @@
       "source_file": "js/score2.js",
       "source_location": "L187",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "categorybounds()",
-      "id": "js_score2_categorybounds",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_categorybounds"
     },
     {
       "label": "compute()",
@@ -361,10 +415,10 @@
       "source_file": "js/score2.js",
       "source_location": "L194",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "compute()",
-      "id": "js_score2_compute",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_compute"
     },
     {
       "label": "riskForLDL()",
@@ -372,10 +426,10 @@
       "source_file": "js/score2.js",
       "source_location": "L214",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "riskforldl()",
-      "id": "js_score2_riskforldl",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_riskforldl"
     },
     {
       "label": "ldlSeries()",
@@ -383,10 +437,10 @@
       "source_file": "js/score2.js",
       "source_location": "L222",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "ldlseries()",
-      "id": "js_score2_ldlseries",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_ldlseries"
     },
     {
       "label": "selfTest()",
@@ -394,346 +448,905 @@
       "source_file": "js/score2.js",
       "source_location": "L233",
       "_origin": "ast",
-      "community": 2,
+      "community": 3,
       "norm_label": "selftest()",
-      "id": "js_score2_selftest",
-      "community_name": "Risk Calculation Engine"
+      "community_name": "Risk Calculation Engine",
+      "id": "js_score2_selftest"
     },
     {
       "label": "SCORE2 & SCORE2-OP README",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "score2 & score2-op readme",
-      "id": "readme",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme"
     },
     {
       "label": "SCORE2 Algorithm",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "score2 algorithm",
-      "id": "readme_score2",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_score2"
     },
     {
       "label": "SCORE2-OP Algorithm",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "score2-op algorithm",
-      "id": "readme_score2_op",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_score2_op"
     },
     {
       "label": "LDL/PAS/Tabac Simulation",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "ldl/pas/tabac simulation",
-      "id": "readme_simulation",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_simulation"
     },
     {
       "label": "Lifestyle Module (Weight/IMC/Mediterranean Diet)",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "lifestyle module (weight/imc/mediterranean diet)",
-      "id": "readme_lifestyle_module",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_lifestyle_module"
     },
     {
       "label": "ESC 2021 Guidelines",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "esc 2021 guidelines",
-      "id": "readme_esc_2021",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_esc_2021"
     },
     {
       "label": "ESC 2023 Guidelines",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "esc 2023 guidelines",
-      "id": "readme_esc_2023",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_esc_2023"
     },
     {
       "label": "PREDIMED Trial",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "predimed trial",
-      "id": "readme_predimed",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_predimed"
     },
     {
       "label": "Neter et al. (Hypertension 2003)",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "neter et al. (hypertension 2003)",
-      "id": "readme_neter_2003",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_neter_2003"
     },
     {
       "label": "Score2.selfTest()",
       "file_type": "code",
       "source_file": "README.md",
-      "community": 1,
+      "community": 2,
       "norm_label": "score2.selftest()",
-      "id": "readme_self_test",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "readme_self_test"
     },
     {
       "label": "index.html",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 5,
+      "community": 12,
       "norm_label": "index.html",
-      "id": "index_html",
-      "community_name": "Main Application Page"
+      "community_name": "Main Application Page",
+      "id": "index_html"
     },
     {
       "label": "Authentication Logic",
       "file_type": "code",
       "source_file": "index.html",
       "verification": "unverified",
-      "community": 1,
+      "community": 2,
       "norm_label": "authentication logic",
-      "id": "index_html_auth_logic",
-      "community_name": "Cardiovascular Risk Guidelines"
+      "community_name": "Cardiovascular Risk Guidelines",
+      "id": "index_html_auth_logic"
     },
     {
       "label": "Sex Selection Segment",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 22,
+      "community": 29,
       "norm_label": "sex selection segment",
-      "id": "index_html_sex_seg",
-      "community_name": "Sex Selection Control"
+      "community_name": "Sex Selection Control",
+      "id": "index_html_sex_seg"
     },
     {
       "label": "Age Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 6,
+      "community": 13,
       "norm_label": "age input",
-      "id": "index_html_age_input",
-      "community_name": "Age Input Field"
+      "community_name": "Age Input Field",
+      "id": "index_html_age_input"
     },
     {
       "label": "Systolic Blood Pressure Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 20,
+      "community": 27,
       "norm_label": "systolic blood pressure input",
-      "id": "index_html_sbp_input",
-      "community_name": "Blood Pressure Input"
+      "community_name": "Blood Pressure Input",
+      "id": "index_html_sbp_input"
     },
     {
       "label": "Smoking Status Segment",
       "file_type": "code",
       "source_file": "index.html",
       "verification": "unverified",
-      "community": 25,
+      "community": 32,
       "norm_label": "smoking status segment",
-      "id": "index_html_smoke_seg",
-      "community_name": "Smoking Status Input"
+      "community_name": "Smoking Status Input",
+      "id": "index_html_smoke_seg"
     },
     {
       "label": "Non-HDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 16,
+      "community": 23,
       "norm_label": "non-hdl cholesterol input",
-      "id": "index_html_nonhdl_input",
-      "community_name": "Non-HDL Input Field"
+      "community_name": "Non-HDL Input Field",
+      "id": "index_html_nonhdl_input"
     },
     {
       "label": "HDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 11,
+      "community": 18,
       "norm_label": "hdl cholesterol input",
-      "id": "index_html_hdl_input",
-      "community_name": "HDL Input Field"
+      "community_name": "HDL Input Field",
+      "id": "index_html_hdl_input"
     },
     {
       "label": "LDL Cholesterol Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 13,
+      "community": 20,
       "norm_label": "ldl cholesterol input",
-      "id": "index_html_ldl_input",
-      "community_name": "LDL Input Field"
+      "community_name": "LDL Input Field",
+      "id": "index_html_ldl_input"
     },
     {
       "label": "Risk Region Selector",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 17,
+      "community": 24,
       "norm_label": "risk region selector",
-      "id": "index_html_region_select",
-      "community_name": "Region Selector"
+      "community_name": "Region Selector",
+      "id": "index_html_region_select"
     },
     {
       "label": "Risk Result Display",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 18,
+      "community": 25,
       "norm_label": "risk result display",
-      "id": "index_html_result_body",
-      "community_name": "Risk Result Output"
+      "community_name": "Risk Result Output",
+      "id": "index_html_result_body"
     },
     {
       "label": "Model Badge (SCORE2/SCORE2-OP)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 15,
+      "community": 22,
       "norm_label": "model badge (score2/score2-op)",
-      "id": "index_html_model_badge",
-      "community_name": "Model Selection Badge"
+      "community_name": "Model Selection Badge",
+      "id": "index_html_model_badge"
     },
     {
       "label": "Big Risk Display",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 19,
+      "community": 26,
       "norm_label": "big risk display",
-      "id": "index_html_risk_big",
-      "community_name": "Primary Risk Display"
+      "community_name": "Primary Risk Display",
+      "id": "index_html_risk_big"
     },
     {
       "label": "Risk Category Badge",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 7,
+      "community": 14,
       "norm_label": "risk category badge",
-      "id": "index_html_cat_badge",
-      "community_name": "Risk Category Display"
+      "community_name": "Risk Category Display",
+      "id": "index_html_cat_badge"
     },
     {
       "label": "Risk Gauge Track",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 10,
+      "community": 17,
       "norm_label": "risk gauge track",
-      "id": "index_html_gauge_track",
-      "community_name": "Risk Gauge Component"
+      "community_name": "Risk Gauge Component",
+      "id": "index_html_gauge_track"
     },
     {
       "label": "LDL Simulation Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 14,
+      "community": 21,
       "norm_label": "ldl simulation slider",
-      "id": "index_html_ldl_slider",
-      "community_name": "LDL Simulation Control"
+      "community_name": "LDL Simulation Control",
+      "id": "index_html_ldl_slider"
     },
     {
       "label": "Systolic BP Simulation Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 21,
+      "community": 28,
       "norm_label": "systolic bp simulation slider",
-      "id": "index_html_sbp_slider",
-      "community_name": "BP Simulation Control"
+      "community_name": "BP Simulation Control",
+      "id": "index_html_sbp_slider"
     },
     {
       "label": "Simulated Smoking Segment",
       "file_type": "code",
       "source_file": "index.html",
       "verification": "unverified",
-      "community": 24,
+      "community": 31,
       "norm_label": "simulated smoking segment",
-      "id": "index_html_sim_smoke_seg",
-      "community_name": "Smoking Simulation Control"
+      "community_name": "Smoking Simulation Control",
+      "id": "index_html_sim_smoke_seg"
     },
     {
       "label": "Simulation Reset Button",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 23,
+      "community": 30,
       "norm_label": "simulation reset button",
-      "id": "index_html_sim_reset",
-      "community_name": "Simulation Reset"
+      "community_name": "Simulation Reset",
+      "id": "index_html_sim_reset"
     },
     {
       "label": "LDL Risk Curve Chart",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 8,
+      "community": 15,
       "norm_label": "ldl risk curve chart",
-      "id": "index_html_chart",
-      "community_name": "LDL Risk Visualization"
+      "community_name": "LDL Risk Visualization",
+      "id": "index_html_chart"
     },
     {
       "label": "Weight Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 26,
+      "community": 33,
       "norm_label": "weight input",
-      "id": "index_html_weight_input",
-      "community_name": "Weight Input Field"
+      "community_name": "Weight Input Field",
+      "id": "index_html_weight_input"
     },
     {
       "label": "Height Input",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 12,
+      "community": 19,
       "norm_label": "height input",
-      "id": "index_html_height_input",
-      "community_name": "Height Input Field"
+      "community_name": "Height Input Field",
+      "id": "index_html_height_input"
     },
     {
       "label": "Weight Target Slider",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 27,
+      "community": 34,
       "norm_label": "weight target slider",
-      "id": "index_html_weight_slider",
-      "community_name": "Weight Target Control"
+      "community_name": "Weight Target Control",
+      "id": "index_html_weight_slider"
     },
     {
       "label": "Mediterranean Diet Adherence Segment",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 9,
+      "community": 16,
       "norm_label": "mediterranean diet adherence segment",
-      "id": "index_html_diet_seg",
-      "community_name": "Diet Adherence Control"
+      "community_name": "Diet Adherence Control",
+      "id": "index_html_diet_seg"
     },
     {
       "label": "Current Risk (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 29,
+      "community": 36,
       "norm_label": "current risk (waterfall)",
-      "id": "index_html_wf_now",
-      "community_name": "Current Risk Visualization"
+      "community_name": "Current Risk Visualization",
+      "id": "index_html_wf_now"
     },
     {
       "label": "Risk with Improved Weight/PAS/LDL (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 30,
+      "community": 37,
       "norm_label": "risk with improved weight/pas/ldl (waterfall)",
-      "id": "index_html_wf_rf",
-      "community_name": "Risk Improvement Visualization"
+      "community_name": "Risk Improvement Visualization",
+      "id": "index_html_wf_rf"
     },
     {
       "label": "Risk with Mediterranean Diet (Waterfall)",
       "file_type": "code",
       "source_file": "index.html",
-      "community": 28,
+      "community": 35,
       "norm_label": "risk with mediterranean diet (waterfall)",
-      "id": "index_html_wf_diet",
-      "community_name": "Diet Impact Visualization"
+      "community_name": "Diet Impact Visualization",
+      "id": "index_html_wf_diet"
+    },
+    {
+      "label": "graphify",
+      "file_type": "concept",
+      "source_file": "CLAUDE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_graphify",
+      "community": 1,
+      "norm_label": "graphify"
+    },
+    {
+      "label": "Knowledge Graph",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_knowledge_graph",
+      "community": 1,
+      "norm_label": "knowledge graph"
+    },
+    {
+      "label": "Community Detection",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_community_detection",
+      "community": 1,
+      "norm_label": "community detection"
+    },
+    {
+      "label": "Cross-File Relationships",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_cross_file_relationships",
+      "community": 1,
+      "norm_label": "cross-file relationships"
+    },
+    {
+      "label": "graphify query",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graphify_query",
+      "community": 6,
+      "norm_label": "graphify query"
+    },
+    {
+      "label": "graphify path",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graphify_path",
+      "community": 6,
+      "norm_label": "graphify path"
+    },
+    {
+      "label": "graphify explain",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graphify_explain",
+      "community": 6,
+      "norm_label": "graphify explain"
+    },
+    {
+      "label": "graphify update",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graphify_update",
+      "community": 10,
+      "norm_label": "graphify update"
+    },
+    {
+      "label": "Extraction (AST + Semantic)",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_extraction",
+      "community": 5,
+      "norm_label": "extraction (ast + semantic)"
+    },
+    {
+      "label": "Structural Extraction (AST)",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_structural_extraction",
+      "community": 5,
+      "norm_label": "structural extraction (ast)"
+    },
+    {
+      "label": "Semantic Extraction (LLM)",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_semantic_extraction",
+      "community": 5,
+      "norm_label": "semantic extraction (llm)"
+    },
+    {
+      "label": "Gemini Backend",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_gemini_backend",
+      "community": 5,
+      "norm_label": "gemini backend"
+    },
+    {
+      "label": "Hyperedges",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_hyperedges",
+      "community": 1,
+      "norm_label": "hyperedges"
+    },
+    {
+      "label": "Community Labeling",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_community_labeling",
+      "community": 1,
+      "norm_label": "community labeling"
+    },
+    {
+      "label": "Obsidian Vault Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_obsidian_vault",
+      "community": 1,
+      "norm_label": "obsidian vault export"
+    },
+    {
+      "label": "HTML Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_html_export",
+      "community": 1,
+      "norm_label": "html export"
+    },
+    {
+      "label": "Wiki Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_wiki_export",
+      "community": 4,
+      "norm_label": "wiki export"
+    },
+    {
+      "label": "Neo4j Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_neo4j_export",
+      "community": 4,
+      "norm_label": "neo4j export"
+    },
+    {
+      "label": "FalkorDB Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_falkordb_export",
+      "community": 4,
+      "norm_label": "falkordb export"
+    },
+    {
+      "label": "SVG Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_svg_export",
+      "community": 4,
+      "norm_label": "svg export"
+    },
+    {
+      "label": "GraphML Export",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graphml_export",
+      "community": 4,
+      "norm_label": "graphml export"
+    },
+    {
+      "label": "MCP Server",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_mcp_server",
+      "community": 4,
+      "norm_label": "mcp server"
+    },
+    {
+      "label": "Token Reduction Benchmark",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_token_reduction_benchmark",
+      "community": 4,
+      "norm_label": "token reduction benchmark"
+    },
+    {
+      "label": "GitHub Clone",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_github_clone",
+      "community": 8,
+      "norm_label": "github clone"
+    },
+    {
+      "label": "Cross-Repo Merge",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_cross_repo_merge",
+      "community": 8,
+      "norm_label": "cross-repo merge"
+    },
+    {
+      "label": "Git Commit Hook",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_git_commit_hook",
+      "community": 9,
+      "norm_label": "git commit hook"
+    },
+    {
+      "label": "CLAUDE.md Integration",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_claude_integration",
+      "community": 9,
+      "norm_label": "claude.md integration"
+    },
+    {
+      "label": "Honesty Rules",
+      "file_type": "rationale",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_honesty_rules",
+      "community": 1,
+      "norm_label": "honesty rules"
+    },
+    {
+      "label": "Extraction Specification",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/extraction-spec.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_extraction_spec",
+      "community": 5,
+      "norm_label": "extraction specification"
+    },
+    {
+      "label": "GitHub and Merge Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/github-and-merge.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_github_and_merge",
+      "community": 8,
+      "norm_label": "github and merge reference"
+    },
+    {
+      "label": "Add/Watch Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/add-watch.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_add_watch",
+      "community": 1,
+      "norm_label": "add/watch reference"
+    },
+    {
+      "label": "Exports Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/exports.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_exports",
+      "community": 4,
+      "norm_label": "exports reference"
+    },
+    {
+      "label": "Transcribe Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/transcribe.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_transcribe",
+      "community": 11,
+      "norm_label": "transcribe reference"
+    },
+    {
+      "label": "Update Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/update.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_update",
+      "community": 10,
+      "norm_label": "update reference"
+    },
+    {
+      "label": "Query Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/query.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_query",
+      "community": 6,
+      "norm_label": "query reference"
+    },
+    {
+      "label": "Hooks Reference",
+      "file_type": "document",
+      "source_file": ".claude/skills/graphify/references/hooks.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_references_hooks",
+      "community": 9,
+      "norm_label": "hooks reference"
+    },
+    {
+      "label": "Update Graphify Knowledge Graph Job",
+      "file_type": "code",
+      "source_file": ".github/workflows/graphify.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_graphify_yml_update_graph_job",
+      "community": 5,
+      "norm_label": "update graphify knowledge graph job"
+    },
+    {
+      "label": "Mistral Backend",
+      "file_type": "concept",
+      "source_file": ".github/workflows/graphify.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "github_workflows_graphify_yml_mistral_backend",
+      "community": 5,
+      "norm_label": "mistral backend"
+    },
+    {
+      "label": "Deep Mode",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_deep_mode",
+      "community": 1,
+      "norm_label": "deep mode"
+    },
+    {
+      "label": "Directed Graph",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_directed_graph",
+      "community": 1,
+      "norm_label": "directed graph"
+    },
+    {
+      "label": "Whisper Model",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_whisper_model",
+      "community": 1,
+      "norm_label": "whisper model"
+    },
+    {
+      "label": "Cluster-Only Mode",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_cluster_only",
+      "community": 10,
+      "norm_label": "cluster-only mode"
+    },
+    {
+      "label": "Graph Health Check",
+      "file_type": "concept",
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "claude_skills_graphify_skill_graph_health_check",
+      "community": 1,
+      "norm_label": "graph health check"
     }
   ],
   "links": [
@@ -1695,8 +2308,570 @@
       "source_file": "README.md",
       "source": "readme",
       "target": "readme_simulation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_references_add_watch"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_claude_integration"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_cluster_only"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_community_detection"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_community_labeling"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_cross_file_relationships"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_deep_mode"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_directed_graph"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_extraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_falkordb_export"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_git_commit_hook"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_github_clone"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graph_health_check"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graphify_explain"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graphify_path"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graphify_query"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graphify_update"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_graphml_export"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_honesty_rules"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_html_export"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_hyperedges"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_knowledge_graph"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_mcp_server"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_neo4j_export"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_obsidian_vault"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_svg_export"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_token_reduction_benchmark"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_whisper_model"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_graphify",
+      "target": "claude_skills_graphify_skill_wiki_export"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_graphify_query",
+      "target": "claude_skills_graphify_references_query"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_graphify_path",
+      "target": "claude_skills_graphify_references_query"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_graphify_explain",
+      "target": "claude_skills_graphify_references_query"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_graphify_update",
+      "target": "claude_skills_graphify_references_update"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_extraction",
+      "target": "claude_skills_graphify_skill_semantic_extraction"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_extraction",
+      "target": "claude_skills_graphify_skill_structural_extraction"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/graphify.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_graphify_yml_update_graph_job",
+      "target": "claude_skills_graphify_skill_extraction"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_semantic_extraction",
+      "target": "claude_skills_graphify_references_extraction_spec"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_semantic_extraction",
+      "target": "claude_skills_graphify_skill_gemini_backend"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_wiki_export",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_neo4j_export",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_falkordb_export",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_svg_export",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_graphml_export",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_mcp_server",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_token_reduction_benchmark",
+      "target": "claude_skills_graphify_references_exports"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_github_clone",
+      "target": "claude_skills_graphify_references_github_and_merge"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_github_clone",
+      "target": "claude_skills_graphify_skill_cross_repo_merge"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_git_commit_hook",
+      "target": "claude_skills_graphify_references_hooks"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_claude_integration",
+      "target": "claude_skills_graphify_references_hooks"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/graphify/SKILL.md",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "claude_skills_graphify_skill_cluster_only",
+      "target": "claude_skills_graphify_references_update"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".github/workflows/graphify.yml",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "github_workflows_graphify_yml_update_graph_job",
+      "target": "github_workflows_graphify_yml_mistral_backend"
     }
   ],
-  "hyperedges": [],
-  "built_at_commit": "4541e159c9bbf8fe1f07998a7e11ac179cc37766"
+  "hyperedges": [
+    {
+      "id": "graphify_core_components",
+      "label": "Graphify Core Components",
+      "nodes": [
+        "claude_skills_graphify_skill_knowledge_graph",
+        "claude_skills_graphify_skill_community_detection",
+        "claude_skills_graphify_skill_cross_file_relationships",
+        "claude_skills_graphify_skill_extraction",
+        "claude_skills_graphify_skill_structural_extraction",
+        "claude_skills_graphify_skill_semantic_extraction"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/graphify/SKILL.md"
+    },
+    {
+      "id": "graphify_export_formats",
+      "label": "Graphify Export Formats",
+      "nodes": [
+        "claude_skills_graphify_skill_obsidian_vault",
+        "claude_skills_graphify_skill_html_export",
+        "claude_skills_graphify_skill_wiki_export",
+        "claude_skills_graphify_skill_neo4j_export",
+        "claude_skills_graphify_skill_falkordb_export",
+        "claude_skills_graphify_skill_svg_export",
+        "claude_skills_graphify_skill_graphml_export"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/graphify/SKILL.md"
+    },
+    {
+      "id": "graphify_reference_documents",
+      "label": "Graphify Reference Documents",
+      "nodes": [
+        "claude_skills_graphify_references_extraction_spec",
+        "claude_skills_graphify_references_github_and_merge",
+        "claude_skills_graphify_references_add_watch",
+        "claude_skills_graphify_references_exports",
+        "claude_skills_graphify_references_transcribe",
+        "claude_skills_graphify_references_update",
+        "claude_skills_graphify_references_query",
+        "claude_skills_graphify_references_hooks"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": ".claude/skills/graphify/SKILL.md"
+    }
+  ],
+  "built_at_commit": "2b29e7c24db3b930f91969d207b602f1228c125f"
 }
