@@ -1,0 +1,46 @@
+name: Update Graphify knowledge graph
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  update-graph:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install graphify
+        run: pip install "graphifyy[gemini]"
+
+      - name: Extract knowledge graph (AST + Mistral semantic)
+        env:
+          OPENAI_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          OPENAI_BASE_URL: https://api.mistral.ai/v1
+          OPENAI_MODEL: mistral-large-latest
+        run: graphify extract . --backend openai --model mistral-large-latest
+
+      - name: Commit updated graph
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A -- graphify-out/
+          git diff --cached --quiet && echo "No graph changes to commit" && exit 0
+          git commit -m "chore: update graphify knowledge graph [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase origin "$GITHUB_REF_NAME" && git push && exit 0
+            echo "push attempt $i rejected, retrying..."
+            sleep 3
+          done
+          echo "::error::could not push updated graph after 3 attempts"
+          exit 1

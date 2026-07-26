@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - /workspace/score2/graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"
+        integrity="sha384-Ux6phic9PEHJ38YtrijhkzyJ8yQlH8i/+buBR8s3mAZOJrP1gwyvAcIYl3GWtpX1"
+        crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">73 nodes &middot; 86 edges &middot; 31 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "js_app", "label": "app.js", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "app.js", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 21}, {"id": "js_app_fmtpct", "label": "fmtPct()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "fmtPct()", "community": 3, "community_name": "UI Rendering Utilities", "source_file": "js/app.js", "file_type": "code", "degree": 6}, {"id": "js_app_fmtg", "label": "fmtG()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 17.1, "font": {"size": 12, "color": "#ffffff"}, "title": "fmtG()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 5}, {"id": "js_app_fmt1", "label": "fmt1()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "fmt1()", "community": 3, "community_name": "UI Rendering Utilities", "source_file": "js/app.js", "file_type": "code", "degree": 2}, {"id": "js_app_bindseg", "label": "bindSeg()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "bindSeg()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_setsegpressed", "label": "setSegPressed()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "setSegPressed()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_num", "label": "num()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "num()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 2}, {"id": "js_app_anchorldl", "label": "anchorLdl()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 15.7, "font": {"size": 12, "color": "#ffffff"}, "title": "anchorLdl()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 4}, {"id": "js_app_patientparams", "label": "patientParams()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "patientParams()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_simchartparams", "label": "simChartParams()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "simChartParams()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 2}, {"id": "js_app_recompute", "label": "recompute()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 21.4, "font": {"size": 12, "color": "#ffffff"}, "title": "recompute()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 8}, {"id": "js_app_renderresult", "label": "renderResult()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.7, "font": {"size": 12, "color": "#ffffff"}, "title": "renderResult()", "community": 3, "community_name": "UI Rendering Utilities", "source_file": "js/app.js", "file_type": "code", "degree": 4}, {"id": "js_app_rendergauge", "label": "renderGauge()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "renderGauge()", "community": 3, "community_name": "UI Rendering Utilities", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_simulatedrisk", "label": "simulatedRisk()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "simulatedRisk()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_rendereducation", "label": "renderEducation()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 20.0, "font": {"size": 12, "color": "#ffffff"}, "title": "renderEducation()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 7}, {"id": "js_app_renderchart", "label": "renderChart()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 20.0, "font": {"size": 12, "color": "#ffffff"}, "title": "renderChart()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 7}, {"id": "js_app_renderlifestyle", "label": "renderLifestyle()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 15.7, "font": {"size": 12, "color": "#ffffff"}, "title": "renderLifestyle()", "community": 3, "community_name": "UI Rendering Utilities", "source_file": "js/app.js", "file_type": "code", "degree": 4}, {"id": "js_app_synctargetslider", "label": "syncTargetSlider()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "syncTargetSlider()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_syncsbpslider", "label": "syncSbpSlider()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "syncSbpSlider()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_syncweightslider", "label": "syncWeightSlider()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "syncWeightSlider()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 3}, {"id": "js_app_pctofslider", "label": "pctOfSlider()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 17.1, "font": {"size": 12, "color": "#ffffff"}, "title": "pctOfSlider()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 5}, {"id": "js_app_init", "label": "init()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 25.7, "font": {"size": 12, "color": "#ffffff"}, "title": "init()", "community": 0, "community_name": "Chart Rendering Logic", "source_file": "js/app.js", "file_type": "code", "degree": 11}, {"id": "js_lifestyle", "label": "lifestyle.js", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "lifestyle.js", "community": 4, "community_name": "Lifestyle Metrics Module", "source_file": "js/lifestyle.js", "file_type": "code", "degree": 3}, {"id": "js_lifestyle_bmi", "label": "bmi()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "bmi()", "community": 4, "community_name": "Lifestyle Metrics Module", "source_file": "js/lifestyle.js", "file_type": "code", "degree": 1}, {"id": "js_lifestyle_bmiclass", "label": "bmiClass()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "bmiClass()", "community": 4, "community_name": "Lifestyle Metrics Module", "source_file": "js/lifestyle.js", "file_type": "code", "degree": 1}, {"id": "js_lifestyle_modifiers", "label": "modifiers()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "modifiers()", "community": 4, "community_name": "Lifestyle Metrics Module", "source_file": "js/lifestyle.js", "file_type": "code", "degree": 1}, {"id": "js_score2", "label": "score2.js", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": "score2.js", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 9}, {"id": "js_score2_cholgltommol", "label": "cholGLtoMmol()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "cholGLtoMmol()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 2}, {"id": "js_score2_cholmmoltogl", "label": "cholMmolToGL()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "cholMmolToGL()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 2}, {"id": "js_score2_riskfraction", "label": "riskFraction()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 17.1, "font": {"size": 12, "color": "#ffffff"}, "title": "riskFraction()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 5}, {"id": "js_score2_riskcategory", "label": "riskCategory()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "riskCategory()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 2}, {"id": "js_score2_categorybounds", "label": "categoryBounds()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "categoryBounds()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 2}, {"id": "js_score2_compute", "label": "compute()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 15.7, "font": {"size": 12, "color": "#ffffff"}, "title": "compute()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 4}, {"id": "js_score2_riskforldl", "label": "riskForLDL()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "riskForLDL()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 3}, {"id": "js_score2_ldlseries", "label": "ldlSeries()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 12.9, "font": {"size": 0, "color": "#ffffff"}, "title": "ldlSeries()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 2}, {"id": "js_score2_selftest", "label": "selfTest()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "selfTest()", "community": 2, "community_name": "Risk Calculation Engine", "source_file": "js/score2.js", "file_type": "code", "degree": 3}, {"id": "readme", "label": "SCORE2 & SCORE2-OP README", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 24.3, "font": {"size": 12, "color": "#ffffff"}, "title": "SCORE2 &amp; SCORE2-OP README", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "document", "degree": 10}, {"id": "readme_score2", "label": "SCORE2 Algorithm", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "SCORE2 Algorithm", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "concept", "degree": 1}, {"id": "readme_score2_op", "label": "SCORE2-OP Algorithm", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "SCORE2-OP Algorithm", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "concept", "degree": 1}, {"id": "readme_simulation", "label": "LDL/PAS/Tabac Simulation", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "LDL/PAS/Tabac Simulation", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "concept", "degree": 1}, {"id": "readme_lifestyle_module", "label": "Lifestyle Module (Weight/IMC/Mediterranean Diet)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "Lifestyle Module (Weight/IMC/Mediterranean Diet)", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "concept", "degree": 1}, {"id": "readme_esc_2021", "label": "ESC 2021 Guidelines", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "ESC 2021 Guidelines", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "document", "degree": 1}, {"id": "readme_esc_2023", "label": "ESC 2023 Guidelines", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "ESC 2023 Guidelines", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "document", "degree": 1}, {"id": "readme_predimed", "label": "PREDIMED Trial", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "PREDIMED Trial", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "document", "degree": 1}, {"id": "readme_neter_2003", "label": "Neter et al. (Hypertension 2003)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "Neter et al. (Hypertension 2003)", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "document", "degree": 1}, {"id": "readme_self_test", "label": "Score2.selfTest()", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "Score2.selfTest()", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "README.md", "file_type": "code", "degree": 1}, {"id": "index_html", "label": "index.html", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "index.html", "community": 5, "community_name": "Main Application Page", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_auth_logic", "label": "Authentication Logic", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 11.4, "font": {"size": 0, "color": "#ffffff"}, "title": "Authentication Logic", "community": 1, "community_name": "Cardiovascular Risk Guidelines", "source_file": "index.html", "file_type": "code", "degree": 1}, {"id": "index_html_sex_seg", "label": "Sex Selection Segment", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Sex Selection Segment", "community": 22, "community_name": "Sex Selection Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_age_input", "label": "Age Input", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Age Input", "community": 6, "community_name": "Age Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_sbp_input", "label": "Systolic Blood Pressure Input", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Systolic Blood Pressure Input", "community": 20, "community_name": "Blood Pressure Input", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_smoke_seg", "label": "Smoking Status Segment", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Smoking Status Segment", "community": 25, "community_name": "Smoking Status Input", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_nonhdl_input", "label": "Non-HDL Cholesterol Input", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Non-HDL Cholesterol Input", "community": 16, "community_name": "Non-HDL Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_hdl_input", "label": "HDL Cholesterol Input", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "HDL Cholesterol Input", "community": 11, "community_name": "HDL Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_ldl_input", "label": "LDL Cholesterol Input", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "LDL Cholesterol Input", "community": 13, "community_name": "LDL Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_region_select", "label": "Risk Region Selector", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk Region Selector", "community": 17, "community_name": "Region Selector", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_result_body", "label": "Risk Result Display", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk Result Display", "community": 18, "community_name": "Risk Result Output", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_model_badge", "label": "Model Badge (SCORE2/SCORE2-OP)", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Model Badge (SCORE2/SCORE2-OP)", "community": 15, "community_name": "Model Selection Badge", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_risk_big", "label": "Big Risk Display", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Big Risk Display", "community": 19, "community_name": "Primary Risk Display", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_cat_badge", "label": "Risk Category Badge", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk Category Badge", "community": 7, "community_name": "Risk Category Display", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_gauge_track", "label": "Risk Gauge Track", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk Gauge Track", "community": 10, "community_name": "Risk Gauge Component", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_ldl_slider", "label": "LDL Simulation Slider", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "LDL Simulation Slider", "community": 14, "community_name": "LDL Simulation Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_sbp_slider", "label": "Systolic BP Simulation Slider", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Systolic BP Simulation Slider", "community": 21, "community_name": "BP Simulation Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_sim_smoke_seg", "label": "Simulated Smoking Segment", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Simulated Smoking Segment", "community": 24, "community_name": "Smoking Simulation Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_sim_reset", "label": "Simulation Reset Button", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Simulation Reset Button", "community": 23, "community_name": "Simulation Reset", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_chart", "label": "LDL Risk Curve Chart", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "LDL Risk Curve Chart", "community": 8, "community_name": "LDL Risk Visualization", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_weight_input", "label": "Weight Input", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Weight Input", "community": 26, "community_name": "Weight Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_height_input", "label": "Height Input", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Height Input", "community": 12, "community_name": "Height Input Field", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_weight_slider", "label": "Weight Target Slider", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Weight Target Slider", "community": 27, "community_name": "Weight Target Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_diet_seg", "label": "Mediterranean Diet Adherence Segment", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Mediterranean Diet Adherence Segment", "community": 9, "community_name": "Diet Adherence Control", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_wf_now", "label": "Current Risk (Waterfall)", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Current Risk (Waterfall)", "community": 29, "community_name": "Current Risk Visualization", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_wf_rf", "label": "Risk with Improved Weight/PAS/LDL (Waterfall)", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk with Improved Weight/PAS/LDL (Waterfall)", "community": 30, "community_name": "Risk Improvement Visualization", "source_file": "index.html", "file_type": "code", "degree": 0}, {"id": "index_html_wf_diet", "label": "Risk with Mediterranean Diet (Waterfall)", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 10.0, "font": {"size": 0, "color": "#ffffff"}, "title": "Risk with Mediterranean Diet (Waterfall)", "community": 28, "community_name": "Diet Impact Visualization", "source_file": "index.html", "file_type": "code", "degree": 0}];
+const RAW_EDGES = [{"from": "js_app", "to": "js_app_anchorldl", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_bindseg", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_fmt1", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_fmtg", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_fmtpct", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_init", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_num", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_patientparams", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_pctofslider", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_recompute", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_renderchart", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_rendereducation", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_rendergauge", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_renderlifestyle", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_renderresult", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_setsegpressed", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_simchartparams", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_simulatedrisk", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_syncsbpslider", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_synctargetslider", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app", "to": "js_app_syncweightslider", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderchart", "to": "js_app_fmtpct", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendereducation", "to": "js_app_fmtpct", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendergauge", "to": "js_app_fmtpct", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderlifestyle", "to": "js_app_fmtpct", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderresult", "to": "js_app_fmtpct", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_fmtg", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_recompute", "to": "js_app_fmtg", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderchart", "to": "js_app_fmtg", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendereducation", "to": "js_app_fmtg", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderlifestyle", "to": "js_app_fmt1", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_bindseg", "to": "js_app_recompute", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_bindseg", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_setsegpressed", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendereducation", "to": "js_app_setsegpressed", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_num", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_anchorldl", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderchart", "to": "js_app_anchorldl", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_simulatedrisk", "to": "js_app_anchorldl", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_recompute", "to": "js_app_patientparams", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderchart", "to": "js_app_patientparams", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderchart", "to": "js_app_simchartparams", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_recompute", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_recompute", "to": "js_app_rendereducation", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_recompute", "to": "js_app_renderlifestyle", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_recompute", "to": "js_app_renderresult", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_renderresult", "to": "js_app_rendergauge", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendereducation", "to": "js_app_simulatedrisk", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_rendereducation", "to": "js_app_renderchart", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_synctargetslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_synctargetslider", "to": "js_app_pctofslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_syncsbpslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_syncsbpslider", "to": "js_app_pctofslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_syncweightslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_syncweightslider", "to": "js_app_pctofslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_app_init", "to": "js_app_pctofslider", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_lifestyle", "to": "js_lifestyle_bmi", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_lifestyle", "to": "js_lifestyle_bmiclass", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_lifestyle", "to": "js_lifestyle_modifiers", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_categorybounds", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_cholgltommol", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_cholmmoltogl", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_compute", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_ldlseries", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_riskcategory", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_riskforldl", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_riskfraction", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2", "to": "js_score2_selftest", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_riskfraction", "to": "js_score2_cholgltommol", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_selftest", "to": "js_score2_cholmmoltogl", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_compute", "to": "js_score2_riskfraction", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_riskforldl", "to": "js_score2_riskfraction", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_selftest", "to": "js_score2_riskfraction", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_compute", "to": "js_score2_riskcategory", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_compute", "to": "js_score2_categorybounds", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "js_score2_ldlseries", "to": "js_score2_riskforldl", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "index_html_auth_logic", "to": "readme", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "readme", "to": "readme_esc_2021", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_esc_2023", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_lifestyle_module", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_neter_2003", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_predimed", "label": "cites", "title": "cites [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_score2", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_score2_op", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_self_test", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "readme", "to": "readme_simulation", "label": "references", "title": "references [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}];
+const LEGEND = [{"cid": 0, "color": "#4E79A7", "label": "Chart Rendering Logic", "count": 17}, {"cid": 1, "color": "#F28E2B", "label": "Cardiovascular Risk Guidelines", "count": 11}, {"cid": 2, "color": "#E15759", "label": "Risk Calculation Engine", "count": 10}, {"cid": 3, "color": "#76B7B2", "label": "UI Rendering Utilities", "count": 5}, {"cid": 4, "color": "#59A14F", "label": "Lifestyle Metrics Module", "count": 4}, {"cid": 5, "color": "#EDC948", "label": "Main Application Page", "count": 1}, {"cid": 6, "color": "#B07AA1", "label": "Age Input Field", "count": 1}, {"cid": 7, "color": "#FF9DA7", "label": "Risk Category Display", "count": 1}, {"cid": 8, "color": "#9C755F", "label": "LDL Risk Visualization", "count": 1}, {"cid": 9, "color": "#BAB0AC", "label": "Diet Adherence Control", "count": 1}, {"cid": 10, "color": "#4E79A7", "label": "Risk Gauge Component", "count": 1}, {"cid": 11, "color": "#F28E2B", "label": "HDL Input Field", "count": 1}, {"cid": 12, "color": "#E15759", "label": "Height Input Field", "count": 1}, {"cid": 13, "color": "#76B7B2", "label": "LDL Input Field", "count": 1}, {"cid": 14, "color": "#59A14F", "label": "LDL Simulation Control", "count": 1}, {"cid": 15, "color": "#EDC948", "label": "Model Selection Badge", "count": 1}, {"cid": 16, "color": "#B07AA1", "label": "Non-HDL Input Field", "count": 1}, {"cid": 17, "color": "#FF9DA7", "label": "Region Selector", "count": 1}, {"cid": 18, "color": "#9C755F", "label": "Risk Result Output", "count": 1}, {"cid": 19, "color": "#BAB0AC", "label": "Primary Risk Display", "count": 1}, {"cid": 20, "color": "#4E79A7", "label": "Blood Pressure Input", "count": 1}, {"cid": 21, "color": "#F28E2B", "label": "BP Simulation Control", "count": 1}, {"cid": 22, "color": "#E15759", "label": "Sex Selection Control", "count": 1}, {"cid": 23, "color": "#76B7B2", "label": "Simulation Reset", "count": 1}, {"cid": 24, "color": "#59A14F", "label": "Smoking Simulation Control", "count": 1}, {"cid": 25, "color": "#EDC948", "label": "Smoking Status Input", "count": 1}, {"cid": 26, "color": "#B07AA1", "label": "Weight Input Field", "count": 1}, {"cid": 27, "color": "#FF9DA7", "label": "Weight Target Control", "count": 1}, {"cid": 28, "color": "#9C755F", "label": "Diet Impact Visualization", "count": 1}, {"cid": 29, "color": "#BAB0AC", "label": "Current Risk Visualization", "count": 1}, {"cid": 30, "color": "#4E79A7", "label": "Risk Improvement Visualization", "count": 1}];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map(n => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" data-nid="${esc(nid)}">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Neighbor links use a data attribute + one delegated listener rather than an
+// inline onclick. A node id/label sourced from a document or a scraped URL
+// (graphify add) can contain a double-quote; dropping the stringified id
+// unescaped into a quoted onclick both broke every link and allowed a hostile
+// source to inject an event handler into the local report (stored XSS, #1838).
+// esc() on data-nid keeps the value inside the attribute; the listener reads it
+// back verbatim. Bound to document so it survives the innerHTML rebuild that
+// recreates #neighbors-list on each showInfo().
+document.addEventListener('click', e => {
+  const el = e.target.closest('.neighbor-link');
+  if (el && el.dataset.nid !== undefined) focusNode(el.dataset.nid);
+});
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const expanded = positions.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>
