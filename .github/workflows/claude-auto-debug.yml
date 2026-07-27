@@ -1,0 +1,119 @@
+name: Claude Auto-Debug
+
+# Veille automatique des erreurs, pilotee par GitHub (100 % evenementiel, aucun polling).
+#
+# Trois declencheurs :
+#   1. Un workflow de CI se termine en ECHEC  -> Claude lit les logs, diagnostique
+#      la cause racine et ouvre une DRAFT PR avec un correctif minimal.
+#   2. Une issue etiquetee "bug" est ouverte  -> Claude analyse, propose une piste
+#      et, s'il est sur de lui, ouvre une draft PR.
+#   3. Une mention @claude dans un commentaire -> invocation manuelle a la demande.
+#
+# Installation (app Claude GitHub + secret ANTHROPIC_API_KEY) : voir oliviernkh/claude/auto-debug/README.md
+# Ce depot n'a pas de workflow de CI/build dedie pour l'instant (seulement Graphify) ;
+# adapte la liste `workflows:` ci-dessous si tu en ajoutes un.
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+  issues:
+    types: [opened, labeled]
+  issue_comment:
+    types: [created]
+
+concurrency:
+  group: claude-auto-debug-${{ github.event.issue.number || github.event.workflow_run.id || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  debug-ci-failure:
+    if: >
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - name: Claude debugge l'echec de CI
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Le workflow de CI "${{ github.event.workflow_run.name }}" a ECHOUE
+            sur la branche "${{ github.event.workflow_run.head_branch }}"
+            (run #${{ github.event.workflow_run.id }},
+            commit ${{ github.event.workflow_run.head_sha }}).
+
+            Ta mission :
+            1. Recupere les logs de l'echec :
+               `gh run view ${{ github.event.workflow_run.id }} --log-failed`
+            2. Identifie la CAUSE RACINE (pas juste le symptome). Distingue bien :
+               - un vrai bug dans le code,
+               - un test defaillant/obsolete,
+               - un probleme de config/dependance/environnement.
+            3. Si tu es CONFIANT dans un correctif minimal et surement correct :
+               cree une branche `claude/fix-ci-${{ github.event.workflow_run.id }}`,
+               applique le correctif, et ouvre une PR en mode DRAFT qui explique
+               clairement la cause racine et la correction.
+            4. Si tu n'es PAS sur (correctif ambigu, refonte necessaire, cause
+               externe) : n'ouvre PAS de PR. Redige plutot un diagnostic clair
+               et les options possibles, sans deviner.
+
+            Reste minimal et cible : corrige la cause, ne refactorise pas alentour.
+          claude_args: |
+            --max-turns 40
+
+  triage-issue:
+    if: >
+      (github.event_name == 'issues' &&
+        (github.event.action == 'opened' || github.event.label.name == 'bug')) ||
+      (github.event_name == 'issue_comment' &&
+        contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Claude analyse l'issue
+        uses: anthropics/claude-code-action@v1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Une issue potentiellement liee a une erreur/bug est arrivee :
+            #${{ github.event.issue.number }} — "${{ github.event.issue.title }}".
+
+            Ta mission :
+            1. Lis l'issue et les commentaires : `gh issue view ${{ github.event.issue.number }} --comments`
+            2. Determine s'il s'agit bien d'un bug/erreur. Si ce n'en est pas un,
+               commente brievement pour le signaler et arrete-toi.
+            3. Si c'est un bug : localise la cause racine dans le code.
+            4. Si tu es CONFIANT dans un correctif : cree une branche
+               `claude/fix-issue-${{ github.event.issue.number }}`, corrige, et ouvre
+               une DRAFT PR liee a l'issue (Closes #${{ github.event.issue.number }}).
+            5. Sinon : poste un commentaire avec le diagnostic et une solution
+               proposee, sans modifier le code.
+
+            Reste minimal et cible.
+          claude_args: |
+            --max-turns 40
