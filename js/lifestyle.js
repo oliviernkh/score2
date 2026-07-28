@@ -37,9 +37,9 @@
      dSbp / dLdl : décalages appliqués aux facteurs SCORE2 (mmHg, g/L).
      rr          : risque relatif RÉSIDUEL (au-delà de PAS + LDL). */
   var DIET = {
-    0: { key: "low",  label: "Habituel / faible",       dSbp: 0,    dLdl: 0,     rr: 1.00 },
-    1: { key: "mod",  label: "Adhérence modérée",       dSbp: -1.5, dLdl: -0.05, rr: 0.93 },
-    2: { key: "high", label: "Adhérence élevée",        dSbp: -3.0, dLdl: -0.10, rr: 0.85 }
+    0: { key: "low",  label: "Adhérence faible",   dSbp: 0,    dLdl: 0,     rr: 1.00 },
+    1: { key: "mod",  label: "Adhérence modérée",  dSbp: -1.5, dLdl: -0.05, rr: 0.93 },
+    2: { key: "high", label: "Adhérence élevée",   dSbp: -3.0, dLdl: -0.10, rr: 0.85 }
   };
 
   function bmi(weightKg, heightCm) {
