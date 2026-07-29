@@ -48,8 +48,9 @@
     },
     2: {
       key: "high", label: "Adhérence élevée", dSbp: -3.0, dLdl: -0.10, rr: 0.85,
-      desc: "Adhérence proche du groupe intervention de l'essai PREDIMED : huile d'olive " +
-        "et/ou fruits à coque quotidiens, quasi-totalité des composantes suivies."
+      desc: "Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et " +
+        "légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et " +
+        "de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED."
     }
   };
 
