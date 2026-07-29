@@ -13,48 +13,47 @@
           "index_html_smokeSeg",
           "index_html_nonhdl",
           "index_html_hdl",
+          "index_html_region",
           "concept_score2",
           "concept_score2_op"
         ],
         "relation": "participate_in",
         "confidence": "INFERRED",
-        "confidence_score": 0.85,
+        "confidence_score": 0.9,
         "source_file": "index.html"
       },
       {
-        "id": "lifestyle_simulation_flow",
-        "label": "Lifestyle Simulation Flow",
-        "nodes": [
-          "index_html_weight",
-          "index_html_height",
-          "index_html_weightSlider",
-          "index_html_dietSeg",
-          "index_html_wfNow",
-          "index_html_wfRf",
-          "index_html_wfDiet",
-          "concept_predimed_trial"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.8,
-        "source_file": "index.html"
-      },
-      {
-        "id": "risk_simulation_flow",
-        "label": "Risk Simulation Flow",
+        "id": "simulation_components",
+        "label": "Simulation Components for Risk Adjustment",
         "nodes": [
           "index_html_ldlSlider",
           "index_html_sbpSlider",
           "index_html_simSmokeSeg",
           "index_html_simBaseVal",
           "index_html_simRiskVal",
-          "index_html_chart",
-          "concept_score2",
-          "concept_score2_op"
+          "index_html_simDelta"
         ],
         "relation": "participate_in",
         "confidence": "INFERRED",
         "confidence_score": 0.85,
+        "source_file": "index.html"
+      },
+      {
+        "id": "lifestyle_intervention_flow",
+        "label": "Lifestyle Intervention Flow",
+        "nodes": [
+          "index_html_weight",
+          "index_html_height",
+          "index_html_weightSlider",
+          "index_html_dietSeg",
+          "index_html_bmiNow",
+          "index_html_bmiTarget",
+          "concept_mediterranean_diet",
+          "concept_predimed"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.8,
         "source_file": "index.html"
       },
       {
@@ -125,246 +124,48 @@
   },
   "nodes": [
     {
-      "label": "app.js",
+      "label": "lifestyle.js",
       "file_type": "code",
-      "source_file": "js/app.js",
+      "source_file": "js/lifestyle.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "app.js",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app"
+      "community": 9,
+      "norm_label": "lifestyle.js",
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle"
     },
     {
-      "label": "fmtPct()",
+      "label": "bmi()",
       "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L56",
+      "source_file": "js/lifestyle.js",
+      "source_location": "L45",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "fmtpct()",
-      "community_name": "UI Rendering Utilities",
-      "id": "js_app_fmtpct"
+      "community": 9,
+      "norm_label": "bmi()",
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_bmi"
     },
     {
-      "label": "fmtG()",
+      "label": "bmiClass()",
       "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L59",
+      "source_file": "js/lifestyle.js",
+      "source_location": "L51",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "fmtg()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_fmtg"
+      "community": 9,
+      "norm_label": "bmiclass()",
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_bmiclass"
     },
     {
-      "label": "fmt1()",
+      "label": "modifiers()",
       "file_type": "code",
-      "source_file": "js/app.js",
+      "source_file": "js/lifestyle.js",
       "source_location": "L62",
       "_origin": "ast",
-      "community": 1,
-      "norm_label": "fmt1()",
-      "community_name": "UI Rendering Utilities",
-      "id": "js_app_fmt1"
-    },
-    {
-      "label": "bindSeg()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L67",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "bindseg()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_bindseg"
-    },
-    {
-      "label": "setSegPressed()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L80",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "setsegpressed()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_setsegpressed"
-    },
-    {
-      "label": "num()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L88",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "num()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_num"
-    },
-    {
-      "label": "anchorLdl()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L96",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "anchorldl()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_anchorldl"
-    },
-    {
-      "label": "patientParams()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L99",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "patientparams()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_patientparams"
-    },
-    {
-      "label": "simChartParams()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L106",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "simchartparams()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_simchartparams"
-    },
-    {
-      "label": "recompute()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L114",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "recompute()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_recompute"
-    },
-    {
-      "label": "renderResult()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L139",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "renderresult()",
-      "community_name": "UI Rendering Utilities",
-      "id": "js_app_renderresult"
-    },
-    {
-      "label": "renderGauge()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L167",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "rendergauge()",
-      "community_name": "UI Rendering Utilities",
-      "id": "js_app_rendergauge"
-    },
-    {
-      "label": "simulatedRisk()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L190",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "simulatedrisk()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_simulatedrisk"
-    },
-    {
-      "label": "renderEducation()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L199",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "rendereducation()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_rendereducation"
-    },
-    {
-      "label": "renderChart()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L228",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "renderchart()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_renderchart"
-    },
-    {
-      "label": "renderLifestyle()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L316",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "renderlifestyle()",
-      "community_name": "UI Rendering Utilities",
-      "id": "js_app_renderlifestyle"
-    },
-    {
-      "label": "syncTargetSlider()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L382",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "synctargetslider()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_synctargetslider"
-    },
-    {
-      "label": "syncSbpSlider()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L390",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "syncsbpslider()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_syncsbpslider"
-    },
-    {
-      "label": "syncWeightSlider()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L396",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "syncweightslider()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_syncweightslider"
-    },
-    {
-      "label": "pctOfSlider()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L408",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "pctofslider()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_pctofslider"
-    },
-    {
-      "label": "init()",
-      "file_type": "code",
-      "source_file": "js/app.js",
-      "source_location": "L414",
-      "_origin": "ast",
-      "community": 1,
-      "norm_label": "init()",
-      "community_name": "Chart Rendering Logic",
-      "id": "js_app_init"
+      "community": 9,
+      "norm_label": "modifiers()",
+      "community_name": "Lifestyle Metrics Module",
+      "id": "js_lifestyle_modifiers"
     },
     {
       "label": "score2.js",
@@ -679,7 +480,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "extraction (ast + semantic)",
       "id": "claude_skills_graphify_skill_extraction"
     },
@@ -692,7 +493,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "structural extraction (ast)",
       "id": "claude_skills_graphify_skill_structural_extraction"
     },
@@ -705,7 +506,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "semantic extraction (llm)",
       "id": "claude_skills_graphify_skill_semantic_extraction"
     },
@@ -718,7 +519,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "gemini backend",
       "id": "claude_skills_graphify_skill_gemini_backend"
     },
@@ -874,7 +675,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "github clone",
       "id": "claude_skills_graphify_skill_github_clone"
     },
@@ -887,7 +688,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "cross-repo merge",
       "id": "claude_skills_graphify_skill_cross_repo_merge"
     },
@@ -939,7 +740,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "extraction specification",
       "id": "claude_skills_graphify_references_extraction_spec"
     },
@@ -952,7 +753,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "github and merge reference",
       "id": "claude_skills_graphify_references_github_and_merge"
     },
@@ -991,7 +792,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 18,
+      "community": 11,
       "norm_label": "transcribe reference",
       "id": "claude_skills_graphify_references_transcribe"
     },
@@ -1043,7 +844,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "update graphify knowledge graph job",
       "id": "github_workflows_graphify_yml_update_graph_job"
     },
@@ -1056,7 +857,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 6,
       "norm_label": "mistral backend",
       "id": "github_workflows_graphify_yml_mistral_backend"
     },
@@ -1134,7 +935,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 13,
+      "community": 10,
       "norm_label": "claude auto-debug workflow",
       "id": "github_workflows_claude_auto_debug"
     },
@@ -1147,7 +948,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "debug-ci-failure job",
       "id": "github_workflows_claude_auto_debug_debug_ci_failure"
     },
@@ -1160,7 +961,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "triage-issue job",
       "id": "github_workflows_claude_auto_debug_triage_issue"
     },
@@ -1173,7 +974,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "actions/checkout@v4",
       "id": "actions_checkout_v4"
     },
@@ -1186,7 +987,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 6,
+      "community": 7,
       "norm_label": "anthropics/claude-code-action@v1",
       "id": "anthropics_claude_code_action_v1"
     },
@@ -1198,52 +999,242 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 13,
+      "community": 10,
       "norm_label": "ci workflow",
       "id": "github_workflows_ci"
     },
     {
-      "label": "lifestyle.js",
+      "label": "app.js",
       "file_type": "code",
-      "source_file": "js/lifestyle.js",
+      "source_file": "js/app.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_lifestyle",
-      "community": 8,
-      "norm_label": "lifestyle.js"
+      "id": "js_app",
+      "community": 1,
+      "norm_label": "app.js"
     },
     {
-      "label": "bmi()",
+      "label": "fmtPct()",
       "file_type": "code",
-      "source_file": "js/lifestyle.js",
-      "source_location": "L45",
+      "source_file": "js/app.js",
+      "source_location": "L56",
       "_origin": "ast",
-      "id": "js_lifestyle_bmi",
-      "community": 8,
-      "norm_label": "bmi()"
+      "id": "js_app_fmtpct",
+      "community": 1,
+      "norm_label": "fmtpct()"
     },
     {
-      "label": "bmiClass()",
+      "label": "fmtG()",
       "file_type": "code",
-      "source_file": "js/lifestyle.js",
-      "source_location": "L51",
+      "source_file": "js/app.js",
+      "source_location": "L59",
       "_origin": "ast",
-      "id": "js_lifestyle_bmiclass",
-      "community": 8,
-      "norm_label": "bmiclass()"
+      "id": "js_app_fmtg",
+      "community": 1,
+      "norm_label": "fmtg()"
     },
     {
-      "label": "modifiers()",
+      "label": "fmt1()",
       "file_type": "code",
-      "source_file": "js/lifestyle.js",
+      "source_file": "js/app.js",
       "source_location": "L62",
       "_origin": "ast",
-      "id": "js_lifestyle_modifiers",
-      "community": 8,
-      "norm_label": "modifiers()"
+      "id": "js_app_fmt1",
+      "community": 1,
+      "norm_label": "fmt1()"
     },
     {
-      "label": "index.html",
+      "label": "bindSeg()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "js_app_bindseg",
+      "community": 1,
+      "norm_label": "bindseg()"
+    },
+    {
+      "label": "setSegPressed()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L80",
+      "_origin": "ast",
+      "id": "js_app_setsegpressed",
+      "community": 1,
+      "norm_label": "setsegpressed()"
+    },
+    {
+      "label": "num()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L88",
+      "_origin": "ast",
+      "id": "js_app_num",
+      "community": 1,
+      "norm_label": "num()"
+    },
+    {
+      "label": "anchorLdl()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "js_app_anchorldl",
+      "community": 1,
+      "norm_label": "anchorldl()"
+    },
+    {
+      "label": "patientParams()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L99",
+      "_origin": "ast",
+      "id": "js_app_patientparams",
+      "community": 1,
+      "norm_label": "patientparams()"
+    },
+    {
+      "label": "simChartParams()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "js_app_simchartparams",
+      "community": 1,
+      "norm_label": "simchartparams()"
+    },
+    {
+      "label": "recompute()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L114",
+      "_origin": "ast",
+      "id": "js_app_recompute",
+      "community": 1,
+      "norm_label": "recompute()"
+    },
+    {
+      "label": "renderResult()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L139",
+      "_origin": "ast",
+      "id": "js_app_renderresult",
+      "community": 1,
+      "norm_label": "renderresult()"
+    },
+    {
+      "label": "renderGauge()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "js_app_rendergauge",
+      "community": 1,
+      "norm_label": "rendergauge()"
+    },
+    {
+      "label": "simulatedRisk()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "js_app_simulatedrisk",
+      "community": 1,
+      "norm_label": "simulatedrisk()"
+    },
+    {
+      "label": "renderEducation()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L199",
+      "_origin": "ast",
+      "id": "js_app_rendereducation",
+      "community": 1,
+      "norm_label": "rendereducation()"
+    },
+    {
+      "label": "renderChart()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L228",
+      "_origin": "ast",
+      "id": "js_app_renderchart",
+      "community": 1,
+      "norm_label": "renderchart()"
+    },
+    {
+      "label": "buildReport()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L316",
+      "_origin": "ast",
+      "id": "js_app_buildreport",
+      "community": 1,
+      "norm_label": "buildreport()"
+    },
+    {
+      "label": "renderLifestyle()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L410",
+      "_origin": "ast",
+      "id": "js_app_renderlifestyle",
+      "community": 1,
+      "norm_label": "renderlifestyle()"
+    },
+    {
+      "label": "syncTargetSlider()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L476",
+      "_origin": "ast",
+      "id": "js_app_synctargetslider",
+      "community": 1,
+      "norm_label": "synctargetslider()"
+    },
+    {
+      "label": "syncSbpSlider()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L484",
+      "_origin": "ast",
+      "id": "js_app_syncsbpslider",
+      "community": 1,
+      "norm_label": "syncsbpslider()"
+    },
+    {
+      "label": "syncWeightSlider()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L490",
+      "_origin": "ast",
+      "id": "js_app_syncweightslider",
+      "community": 1,
+      "norm_label": "syncweightslider()"
+    },
+    {
+      "label": "pctOfSlider()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L502",
+      "_origin": "ast",
+      "id": "js_app_pctofslider",
+      "community": 1,
+      "norm_label": "pctofslider()"
+    },
+    {
+      "label": "init()",
+      "file_type": "code",
+      "source_file": "js/app.js",
+      "source_location": "L508",
+      "_origin": "ast",
+      "id": "js_app_init",
+      "community": 1,
+      "norm_label": "init()"
+    },
+    {
+      "label": "index.html (Main Application File)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1252,11 +1243,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html",
-      "community": 12,
-      "norm_label": "index.html"
+      "community": 5,
+      "norm_label": "index.html (main application file)"
     },
     {
-      "label": "valid (token validation function)",
+      "label": "valid (Token Validation Function)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1264,34 +1255,35 @@
       "author": null,
       "contributor": null,
       "id": "index_html_valid",
-      "community": 7,
+      "community": 5,
       "norm_label": "valid (token validation function)"
     },
     {
-      "label": "goToPortal (redirection function)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_goToPortal",
-      "community": 7,
-      "norm_label": "gotoportal (redirection function)"
-    },
-    {
-      "label": "__drOnkh (global object)",
+      "label": "goToPortal (Redirect to Portal Function)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html___dronkh",
-      "community": 7,
-      "norm_label": "__dronkh (global object)"
+      "id": "index_html_goToPortal",
+      "community": 5,
+      "norm_label": "gotoportal (redirect to portal function)"
     },
     {
-      "label": "logoutScreen (UI element)",
+      "label": "__drOnkh (Global Configuration Object)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html__drOnkh",
+      "community": 5,
+      "norm_label": "__dronkh (global configuration object)"
+    },
+    {
+      "label": "logoutScreen (Logout Screen UI)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1299,11 +1291,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_logoutScreen",
-      "community": 27,
-      "norm_label": "logoutscreen (ui element)"
+      "community": 25,
+      "norm_label": "logoutscreen (logout screen ui)"
     },
     {
-      "label": "reconnectBtn (reconnection button)",
+      "label": "reconnectBtn (Reconnect Button)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1311,11 +1303,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_reconnectBtn",
-      "community": 7,
-      "norm_label": "reconnectbtn (reconnection button)"
+      "community": 5,
+      "norm_label": "reconnectbtn (reconnect button)"
     },
     {
-      "label": "sexSeg (sex selection segment)",
+      "label": "sexSeg (Sex Selection Segmented Control)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1324,10 +1316,10 @@
       "contributor": null,
       "id": "index_html_sexSeg",
       "community": 2,
-      "norm_label": "sexseg (sex selection segment)"
+      "norm_label": "sexseg (sex selection segmented control)"
     },
     {
-      "label": "age (input field)",
+      "label": "age (Age Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1336,10 +1328,10 @@
       "contributor": null,
       "id": "index_html_age",
       "community": 2,
-      "norm_label": "age (input field)"
+      "norm_label": "age (age input field)"
     },
     {
-      "label": "sbp (systolic blood pressure input)",
+      "label": "sbp (Systolic Blood Pressure Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1348,10 +1340,10 @@
       "contributor": null,
       "id": "index_html_sbp",
       "community": 2,
-      "norm_label": "sbp (systolic blood pressure input)"
+      "norm_label": "sbp (systolic blood pressure input field)"
     },
     {
-      "label": "smokeSeg (smoking status segment)",
+      "label": "smokeSeg (Smoking Status Segmented Control)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1360,10 +1352,10 @@
       "contributor": null,
       "id": "index_html_smokeSeg",
       "community": 2,
-      "norm_label": "smokeseg (smoking status segment)"
+      "norm_label": "smokeseg (smoking status segmented control)"
     },
     {
-      "label": "nonhdl (non-HDL cholesterol input)",
+      "label": "nonhdl (Non-HDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1372,10 +1364,10 @@
       "contributor": null,
       "id": "index_html_nonhdl",
       "community": 2,
-      "norm_label": "nonhdl (non-hdl cholesterol input)"
+      "norm_label": "nonhdl (non-hdl cholesterol input field)"
     },
     {
-      "label": "hdl (HDL cholesterol input)",
+      "label": "hdl (HDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1384,10 +1376,10 @@
       "contributor": null,
       "id": "index_html_hdl",
       "community": 2,
-      "norm_label": "hdl (hdl cholesterol input)"
+      "norm_label": "hdl (hdl cholesterol input field)"
     },
     {
-      "label": "ldl (LDL cholesterol input)",
+      "label": "ldl (LDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1395,11 +1387,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_ldl",
-      "community": 15,
-      "norm_label": "ldl (ldl cholesterol input)"
+      "community": 23,
+      "norm_label": "ldl (ldl cholesterol input field)"
     },
     {
-      "label": "ldlWarn (LDL warning message)",
+      "label": "ldlWarn (LDL Warning Message)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1407,11 +1399,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_ldlWarn",
-      "community": 26,
+      "community": 24,
       "norm_label": "ldlwarn (ldl warning message)"
     },
     {
-      "label": "derived (derived values display)",
+      "label": "derived (Derived Values Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1419,11 +1411,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_derived",
-      "community": 23,
+      "community": 19,
       "norm_label": "derived (derived values display)"
     },
     {
-      "label": "region (risk region selector)",
+      "label": "region (Risk Region Selector)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1431,11 +1423,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_region",
-      "community": 32,
+      "community": 2,
       "norm_label": "region (risk region selector)"
     },
     {
-      "label": "resultPlaceholder (result placeholder)",
+      "label": "resultPlaceholder (Result Placeholder)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1443,11 +1435,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_resultPlaceholder",
-      "community": 34,
+      "community": 31,
       "norm_label": "resultplaceholder (result placeholder)"
     },
     {
-      "label": "resultBody (result display)",
+      "label": "resultBody (Result Display Container)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1455,11 +1447,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_resultBody",
-      "community": 33,
-      "norm_label": "resultbody (result display)"
+      "community": 30,
+      "norm_label": "resultbody (result display container)"
     },
     {
-      "label": "riskBig (large risk display)",
+      "label": "riskBig (Large Risk Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1467,11 +1459,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_riskBig",
-      "community": 35,
+      "community": 32,
       "norm_label": "riskbig (large risk display)"
     },
     {
-      "label": "riskCap (risk caption)",
+      "label": "riskCap (Risk Caption)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1479,11 +1471,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_riskCap",
-      "community": 36,
+      "community": 33,
       "norm_label": "riskcap (risk caption)"
     },
     {
-      "label": "catBadge (risk category badge)",
+      "label": "catBadge (Risk Category Badge)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1491,11 +1483,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_catBadge",
-      "community": 22,
+      "community": 17,
       "norm_label": "catbadge (risk category badge)"
     },
     {
-      "label": "opNote (older patient note)",
+      "label": "opNote (Older Patient Note)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1503,11 +1495,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_opNote",
-      "community": 31,
+      "community": 28,
       "norm_label": "opnote (older patient note)"
     },
     {
-      "label": "gaugeTrack (risk gauge track)",
+      "label": "gaugeTrack (Risk Gauge Track)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1515,11 +1507,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_gaugeTrack",
-      "community": 25,
+      "community": 21,
       "norm_label": "gaugetrack (risk gauge track)"
     },
     {
-      "label": "gaugeScale (risk gauge scale)",
+      "label": "gaugeScale (Risk Gauge Scale)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1527,11 +1519,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_gaugeScale",
-      "community": 24,
+      "community": 20,
       "norm_label": "gaugescale (risk gauge scale)"
     },
     {
-      "label": "ldlSlider (LDL simulation slider)",
+      "label": "ldlSlider (LDL Simulation Slider)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1539,11 +1531,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_ldlSlider",
-      "community": 16,
+      "community": 2,
       "norm_label": "ldlslider (ldl simulation slider)"
     },
     {
-      "label": "simLdlVal (simulated LDL value display)",
+      "label": "simLdlVal (Simulated LDL Value Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1551,11 +1543,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simLdlVal",
-      "community": 16,
+      "community": 36,
       "norm_label": "simldlval (simulated ldl value display)"
     },
     {
-      "label": "sbpSlider (systolic BP simulation slider)",
+      "label": "sbpSlider (Systolic BP Simulation Slider)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1563,11 +1555,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_sbpSlider",
-      "community": 17,
+      "community": 2,
       "norm_label": "sbpslider (systolic bp simulation slider)"
     },
     {
-      "label": "simSbpVal (simulated SBP value display)",
+      "label": "simSbpVal (Simulated SBP Value Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1575,11 +1567,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simSbpVal",
-      "community": 17,
+      "community": 39,
       "norm_label": "simsbpval (simulated sbp value display)"
     },
     {
-      "label": "simSmokeSeg (simulated smoking segment)",
+      "label": "simSmokeSeg (Simulated Smoking Status Segmented Control)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1588,10 +1580,10 @@
       "contributor": null,
       "id": "index_html_simSmokeSeg",
       "community": 2,
-      "norm_label": "simsmokeseg (simulated smoking segment)"
+      "norm_label": "simsmokeseg (simulated smoking status segmented control)"
     },
     {
-      "label": "simBaseVal (current risk value)",
+      "label": "simBaseVal (Base Risk Value Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1599,11 +1591,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simBaseVal",
-      "community": 2,
-      "norm_label": "simbaseval (current risk value)"
+      "community": 34,
+      "norm_label": "simbaseval (base risk value display)"
     },
     {
-      "label": "simRiskVal (simulated risk value)",
+      "label": "simRiskVal (Simulated Risk Value Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1611,11 +1603,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simRiskVal",
-      "community": 2,
-      "norm_label": "simriskval (simulated risk value)"
+      "community": 38,
+      "norm_label": "simriskval (simulated risk value display)"
     },
     {
-      "label": "simDelta (risk delta display)",
+      "label": "simDelta (Risk Delta Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1623,11 +1615,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simDelta",
-      "community": 37,
+      "community": 35,
       "norm_label": "simdelta (risk delta display)"
     },
     {
-      "label": "simReset (simulation reset button)",
+      "label": "simReset (Simulation Reset Button)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1635,11 +1627,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_simReset",
-      "community": 38,
+      "community": 37,
       "norm_label": "simreset (simulation reset button)"
     },
     {
-      "label": "chart (risk simulation chart)",
+      "label": "chart (Risk Simulation Chart)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1647,35 +1639,23 @@
       "author": null,
       "contributor": null,
       "id": "index_html_chart",
-      "community": 15,
+      "community": 18,
       "norm_label": "chart (risk simulation chart)"
     },
     {
-      "label": "lsPlaceholder (lifestyle placeholder)",
+      "label": "reportBtn (Report Generation Button)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_lsPlaceholder",
-      "community": 30,
-      "norm_label": "lsplaceholder (lifestyle placeholder)"
+      "id": "index_html_reportBtn",
+      "community": 29,
+      "norm_label": "reportbtn (report generation button)"
     },
     {
-      "label": "lsBody (lifestyle results display)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_lsBody",
-      "community": 28,
-      "norm_label": "lsbody (lifestyle results display)"
-    },
-    {
-      "label": "weight (weight input field)",
+      "label": "weight (Weight Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1683,11 +1663,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_weight",
-      "community": 11,
+      "community": 40,
       "norm_label": "weight (weight input field)"
     },
     {
-      "label": "height (height input field)",
+      "label": "height (Height Input Field)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1695,11 +1675,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_height",
-      "community": 11,
+      "community": 22,
       "norm_label": "height (height input field)"
     },
     {
-      "label": "weightSlider (weight simulation slider)",
+      "label": "weightSlider (Weight Target Slider)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1707,11 +1687,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_weightSlider",
-      "community": 14,
-      "norm_label": "weightslider (weight simulation slider)"
+      "community": 8,
+      "norm_label": "weightslider (weight target slider)"
     },
     {
-      "label": "weightTargetLbl (weight target label)",
+      "label": "weightTargetLbl (Weight Target Label)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1719,11 +1699,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_weightTargetLbl",
-      "community": 39,
+      "community": 41,
       "norm_label": "weighttargetlbl (weight target label)"
     },
     {
-      "label": "dietSeg (Mediterranean diet adherence segment)",
+      "label": "dietSeg (Mediterranean Diet Adherence Segmented Control)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1731,11 +1711,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_dietSeg",
-      "community": 10,
-      "norm_label": "dietseg (mediterranean diet adherence segment)"
+      "community": 8,
+      "norm_label": "dietseg (mediterranean diet adherence segmented control)"
     },
     {
-      "label": "bmiNow (current BMI display)",
+      "label": "bmiNow (Current BMI Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1743,11 +1723,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_bmiNow",
-      "community": 11,
+      "community": 15,
       "norm_label": "bminow (current bmi display)"
     },
     {
-      "label": "bmiChipNow (current BMI category chip)",
+      "label": "bmiChipNow (Current BMI Category Chip)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1755,11 +1735,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_bmiChipNow",
-      "community": 20,
+      "community": 13,
       "norm_label": "bmichipnow (current bmi category chip)"
     },
     {
-      "label": "bmiArrow (BMI change arrow)",
+      "label": "bmiArrow (BMI Change Arrow)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1767,11 +1747,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_bmiArrow",
-      "community": 19,
+      "community": 12,
       "norm_label": "bmiarrow (bmi change arrow)"
     },
     {
-      "label": "bmiTarget (target BMI display)",
+      "label": "bmiTarget (Target BMI Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1779,11 +1759,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_bmiTarget",
-      "community": 14,
+      "community": 16,
       "norm_label": "bmitarget (target bmi display)"
     },
     {
-      "label": "bmiChipTarget (target BMI category chip)",
+      "label": "bmiChipTarget (Target BMI Category Chip)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1791,11 +1771,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_bmiChipTarget",
-      "community": 21,
+      "community": 14,
       "norm_label": "bmichiptarget (target bmi category chip)"
     },
     {
-      "label": "wfNow (current risk in waterfall)",
+      "label": "wfNow (Current Risk Waterfall Value)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1803,11 +1783,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfNow",
-      "community": 2,
-      "norm_label": "wfnow (current risk in waterfall)"
+      "community": 44,
+      "norm_label": "wfnow (current risk waterfall value)"
     },
     {
-      "label": "wfNowBar (current risk bar)",
+      "label": "wfNowBar (Current Risk Waterfall Bar)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1815,11 +1795,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfNowBar",
-      "community": 41,
-      "norm_label": "wfnowbar (current risk bar)"
+      "community": 45,
+      "norm_label": "wfnowbar (current risk waterfall bar)"
     },
     {
-      "label": "wfRf (risk with improved weight/PAS/LDL)",
+      "label": "wfRf (Improved Risk Factors Waterfall Value)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1827,11 +1807,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfRf",
-      "community": 2,
-      "norm_label": "wfrf (risk with improved weight/pas/ldl)"
+      "community": 46,
+      "norm_label": "wfrf (improved risk factors waterfall value)"
     },
     {
-      "label": "wfRfBar (risk bar with improved weight/PAS/LDL)",
+      "label": "wfRfBar (Improved Risk Factors Waterfall Bar)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1839,11 +1819,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfRfBar",
-      "community": 42,
-      "norm_label": "wfrfbar (risk bar with improved weight/pas/ldl)"
+      "community": 47,
+      "norm_label": "wfrfbar (improved risk factors waterfall bar)"
     },
     {
-      "label": "wfDiet (risk with Mediterranean diet benefit)",
+      "label": "wfDiet (Diet Benefit Waterfall Value)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1851,11 +1831,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfDiet",
-      "community": 10,
-      "norm_label": "wfdiet (risk with mediterranean diet benefit)"
+      "community": 42,
+      "norm_label": "wfdiet (diet benefit waterfall value)"
     },
     {
-      "label": "wfDietBar (risk bar with Mediterranean diet benefit)",
+      "label": "wfDietBar (Diet Benefit Waterfall Bar)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1863,11 +1843,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_wfDietBar",
-      "community": 40,
-      "norm_label": "wfdietbar (risk bar with mediterranean diet benefit)"
+      "community": 43,
+      "norm_label": "wfdietbar (diet benefit waterfall bar)"
     },
     {
-      "label": "lsDelta (lifestyle risk delta display)",
+      "label": "lsDelta (Lifestyle Risk Delta Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1875,11 +1855,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_lsDelta",
-      "community": 29,
+      "community": 26,
       "norm_label": "lsdelta (lifestyle risk delta display)"
     },
     {
-      "label": "modelBadge (SCORE2/SCORE2-OP badge)",
+      "label": "modelBadge (Model Badge Display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
@@ -1887,11 +1867,11 @@
       "author": null,
       "contributor": null,
       "id": "index_html_modelBadge",
-      "community": 2,
-      "norm_label": "modelbadge (score2/score2-op badge)"
+      "community": 27,
+      "norm_label": "modelbadge (model badge display)"
     },
     {
-      "label": "SCORE2 (cardiovascular risk model)",
+      "label": "SCORE2 (Cardiovascular Risk Model)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -1903,7 +1883,7 @@
       "norm_label": "score2 (cardiovascular risk model)"
     },
     {
-      "label": "SCORE2-OP (cardiovascular risk model for older patients)",
+      "label": "SCORE2-OP (Cardiovascular Risk Model for Older Patients)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
@@ -1915,27 +1895,63 @@
       "norm_label": "score2-op (cardiovascular risk model for older patients)"
     },
     {
-      "label": "ESC 2021/2023 Guidelines (cardiovascular risk)",
+      "label": "ESC 2021 Guidelines (Cardiovascular Risk)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_esc_2021_guidelines",
-      "community": 12,
-      "norm_label": "esc 2021/2023 guidelines (cardiovascular risk)"
+      "id": "concept_esc_2021",
+      "community": 5,
+      "norm_label": "esc 2021 guidelines (cardiovascular risk)"
     },
     {
-      "label": "PREDIMED Trial (Mediterranean diet study)",
+      "label": "ESC 2023 Guidelines (Cardiovascular Risk)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_predimed_trial",
-      "community": 10,
+      "id": "concept_esc_2023",
+      "community": 5,
+      "norm_label": "esc 2023 guidelines (cardiovascular risk)"
+    },
+    {
+      "label": "Dr ONKH Portal (SSO and Authentication)",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_portail_dr_onkh",
+      "community": 5,
+      "norm_label": "dr onkh portal (sso and authentication)"
+    },
+    {
+      "label": "Mediterranean Diet (Lifestyle Intervention)",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_mediterranean_diet",
+      "community": 8,
+      "norm_label": "mediterranean diet (lifestyle intervention)"
+    },
+    {
+      "label": "PREDIMED Trial (Mediterranean Diet Study)",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_predimed",
+      "community": 8,
       "norm_label": "predimed trial (mediterranean diet study)"
     }
   ],
@@ -1943,653 +1959,35 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L96",
+      "source_file": "js/lifestyle.js",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_anchorldl"
+      "source": "js_lifestyle",
+      "target": "js_lifestyle_bmi"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L67",
+      "source_file": "js/lifestyle.js",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_bindseg"
+      "source": "js_lifestyle",
+      "target": "js_lifestyle_bmiclass"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
+      "source_file": "js/lifestyle.js",
       "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
       "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_fmt1"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L59",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_fmtg"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L56",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L414",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_init"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L88",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_num"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L99",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_patientparams"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L408",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_pctofslider"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L114",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_recompute"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L228",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_renderchart"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L199",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_rendereducation"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L167",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_rendergauge"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L316",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_renderlifestyle"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L139",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_renderresult"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L80",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_setsegpressed"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L106",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_simchartparams"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L190",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_simulatedrisk"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L390",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_syncsbpslider"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L382",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_synctargetslider"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L396",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app",
-      "target": "js_app_syncweightslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L270",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderchart",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L206",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendereducation",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L183",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendergauge",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L357",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderlifestyle",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L144",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderresult",
-      "target": "js_app_fmtpct"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L531",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_fmtg"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L118",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_recompute",
-      "target": "js_app_fmtg"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L291",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderchart",
-      "target": "js_app_fmtg"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L204",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendereducation",
-      "target": "js_app_fmtg"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L325",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderlifestyle",
-      "target": "js_app_fmt1"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L77",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_bindseg",
-      "target": "js_app_recompute"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L447",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_bindseg"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L449",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_setsegpressed"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L208",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendereducation",
-      "target": "js_app_setsegpressed"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L457",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_num"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L479",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_anchorldl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L239",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderchart",
-      "target": "js_app_anchorldl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L191",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_simulatedrisk",
-      "target": "js_app_anchorldl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L131",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_recompute",
-      "target": "js_app_patientparams"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L237",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderchart",
-      "target": "js_app_patientparams"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L238",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderchart",
-      "target": "js_app_simchartparams"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L458",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_recompute"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L134",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_recompute",
-      "target": "js_app_rendereducation"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L135",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_recompute",
-      "target": "js_app_renderlifestyle"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L133",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_recompute",
-      "target": "js_app_renderresult"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L164",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_renderresult",
-      "target": "js_app_rendergauge"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L200",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendereducation",
-      "target": "js_app_simulatedrisk"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L224",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_rendereducation",
-      "target": "js_app_renderchart"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L474",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_synctargetslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L388",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_synctargetslider",
-      "target": "js_app_pctofslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L465",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_syncsbpslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L394",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_syncsbpslider",
-      "target": "js_app_pctofslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L514",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_syncweightslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L402",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_syncweightslider",
-      "target": "js_app_pctofslider"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "js/app.js",
-      "source_location": "L491",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "js_app_init",
-      "target": "js_app_pctofslider"
+      "source": "js_lifestyle",
+      "target": "js_lifestyle_modifiers"
     },
     {
       "relation": "contains",
@@ -3421,45 +2819,736 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/lifestyle.js",
-      "source_location": "L45",
+      "source_file": "js/app.js",
+      "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "js_lifestyle",
-      "target": "js_lifestyle_bmi",
+      "source": "js_app",
+      "target": "js_app_anchorldl",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/lifestyle.js",
-      "source_location": "L51",
+      "source_file": "js/app.js",
+      "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "js_lifestyle",
-      "target": "js_lifestyle_bmiclass",
+      "source": "js_app",
+      "target": "js_app_bindseg",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "js/lifestyle.js",
+      "source_file": "js/app.js",
+      "source_location": "L316",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_buildreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
       "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "js_lifestyle",
-      "target": "js_lifestyle_modifiers",
+      "source": "js_app",
+      "target": "js_app_fmt1",
       "confidence_score": 1.0
     },
     {
-      "relation": "cites",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
+      "source_file": "js/app.js",
+      "source_location": "L59",
       "weight": 1.0,
-      "source": "index_html",
-      "target": "concept_esc_2021_guidelines"
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L508",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_num",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L99",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_patientparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L502",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_pctofslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L114",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_recompute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L228",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_renderchart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L199",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_rendereducation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_rendergauge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L410",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_renderlifestyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L139",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_renderresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_setsegpressed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L106",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_simchartparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_simulatedrisk",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L484",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_syncsbpslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L476",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_synctargetslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L490",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app",
+      "target": "js_app_syncweightslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L336",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_buildreport",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L270",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderchart",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L206",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendereducation",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendergauge",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L451",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderlifestyle",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderresult",
+      "target": "js_app_fmtpct",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L341",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_buildreport",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L645",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L118",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_recompute",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L291",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderchart",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L204",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendereducation",
+      "target": "js_app_fmtg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L419",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderlifestyle",
+      "target": "js_app_fmt1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_bindseg",
+      "target": "js_app_recompute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L543",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_bindseg",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L545",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_setsegpressed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L208",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendereducation",
+      "target": "js_app_setsegpressed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L553",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_num",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L318",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_buildreport",
+      "target": "js_app_anchorldl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L575",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_anchorldl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L239",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderchart",
+      "target": "js_app_anchorldl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L191",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_simulatedrisk",
+      "target": "js_app_anchorldl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L317",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_buildreport",
+      "target": "js_app_patientparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L608",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_patientparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L131",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_recompute",
+      "target": "js_app_patientparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L237",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderchart",
+      "target": "js_app_patientparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L238",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderchart",
+      "target": "js_app_simchartparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L554",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_recompute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_recompute",
+      "target": "js_app_rendereducation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L135",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_recompute",
+      "target": "js_app_renderlifestyle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L133",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_recompute",
+      "target": "js_app_renderresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L164",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_renderresult",
+      "target": "js_app_rendergauge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L200",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendereducation",
+      "target": "js_app_simulatedrisk",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L224",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_rendereducation",
+      "target": "js_app_renderchart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L608",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_buildreport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L570",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_synctargetslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L482",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_synctargetslider",
+      "target": "js_app_pctofslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L561",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_syncsbpslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L488",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_syncsbpslider",
+      "target": "js_app_pctofslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L628",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_syncweightslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L496",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_syncweightslider",
+      "target": "js_app_pctofslider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "js/app.js",
+      "source_location": "L587",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "js_app_init",
+      "target": "js_app_pctofslider",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -3468,7 +3557,67 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html___dronkh",
+      "source": "index_html",
+      "target": "concept_esc_2021"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "concept_esc_2023"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "concept_portail_dr_onkh"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "concept_score2"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "concept_score2_op"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "index_html_goToPortal"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html",
       "target": "index_html_valid"
     },
     {
@@ -3478,18 +3627,38 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html___dronkh",
-      "target": "index_html_goToPortal"
+      "source": "index_html_valid",
+      "target": "index_html__drOnkh"
     },
     {
-      "relation": "calls",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html_goToPortal",
+      "target": "index_html__drOnkh"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html__drOnkh",
+      "target": "concept_portail_dr_onkh"
+    },
+    {
+      "relation": "references",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_reconnectBtn",
-      "target": "index_html_goToPortal"
+      "target": "index_html__drOnkh"
     },
     {
       "relation": "shares_data_with",
@@ -3608,8 +3777,18 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html_ldl",
-      "target": "index_html_chart"
+      "source": "index_html_region",
+      "target": "concept_score2"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html_region",
+      "target": "concept_score2_op"
     },
     {
       "relation": "shares_data_with",
@@ -3619,7 +3798,17 @@
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_ldlSlider",
-      "target": "index_html_simLdlVal"
+      "target": "concept_score2"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html_ldlSlider",
+      "target": "concept_score2_op"
     },
     {
       "relation": "shares_data_with",
@@ -3629,7 +3818,17 @@
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_sbpSlider",
-      "target": "index_html_simSbpVal"
+      "target": "concept_score2"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "index_html_sbpSlider",
+      "target": "concept_score2_op"
     },
     {
       "relation": "shares_data_with",
@@ -3639,16 +3838,6 @@
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_simSmokeSeg",
-      "target": "index_html_simRiskVal"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simBaseVal",
       "target": "concept_score2"
     },
     {
@@ -3658,118 +3847,28 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html_simBaseVal",
+      "source": "index_html_simSmokeSeg",
       "target": "concept_score2_op"
     },
     {
       "relation": "shares_data_with",
       "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simRiskVal",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simRiskVal",
-      "target": "concept_score2_op"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_weight",
-      "target": "index_html_bmiNow"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_height",
-      "target": "index_html_bmiNow"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
+      "confidence_score": 0.8,
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_weightSlider",
-      "target": "index_html_bmiTarget"
+      "target": "concept_mediterranean_diet"
     },
     {
-      "relation": "references",
+      "relation": "shares_data_with",
       "confidence": "INFERRED",
       "confidence_score": 0.9,
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
       "source": "index_html_dietSeg",
-      "target": "concept_predimed_trial"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfNow",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfNow",
-      "target": "concept_score2_op"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfRf",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfRf",
-      "target": "concept_score2_op"
-    },
-    {
-      "relation": "references",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfDiet",
-      "target": "concept_predimed_trial"
+      "target": "concept_mediterranean_diet"
     },
     {
       "relation": "references",
@@ -3778,18 +3877,8 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html_modelBadge",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_modelBadge",
-      "target": "concept_score2_op"
+      "source": "index_html_dietSeg",
+      "target": "concept_predimed"
     }
   ],
   "hyperedges": [
@@ -3803,48 +3892,47 @@
         "index_html_smokeSeg",
         "index_html_nonhdl",
         "index_html_hdl",
+        "index_html_region",
         "concept_score2",
         "concept_score2_op"
       ],
       "relation": "participate_in",
       "confidence": "INFERRED",
-      "confidence_score": 0.85,
+      "confidence_score": 0.9,
       "source_file": "index.html"
     },
     {
-      "id": "lifestyle_simulation_flow",
-      "label": "Lifestyle Simulation Flow",
-      "nodes": [
-        "index_html_weight",
-        "index_html_height",
-        "index_html_weightSlider",
-        "index_html_dietSeg",
-        "index_html_wfNow",
-        "index_html_wfRf",
-        "index_html_wfDiet",
-        "concept_predimed_trial"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html"
-    },
-    {
-      "id": "risk_simulation_flow",
-      "label": "Risk Simulation Flow",
+      "id": "simulation_components",
+      "label": "Simulation Components for Risk Adjustment",
       "nodes": [
         "index_html_ldlSlider",
         "index_html_sbpSlider",
         "index_html_simSmokeSeg",
         "index_html_simBaseVal",
         "index_html_simRiskVal",
-        "index_html_chart",
-        "concept_score2",
-        "concept_score2_op"
+        "index_html_simDelta"
       ],
       "relation": "participate_in",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
+      "source_file": "index.html"
+    },
+    {
+      "id": "lifestyle_intervention_flow",
+      "label": "Lifestyle Intervention Flow",
+      "nodes": [
+        "index_html_weight",
+        "index_html_height",
+        "index_html_weightSlider",
+        "index_html_dietSeg",
+        "index_html_bmiNow",
+        "index_html_bmiTarget",
+        "concept_mediterranean_diet",
+        "concept_predimed"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "index.html"
     },
     {
@@ -3912,5 +4000,5 @@
       "source_file": ".claude/skills/graphify/SKILL.md"
     }
   ],
-  "built_at_commit": "632e0c24dcdbc13afb166b13a71a316c1b1281cc"
+  "built_at_commit": "71063f689a95159e809063055819d9ee52fca3f4"
 }

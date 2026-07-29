@@ -259,6 +259,12 @@
               catégorie de risque). La courbe pointillée et le point clair rappellent la
               situation actuelle du patient ; le point rouge = valeurs simulées.
             </div>
+
+            <div style="margin-top:14px">
+              <button type="button" class="report-btn" id="reportBtn">
+                📄 Générer le rapport pédagogique LDL
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -451,6 +457,17 @@
       </div>
     </section>
   </main>
+
+  <!-- ================= RAPPORT PÉDAGOGIQUE (modal imprimable) ================= -->
+  <div class="report-overlay" id="reportOverlay">
+    <div class="report-modal">
+      <div class="report-actions no-print">
+        <button type="button" id="reportPrint">🖨️ Imprimer / Enregistrer en PDF</button>
+        <button type="button" id="reportClose">✕ Fermer</button>
+      </div>
+      <div id="reportDoc"></div>
+    </div>
+  </div>
 
   <footer class="site">
     <div class="wrap foot">
