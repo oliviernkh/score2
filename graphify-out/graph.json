@@ -4,53 +4,58 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "cardiovascular_risk_assessment_flow",
-        "label": "Cardiovascular Risk Assessment Flow",
+        "id": "auth_flow",
+        "label": "Dr ONKH Authentication Flow",
         "nodes": [
-          "index_html_sexSeg",
-          "index_html_age",
-          "index_html_sbp",
-          "index_html_smokeSeg",
-          "index_html_nonhdl",
-          "index_html_hdl",
-          "index_html_ldl",
-          "index_html_region",
-          "index_html_resultBody",
-          "concept_score2",
-          "concept_score2_op"
+          "index_html_valid",
+          "index_html_goToPortal",
+          "index_html__drOnkh",
+          "index_html_reconnectBtn",
+          "concept_portail_dr_onkh"
         ],
         "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.9,
         "source_file": "index.html"
       },
       {
-        "id": "simulation_controls_group",
-        "label": "Simulation Controls Group",
+        "id": "score2_simulation_flow",
+        "label": "SCORE2 Simulation Flow",
         "nodes": [
           "index_html_ldlSlider",
           "index_html_sbpSlider",
           "index_html_simSmokeSeg",
-          "index_html_simReset"
+          "index_html_simBaseVal",
+          "index_html_simRiskVal",
+          "index_html_simDelta",
+          "index_html_simReset",
+          "index_html_chart",
+          "concept_score2"
         ],
         "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.8,
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.85,
         "source_file": "index.html"
       },
       {
-        "id": "lifestyle_intervention_flow",
-        "label": "Lifestyle Intervention Flow",
+        "id": "lifestyle_risk_flow",
+        "label": "Lifestyle Risk Modification Flow",
         "nodes": [
           "index_html_weight",
           "index_html_height",
           "index_html_weightSlider",
           "index_html_dietSeg",
+          "index_html_bmiNow",
+          "index_html_bmiTarget",
+          "index_html_wfNow",
+          "index_html_wfRf",
+          "index_html_wfDiet",
+          "index_html_lsDelta",
           "concept_predimed"
         ],
         "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.8,
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.85,
         "source_file": "index.html"
       },
       {
@@ -126,7 +131,7 @@
       "source_file": "js/score2.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "score2.js",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2"
@@ -137,7 +142,7 @@
       "source_file": "js/score2.js",
       "source_location": "L89",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "cholgltommol()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_cholgltommol"
@@ -148,7 +153,7 @@
       "source_file": "js/score2.js",
       "source_location": "L90",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "cholmmoltogl()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_cholmmoltogl"
@@ -159,7 +164,7 @@
       "source_file": "js/score2.js",
       "source_location": "L105",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "riskfraction()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_riskfraction"
@@ -170,7 +175,7 @@
       "source_file": "js/score2.js",
       "source_location": "L172",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "riskcategory()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_riskcategory"
@@ -181,7 +186,7 @@
       "source_file": "js/score2.js",
       "source_location": "L187",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "categorybounds()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_categorybounds"
@@ -192,7 +197,7 @@
       "source_file": "js/score2.js",
       "source_location": "L194",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "compute()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_compute"
@@ -203,7 +208,7 @@
       "source_file": "js/score2.js",
       "source_location": "L214",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "riskforldl()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_riskforldl"
@@ -214,7 +219,7 @@
       "source_file": "js/score2.js",
       "source_location": "L222",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "ldlseries()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_ldlseries"
@@ -225,7 +230,7 @@
       "source_file": "js/score2.js",
       "source_location": "L233",
       "_origin": "ast",
-      "community": 2,
+      "community": 4,
       "norm_label": "selftest()",
       "community_name": "Risk Calculation Engine",
       "id": "js_score2_selftest"
@@ -234,7 +239,7 @@
       "label": "SCORE2 & SCORE2-OP README",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "score2 & score2-op readme",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme"
@@ -243,7 +248,7 @@
       "label": "SCORE2 Algorithm",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "score2 algorithm",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_score2"
@@ -252,7 +257,7 @@
       "label": "SCORE2-OP Algorithm",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "score2-op algorithm",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_score2_op"
@@ -261,7 +266,7 @@
       "label": "LDL/PAS/Tabac Simulation",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "ldl/pas/tabac simulation",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_simulation"
@@ -270,7 +275,7 @@
       "label": "Lifestyle Module (Weight/IMC/Mediterranean Diet)",
       "file_type": "concept",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "lifestyle module (weight/imc/mediterranean diet)",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_lifestyle_module"
@@ -279,7 +284,7 @@
       "label": "ESC 2021 Guidelines",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "esc 2021 guidelines",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_esc_2021"
@@ -288,7 +293,7 @@
       "label": "ESC 2023 Guidelines",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "esc 2023 guidelines",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_esc_2023"
@@ -297,7 +302,7 @@
       "label": "PREDIMED Trial",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "predimed trial",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_predimed"
@@ -306,7 +311,7 @@
       "label": "Neter et al. (Hypertension 2003)",
       "file_type": "document",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "neter et al. (hypertension 2003)",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_neter_2003"
@@ -315,7 +320,7 @@
       "label": "Score2.selfTest()",
       "file_type": "code",
       "source_file": "README.md",
-      "community": 3,
+      "community": 5,
       "norm_label": "score2.selftest()",
       "community_name": "Cardiovascular Risk Guidelines",
       "id": "readme_self_test"
@@ -329,7 +334,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "graphify",
       "id": "claude_graphify"
     },
@@ -342,7 +347,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "knowledge graph",
       "id": "claude_skills_graphify_skill_knowledge_graph"
     },
@@ -355,7 +360,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "community detection",
       "id": "claude_skills_graphify_skill_community_detection"
     },
@@ -368,7 +373,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "cross-file relationships",
       "id": "claude_skills_graphify_skill_cross_file_relationships"
     },
@@ -381,7 +386,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "graphify query",
       "id": "claude_skills_graphify_skill_graphify_query"
     },
@@ -394,7 +399,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "graphify path",
       "id": "claude_skills_graphify_skill_graphify_path"
     },
@@ -407,7 +412,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "graphify explain",
       "id": "claude_skills_graphify_skill_graphify_explain"
     },
@@ -420,7 +425,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 13,
+      "community": 0,
       "norm_label": "graphify update",
       "id": "claude_skills_graphify_skill_graphify_update"
     },
@@ -433,7 +438,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "extraction (ast + semantic)",
       "id": "claude_skills_graphify_skill_extraction"
     },
@@ -446,7 +451,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "structural extraction (ast)",
       "id": "claude_skills_graphify_skill_structural_extraction"
     },
@@ -459,7 +464,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "semantic extraction (llm)",
       "id": "claude_skills_graphify_skill_semantic_extraction"
     },
@@ -472,7 +477,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "gemini backend",
       "id": "claude_skills_graphify_skill_gemini_backend"
     },
@@ -485,7 +490,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "hyperedges",
       "id": "claude_skills_graphify_skill_hyperedges"
     },
@@ -498,7 +503,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "community labeling",
       "id": "claude_skills_graphify_skill_community_labeling"
     },
@@ -511,7 +516,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "obsidian vault export",
       "id": "claude_skills_graphify_skill_obsidian_vault"
     },
@@ -524,7 +529,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "html export",
       "id": "claude_skills_graphify_skill_html_export"
     },
@@ -537,7 +542,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "wiki export",
       "id": "claude_skills_graphify_skill_wiki_export"
     },
@@ -550,7 +555,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "neo4j export",
       "id": "claude_skills_graphify_skill_neo4j_export"
     },
@@ -563,7 +568,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "falkordb export",
       "id": "claude_skills_graphify_skill_falkordb_export"
     },
@@ -576,7 +581,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "svg export",
       "id": "claude_skills_graphify_skill_svg_export"
     },
@@ -589,7 +594,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "graphml export",
       "id": "claude_skills_graphify_skill_graphml_export"
     },
@@ -602,7 +607,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "mcp server",
       "id": "claude_skills_graphify_skill_mcp_server"
     },
@@ -615,7 +620,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "token reduction benchmark",
       "id": "claude_skills_graphify_skill_token_reduction_benchmark"
     },
@@ -628,7 +633,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "github clone",
       "id": "claude_skills_graphify_skill_github_clone"
     },
@@ -641,7 +646,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "cross-repo merge",
       "id": "claude_skills_graphify_skill_cross_repo_merge"
     },
@@ -654,7 +659,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 0,
       "norm_label": "git commit hook",
       "id": "claude_skills_graphify_skill_git_commit_hook"
     },
@@ -667,7 +672,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 0,
       "norm_label": "claude.md integration",
       "id": "claude_skills_graphify_skill_claude_integration"
     },
@@ -680,7 +685,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "honesty rules",
       "id": "claude_skills_graphify_skill_honesty_rules"
     },
@@ -693,7 +698,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "extraction specification",
       "id": "claude_skills_graphify_references_extraction_spec"
     },
@@ -706,7 +711,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "github and merge reference",
       "id": "claude_skills_graphify_references_github_and_merge"
     },
@@ -719,7 +724,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "add/watch reference",
       "id": "claude_skills_graphify_references_add_watch"
     },
@@ -732,7 +737,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 5,
+      "community": 0,
       "norm_label": "exports reference",
       "id": "claude_skills_graphify_references_exports"
     },
@@ -758,7 +763,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 13,
+      "community": 0,
       "norm_label": "update reference",
       "id": "claude_skills_graphify_references_update"
     },
@@ -771,7 +776,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 0,
       "norm_label": "query reference",
       "id": "claude_skills_graphify_references_query"
     },
@@ -784,7 +789,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 0,
       "norm_label": "hooks reference",
       "id": "claude_skills_graphify_references_hooks"
     },
@@ -797,7 +802,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "update graphify knowledge graph job",
       "id": "github_workflows_graphify_yml_update_graph_job"
     },
@@ -810,7 +815,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 7,
+      "community": 6,
       "norm_label": "mistral backend",
       "id": "github_workflows_graphify_yml_mistral_backend"
     },
@@ -823,7 +828,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "deep mode",
       "id": "claude_skills_graphify_skill_deep_mode"
     },
@@ -836,7 +841,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "directed graph",
       "id": "claude_skills_graphify_skill_directed_graph"
     },
@@ -849,7 +854,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "whisper model",
       "id": "claude_skills_graphify_skill_whisper_model"
     },
@@ -862,7 +867,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 13,
+      "community": 0,
       "norm_label": "cluster-only mode",
       "id": "claude_skills_graphify_skill_cluster_only"
     },
@@ -875,7 +880,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 0,
       "norm_label": "graph health check",
       "id": "claude_skills_graphify_skill_graph_health_check"
     },
@@ -888,7 +893,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 14,
       "norm_label": "claude auto-debug workflow",
       "id": "github_workflows_claude_auto_debug"
     },
@@ -901,7 +906,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "debug-ci-failure job",
       "id": "github_workflows_claude_auto_debug_debug_ci_failure"
     },
@@ -914,7 +919,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "triage-issue job",
       "id": "github_workflows_claude_auto_debug_triage_issue"
     },
@@ -927,7 +932,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "actions/checkout@v4",
       "id": "actions_checkout_v4"
     },
@@ -940,7 +945,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "anthropics/claude-code-action@v1",
       "id": "anthropics_claude_code_action_v1"
     },
@@ -952,7 +957,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 14,
       "norm_label": "ci workflow",
       "id": "github_workflows_ci"
     },
@@ -962,9 +967,9 @@
       "source_file": "js/app.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "js_app",
-      "community": 0,
-      "norm_label": "app.js"
+      "community": 1,
+      "norm_label": "app.js",
+      "id": "js_app"
     },
     {
       "label": "fmtPct()",
@@ -972,9 +977,9 @@
       "source_file": "js/app.js",
       "source_location": "L56",
       "_origin": "ast",
-      "id": "js_app_fmtpct",
-      "community": 0,
-      "norm_label": "fmtpct()"
+      "community": 1,
+      "norm_label": "fmtpct()",
+      "id": "js_app_fmtpct"
     },
     {
       "label": "fmtG()",
@@ -982,9 +987,9 @@
       "source_file": "js/app.js",
       "source_location": "L59",
       "_origin": "ast",
-      "id": "js_app_fmtg",
-      "community": 0,
-      "norm_label": "fmtg()"
+      "community": 1,
+      "norm_label": "fmtg()",
+      "id": "js_app_fmtg"
     },
     {
       "label": "fmt1()",
@@ -992,9 +997,9 @@
       "source_file": "js/app.js",
       "source_location": "L62",
       "_origin": "ast",
-      "id": "js_app_fmt1",
-      "community": 0,
-      "norm_label": "fmt1()"
+      "community": 1,
+      "norm_label": "fmt1()",
+      "id": "js_app_fmt1"
     },
     {
       "label": "bindSeg()",
@@ -1002,9 +1007,9 @@
       "source_file": "js/app.js",
       "source_location": "L67",
       "_origin": "ast",
-      "id": "js_app_bindseg",
-      "community": 0,
-      "norm_label": "bindseg()"
+      "community": 1,
+      "norm_label": "bindseg()",
+      "id": "js_app_bindseg"
     },
     {
       "label": "setSegPressed()",
@@ -1012,9 +1017,9 @@
       "source_file": "js/app.js",
       "source_location": "L80",
       "_origin": "ast",
-      "id": "js_app_setsegpressed",
-      "community": 0,
-      "norm_label": "setsegpressed()"
+      "community": 1,
+      "norm_label": "setsegpressed()",
+      "id": "js_app_setsegpressed"
     },
     {
       "label": "num()",
@@ -1022,9 +1027,9 @@
       "source_file": "js/app.js",
       "source_location": "L88",
       "_origin": "ast",
-      "id": "js_app_num",
-      "community": 0,
-      "norm_label": "num()"
+      "community": 1,
+      "norm_label": "num()",
+      "id": "js_app_num"
     },
     {
       "label": "anchorLdl()",
@@ -1032,9 +1037,9 @@
       "source_file": "js/app.js",
       "source_location": "L96",
       "_origin": "ast",
-      "id": "js_app_anchorldl",
-      "community": 0,
-      "norm_label": "anchorldl()"
+      "community": 1,
+      "norm_label": "anchorldl()",
+      "id": "js_app_anchorldl"
     },
     {
       "label": "patientParams()",
@@ -1042,9 +1047,9 @@
       "source_file": "js/app.js",
       "source_location": "L99",
       "_origin": "ast",
-      "id": "js_app_patientparams",
-      "community": 0,
-      "norm_label": "patientparams()"
+      "community": 1,
+      "norm_label": "patientparams()",
+      "id": "js_app_patientparams"
     },
     {
       "label": "simChartParams()",
@@ -1052,9 +1057,9 @@
       "source_file": "js/app.js",
       "source_location": "L106",
       "_origin": "ast",
-      "id": "js_app_simchartparams",
-      "community": 0,
-      "norm_label": "simchartparams()"
+      "community": 1,
+      "norm_label": "simchartparams()",
+      "id": "js_app_simchartparams"
     },
     {
       "label": "recompute()",
@@ -1062,9 +1067,9 @@
       "source_file": "js/app.js",
       "source_location": "L114",
       "_origin": "ast",
-      "id": "js_app_recompute",
-      "community": 0,
-      "norm_label": "recompute()"
+      "community": 1,
+      "norm_label": "recompute()",
+      "id": "js_app_recompute"
     },
     {
       "label": "renderResult()",
@@ -1072,9 +1077,9 @@
       "source_file": "js/app.js",
       "source_location": "L139",
       "_origin": "ast",
-      "id": "js_app_renderresult",
-      "community": 0,
-      "norm_label": "renderresult()"
+      "community": 1,
+      "norm_label": "renderresult()",
+      "id": "js_app_renderresult"
     },
     {
       "label": "renderGauge()",
@@ -1082,9 +1087,9 @@
       "source_file": "js/app.js",
       "source_location": "L167",
       "_origin": "ast",
-      "id": "js_app_rendergauge",
-      "community": 0,
-      "norm_label": "rendergauge()"
+      "community": 1,
+      "norm_label": "rendergauge()",
+      "id": "js_app_rendergauge"
     },
     {
       "label": "simulatedRisk()",
@@ -1092,9 +1097,9 @@
       "source_file": "js/app.js",
       "source_location": "L190",
       "_origin": "ast",
-      "id": "js_app_simulatedrisk",
-      "community": 0,
-      "norm_label": "simulatedrisk()"
+      "community": 1,
+      "norm_label": "simulatedrisk()",
+      "id": "js_app_simulatedrisk"
     },
     {
       "label": "renderEducation()",
@@ -1102,9 +1107,9 @@
       "source_file": "js/app.js",
       "source_location": "L199",
       "_origin": "ast",
-      "id": "js_app_rendereducation",
-      "community": 0,
-      "norm_label": "rendereducation()"
+      "community": 1,
+      "norm_label": "rendereducation()",
+      "id": "js_app_rendereducation"
     },
     {
       "label": "renderChart()",
@@ -1112,9 +1117,9 @@
       "source_file": "js/app.js",
       "source_location": "L228",
       "_origin": "ast",
-      "id": "js_app_renderchart",
-      "community": 0,
-      "norm_label": "renderchart()"
+      "community": 1,
+      "norm_label": "renderchart()",
+      "id": "js_app_renderchart"
     },
     {
       "label": "buildReport()",
@@ -1122,9 +1127,9 @@
       "source_file": "js/app.js",
       "source_location": "L316",
       "_origin": "ast",
-      "id": "js_app_buildreport",
-      "community": 0,
-      "norm_label": "buildreport()"
+      "community": 1,
+      "norm_label": "buildreport()",
+      "id": "js_app_buildreport"
     },
     {
       "label": "renderLifestyle()",
@@ -1132,9 +1137,9 @@
       "source_file": "js/app.js",
       "source_location": "L410",
       "_origin": "ast",
-      "id": "js_app_renderlifestyle",
-      "community": 0,
-      "norm_label": "renderlifestyle()"
+      "community": 1,
+      "norm_label": "renderlifestyle()",
+      "id": "js_app_renderlifestyle"
     },
     {
       "label": "syncTargetSlider()",
@@ -1142,9 +1147,9 @@
       "source_file": "js/app.js",
       "source_location": "L477",
       "_origin": "ast",
-      "id": "js_app_synctargetslider",
-      "community": 0,
-      "norm_label": "synctargetslider()"
+      "community": 1,
+      "norm_label": "synctargetslider()",
+      "id": "js_app_synctargetslider"
     },
     {
       "label": "syncSbpSlider()",
@@ -1152,9 +1157,9 @@
       "source_file": "js/app.js",
       "source_location": "L485",
       "_origin": "ast",
-      "id": "js_app_syncsbpslider",
-      "community": 0,
-      "norm_label": "syncsbpslider()"
+      "community": 1,
+      "norm_label": "syncsbpslider()",
+      "id": "js_app_syncsbpslider"
     },
     {
       "label": "syncWeightSlider()",
@@ -1162,9 +1167,9 @@
       "source_file": "js/app.js",
       "source_location": "L491",
       "_origin": "ast",
-      "id": "js_app_syncweightslider",
-      "community": 0,
-      "norm_label": "syncweightslider()"
+      "community": 1,
+      "norm_label": "syncweightslider()",
+      "id": "js_app_syncweightslider"
     },
     {
       "label": "pctOfSlider()",
@@ -1172,9 +1177,9 @@
       "source_file": "js/app.js",
       "source_location": "L503",
       "_origin": "ast",
-      "id": "js_app_pctofslider",
-      "community": 0,
-      "norm_label": "pctofslider()"
+      "community": 1,
+      "norm_label": "pctofslider()",
+      "id": "js_app_pctofslider"
     },
     {
       "label": "init()",
@@ -1182,9 +1187,9 @@
       "source_file": "js/app.js",
       "source_location": "L509",
       "_origin": "ast",
-      "id": "js_app_init",
-      "community": 0,
-      "norm_label": "init()"
+      "community": 1,
+      "norm_label": "init()",
+      "id": "js_app_init"
     },
     {
       "label": "lifestyle.js",
@@ -1193,37 +1198,37 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "js_lifestyle",
-      "community": 10,
+      "community": 12,
       "norm_label": "lifestyle.js"
     },
     {
       "label": "bmi()",
       "file_type": "code",
       "source_file": "js/lifestyle.js",
-      "source_location": "L56",
+      "source_location": "L57",
       "_origin": "ast",
       "id": "js_lifestyle_bmi",
-      "community": 10,
+      "community": 12,
       "norm_label": "bmi()"
     },
     {
       "label": "bmiClass()",
       "file_type": "code",
       "source_file": "js/lifestyle.js",
-      "source_location": "L62",
+      "source_location": "L63",
       "_origin": "ast",
       "id": "js_lifestyle_bmiclass",
-      "community": 10,
+      "community": 12,
       "norm_label": "bmiclass()"
     },
     {
       "label": "modifiers()",
       "file_type": "code",
       "source_file": "js/lifestyle.js",
-      "source_location": "L73",
+      "source_location": "L74",
       "_origin": "ast",
       "id": "js_lifestyle_modifiers",
-      "community": 10,
+      "community": 12,
       "norm_label": "modifiers()"
     },
     {
@@ -1236,347 +1241,704 @@
       "author": null,
       "contributor": null,
       "id": "index_html",
-      "community": 4,
+      "community": 7,
       "norm_label": "index.html (main entry point)"
     },
     {
       "label": "valid (Token Validation Function)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "script",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_valid",
-      "community": 4,
+      "community": 7,
       "norm_label": "valid (token validation function)"
     },
     {
       "label": "goToPortal (Redirect to Portal)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "script",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_goToPortal",
-      "community": 4,
+      "community": 7,
       "norm_label": "gotoportal (redirect to portal)"
     },
     {
-      "label": "__drOnkh (Global Config Object)",
+      "label": "__drOnkh (Global Namespace Object)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "script",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html__drOnkh",
-      "community": 4,
-      "norm_label": "__dronkh (global config object)"
+      "community": 7,
+      "norm_label": "__dronkh (global namespace object)"
     },
     {
-      "label": "sexSeg (Sex Selection Segment)",
+      "label": "logoutScreen (Logout Overlay)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#logoutScreen",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_logoutScreen",
+      "community": 19,
+      "norm_label": "logoutscreen (logout overlay)"
+    },
+    {
+      "label": "reconnectBtn (Reconnect Button)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "a#reconnectBtn",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_reconnectBtn",
+      "community": 7,
+      "norm_label": "reconnectbtn (reconnect button)"
+    },
+    {
+      "label": "sexSeg (Sex Selection Segmented Control)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#sexSeg",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_sexSeg",
-      "community": 24,
-      "norm_label": "sexseg (sex selection segment)"
+      "community": 2,
+      "norm_label": "sexseg (sex selection segmented control)"
     },
     {
       "label": "age (Age Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#age",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_age",
-      "community": 17,
+      "community": 2,
       "norm_label": "age (age input field)"
     },
     {
       "label": "sbp (Systolic Blood Pressure Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#sbp",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_sbp",
-      "community": 23,
+      "community": 2,
       "norm_label": "sbp (systolic blood pressure input field)"
     },
     {
-      "label": "smokeSeg (Smoking Status Segment)",
+      "label": "smokeSeg (Smoking Status Segmented Control)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#smokeSeg",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_smokeSeg",
-      "community": 25,
-      "norm_label": "smokeseg (smoking status segment)"
+      "community": 2,
+      "norm_label": "smokeseg (smoking status segmented control)"
     },
     {
       "label": "nonhdl (Non-HDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#nonhdl",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_nonhdl",
-      "community": 21,
+      "community": 2,
       "norm_label": "nonhdl (non-hdl cholesterol input field)"
     },
     {
       "label": "hdl (HDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#hdl",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_hdl",
-      "community": 18,
+      "community": 2,
       "norm_label": "hdl (hdl cholesterol input field)"
     },
     {
       "label": "ldl (LDL Cholesterol Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#ldl",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_ldl",
-      "community": 20,
+      "community": 2,
       "norm_label": "ldl (ldl cholesterol input field)"
+    },
+    {
+      "label": "ldlWarn (LDL Warning Message)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#ldlWarn",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_ldlWarn",
+      "community": 18,
+      "norm_label": "ldlwarn (ldl warning message)"
+    },
+    {
+      "label": "derived (Derived Values Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#derived",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_derived",
+      "community": 2,
+      "norm_label": "derived (derived values display)"
     },
     {
       "label": "region (Risk Region Selector)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "select#region",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_region",
-      "community": 22,
+      "community": 2,
       "norm_label": "region (risk region selector)"
     },
     {
-      "label": "resultBody (Risk Result Display)",
+      "label": "resultPlaceholder (Result Placeholder)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#resultPlaceholder",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_resultPlaceholder",
+      "community": 22,
+      "norm_label": "resultplaceholder (result placeholder)"
+    },
+    {
+      "label": "resultBody (Result Display Container)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_resultBody",
-      "community": 6,
-      "norm_label": "resultbody (risk result display)"
+      "community": 2,
+      "norm_label": "resultbody (result display container)"
+    },
+    {
+      "label": "riskBig (Main Risk Value Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#riskBig",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_riskBig",
+      "community": 2,
+      "norm_label": "riskbig (main risk value display)"
+    },
+    {
+      "label": "riskCap (Risk Caption)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "p#riskCap",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_riskCap",
+      "community": 2,
+      "norm_label": "riskcap (risk caption)"
+    },
+    {
+      "label": "catBadge (Risk Category Badge)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#catBadge",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_catBadge",
+      "community": 2,
+      "norm_label": "catbadge (risk category badge)"
+    },
+    {
+      "label": "opNote (SCORE2-OP Note)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#opNote",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_opNote",
+      "community": 2,
+      "norm_label": "opnote (score2-op note)"
+    },
+    {
+      "label": "gaugeTrack (Risk Gauge Track)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#gaugeTrack",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_gaugeTrack",
+      "community": 2,
+      "norm_label": "gaugetrack (risk gauge track)"
+    },
+    {
+      "label": "gaugeScale (Risk Gauge Scale)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#gaugeScale",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_gaugeScale",
+      "community": 2,
+      "norm_label": "gaugescale (risk gauge scale)"
     },
     {
       "label": "ldlSlider (LDL Simulation Slider)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#ldlSlider",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_ldlSlider",
-      "community": 6,
+      "community": 3,
       "norm_label": "ldlslider (ldl simulation slider)"
+    },
+    {
+      "label": "simLdlVal (Simulated LDL Value Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "b#simLdlVal",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_simLdlVal",
+      "community": 3,
+      "norm_label": "simldlval (simulated ldl value display)"
     },
     {
       "label": "sbpSlider (Systolic BP Simulation Slider)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#sbpSlider",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_sbpSlider",
-      "community": 6,
+      "community": 3,
       "norm_label": "sbpslider (systolic bp simulation slider)"
     },
     {
-      "label": "simSmokeSeg (Simulated Smoking Status Segment)",
+      "label": "simSbpVal (Simulated SBP Value Display)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "b#simSbpVal",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_simSbpVal",
+      "community": 3,
+      "norm_label": "simsbpval (simulated sbp value display)"
+    },
+    {
+      "label": "simSmokeSeg (Simulated Smoking Status Control)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#simSmokeSeg",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_simSmokeSeg",
-      "community": 6,
-      "norm_label": "simsmokeseg (simulated smoking status segment)"
+      "community": 3,
+      "norm_label": "simsmokeseg (simulated smoking status control)"
     },
     {
-      "label": "simReset (Simulation Reset Button)",
+      "label": "simBaseVal (Current Risk Value Display)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#simBaseVal",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_simBaseVal",
+      "community": 3,
+      "norm_label": "simbaseval (current risk value display)"
+    },
+    {
+      "label": "simRiskVal (Simulated Risk Value Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#simRiskVal",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_simRiskVal",
+      "community": 3,
+      "norm_label": "simriskval (simulated risk value display)"
+    },
+    {
+      "label": "simDelta (Risk Delta Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#simDelta",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_simDelta",
+      "community": 3,
+      "norm_label": "simdelta (risk delta display)"
+    },
+    {
+      "label": "simReset (Reset Simulation Button)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "button#simReset",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_simReset",
-      "community": 6,
-      "norm_label": "simreset (simulation reset button)"
+      "community": 3,
+      "norm_label": "simreset (reset simulation button)"
     },
     {
-      "label": "reportBtn (Generate LDL Report Button)",
+      "label": "chart (Risk Simulation Chart)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#chart",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_chart",
+      "community": 3,
+      "norm_label": "chart (risk simulation chart)"
+    },
+    {
+      "label": "reportBtn (Generate Report Button)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "button#reportBtn",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_reportBtn",
-      "community": 6,
-      "norm_label": "reportbtn (generate ldl report button)"
+      "community": 21,
+      "norm_label": "reportbtn (generate report button)"
     },
     {
       "label": "weight (Weight Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#weight",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_weight",
-      "community": 26,
+      "community": 10,
       "norm_label": "weight (weight input field)"
     },
     {
       "label": "height (Height Input Field)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#height",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_height",
-      "community": 19,
+      "community": 10,
       "norm_label": "height (height input field)"
     },
     {
       "label": "weightSlider (Weight Target Slider)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#weightSlider",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_weightSlider",
-      "community": 6,
+      "community": 11,
       "norm_label": "weightslider (weight target slider)"
     },
     {
-      "label": "dietSeg (Mediterranean Diet Adherence Segment)",
+      "label": "weightTargetLbl (Weight Target Label)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "span#weightTargetLbl",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_weightTargetLbl",
+      "community": 11,
+      "norm_label": "weighttargetlbl (weight target label)"
+    },
+    {
+      "label": "dietSeg (Mediterranean Diet Adherence Control)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#dietSeg",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "index_html_dietSeg",
-      "community": 14,
-      "norm_label": "dietseg (mediterranean diet adherence segment)"
+      "community": 13,
+      "norm_label": "dietseg (mediterranean diet adherence control)"
     },
     {
-      "label": "logoutScreen (Logout Screen)",
+      "label": "dietLevelDesc (Diet Level Description)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#dietLevelDesc",
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_logoutScreen",
-      "community": 4,
-      "norm_label": "logoutscreen (logout screen)"
+      "id": "index_html_dietLevelDesc",
+      "community": 13,
+      "norm_label": "dietleveldesc (diet level description)"
     },
     {
-      "label": "reconnectBtn (Reconnect Button)",
+      "label": "bmiNow (Current BMI Display)",
       "file_type": "code",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "span#bmiNow",
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_reconnectBtn",
-      "community": 4,
-      "norm_label": "reconnectbtn (reconnect button)"
+      "id": "index_html_bmiNow",
+      "community": 10,
+      "norm_label": "bminow (current bmi display)"
+    },
+    {
+      "label": "bmiChipNow (Current BMI Category Chip)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#bmiChipNow",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_bmiChipNow",
+      "community": 10,
+      "norm_label": "bmichipnow (current bmi category chip)"
+    },
+    {
+      "label": "bmiArrow (BMI Change Arrow)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#bmiArrow",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_bmiArrow",
+      "community": 17,
+      "norm_label": "bmiarrow (bmi change arrow)"
+    },
+    {
+      "label": "bmiTarget (Target BMI Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#bmiTarget",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_bmiTarget",
+      "community": 11,
+      "norm_label": "bmitarget (target bmi display)"
+    },
+    {
+      "label": "bmiChipTarget (Target BMI Category Chip)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#bmiChipTarget",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_bmiChipTarget",
+      "community": 11,
+      "norm_label": "bmichiptarget (target bmi category chip)"
+    },
+    {
+      "label": "wfNow (Current Risk Waterfall Value)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#wfNow",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfNow",
+      "community": 8,
+      "norm_label": "wfnow (current risk waterfall value)"
+    },
+    {
+      "label": "wfNowBar (Current Risk Waterfall Bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#wfNowBar",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfNowBar",
+      "community": 8,
+      "norm_label": "wfnowbar (current risk waterfall bar)"
+    },
+    {
+      "label": "wfRf (Risk Factor Improved Waterfall Value)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#wfRf",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfRf",
+      "community": 15,
+      "norm_label": "wfrf (risk factor improved waterfall value)"
+    },
+    {
+      "label": "wfRfBar (Risk Factor Improved Waterfall Bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#wfRfBar",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfRfBar",
+      "community": 15,
+      "norm_label": "wfrfbar (risk factor improved waterfall bar)"
+    },
+    {
+      "label": "wfDiet (Diet Benefit Waterfall Value)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#wfDiet",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfDiet",
+      "community": 8,
+      "norm_label": "wfdiet (diet benefit waterfall value)"
+    },
+    {
+      "label": "wfDietBar (Diet Benefit Waterfall Bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "div#wfDietBar",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_wfDietBar",
+      "community": 8,
+      "norm_label": "wfdietbar (diet benefit waterfall bar)"
+    },
+    {
+      "label": "lsDelta (Lifestyle Risk Delta Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#lsDelta",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_lsDelta",
+      "community": 8,
+      "norm_label": "lsdelta (lifestyle risk delta display)"
+    },
+    {
+      "label": "modelBadge (Model Badge Display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": "span#modelBadge",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "index_html_modelBadge",
+      "community": 20,
+      "norm_label": "modelbadge (model badge display)"
     },
     {
       "label": "SCORE2 (Cardiovascular Risk Algorithm)",
       "file_type": "concept",
       "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
+      "source_location": "section.about",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "concept_score2",
-      "community": 6,
+      "community": 2,
       "norm_label": "score2 (cardiovascular risk algorithm)"
     },
     {
-      "label": "SCORE2-OP (Cardiovascular Risk Algorithm for Older Patients)",
+      "label": "SCORE2-OP (Cardiovascular Risk Algorithm for Older Persons)",
       "file_type": "concept",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "section.about",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "concept_score2_op",
-      "community": 4,
-      "norm_label": "score2-op (cardiovascular risk algorithm for older patients)"
+      "community": 2,
+      "norm_label": "score2-op (cardiovascular risk algorithm for older persons)"
     },
     {
-      "label": "ESC 2021/2023 Guidelines",
-      "file_type": "document",
-      "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "concept_esc_2021_2023",
-      "community": 4,
-      "norm_label": "esc 2021/2023 guidelines"
-    },
-    {
-      "label": "Dr ONKH Portal",
+      "label": "ESC 2021 Guidelines (Cardiovascular Risk Categories)",
       "file_type": "concept",
       "source_file": "index.html",
-      "source_location": null,
-      "source_url": null,
+      "source_location": "section.about",
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_portail_dr_onkh",
-      "community": 4,
-      "norm_label": "dr onkh portal"
+      "id": "concept_esc_2021",
+      "community": 2,
+      "norm_label": "esc 2021 guidelines (cardiovascular risk categories)"
     },
     {
       "label": "PREDIMED Trial (Mediterranean Diet Study)",
-      "file_type": "document",
+      "file_type": "concept",
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "section.lifestyle",
       "captured_at": null,
       "author": null,
       "contributor": null,
       "id": "concept_predimed",
-      "community": 14,
+      "community": 13,
       "norm_label": "predimed trial (mediterranean diet study)"
+    },
+    {
+      "label": "Dr ONKH Portal (SSO Provider)",
+      "file_type": "concept",
+      "source_file": "index.html",
+      "source_location": "script",
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "concept_portail_dr_onkh",
+      "community": 7,
+      "norm_label": "dr onkh portal (sso provider)"
     }
   ],
   "links": [
@@ -2414,9 +2776,9 @@
       "source_location": "L96",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_anchorldl",
-      "confidence_score": 1.0
+      "target": "js_app_anchorldl"
     },
     {
       "relation": "contains",
@@ -2425,9 +2787,9 @@
       "source_location": "L67",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_bindseg",
-      "confidence_score": 1.0
+      "target": "js_app_bindseg"
     },
     {
       "relation": "contains",
@@ -2436,9 +2798,9 @@
       "source_location": "L316",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_buildreport",
-      "confidence_score": 1.0
+      "target": "js_app_buildreport"
     },
     {
       "relation": "contains",
@@ -2447,9 +2809,9 @@
       "source_location": "L62",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_fmt1",
-      "confidence_score": 1.0
+      "target": "js_app_fmt1"
     },
     {
       "relation": "contains",
@@ -2458,9 +2820,9 @@
       "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "contains",
@@ -2469,9 +2831,9 @@
       "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "contains",
@@ -2480,9 +2842,9 @@
       "source_location": "L509",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_init",
-      "confidence_score": 1.0
+      "target": "js_app_init"
     },
     {
       "relation": "contains",
@@ -2491,9 +2853,9 @@
       "source_location": "L88",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_num",
-      "confidence_score": 1.0
+      "target": "js_app_num"
     },
     {
       "relation": "contains",
@@ -2502,9 +2864,9 @@
       "source_location": "L99",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_patientparams",
-      "confidence_score": 1.0
+      "target": "js_app_patientparams"
     },
     {
       "relation": "contains",
@@ -2513,9 +2875,9 @@
       "source_location": "L503",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_pctofslider",
-      "confidence_score": 1.0
+      "target": "js_app_pctofslider"
     },
     {
       "relation": "contains",
@@ -2524,9 +2886,9 @@
       "source_location": "L114",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_recompute",
-      "confidence_score": 1.0
+      "target": "js_app_recompute"
     },
     {
       "relation": "contains",
@@ -2535,9 +2897,9 @@
       "source_location": "L228",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_renderchart",
-      "confidence_score": 1.0
+      "target": "js_app_renderchart"
     },
     {
       "relation": "contains",
@@ -2546,9 +2908,9 @@
       "source_location": "L199",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_rendereducation",
-      "confidence_score": 1.0
+      "target": "js_app_rendereducation"
     },
     {
       "relation": "contains",
@@ -2557,9 +2919,9 @@
       "source_location": "L167",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_rendergauge",
-      "confidence_score": 1.0
+      "target": "js_app_rendergauge"
     },
     {
       "relation": "contains",
@@ -2568,9 +2930,9 @@
       "source_location": "L410",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_renderlifestyle",
-      "confidence_score": 1.0
+      "target": "js_app_renderlifestyle"
     },
     {
       "relation": "contains",
@@ -2579,9 +2941,9 @@
       "source_location": "L139",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_renderresult",
-      "confidence_score": 1.0
+      "target": "js_app_renderresult"
     },
     {
       "relation": "contains",
@@ -2590,9 +2952,9 @@
       "source_location": "L80",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_setsegpressed",
-      "confidence_score": 1.0
+      "target": "js_app_setsegpressed"
     },
     {
       "relation": "contains",
@@ -2601,9 +2963,9 @@
       "source_location": "L106",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_simchartparams",
-      "confidence_score": 1.0
+      "target": "js_app_simchartparams"
     },
     {
       "relation": "contains",
@@ -2612,9 +2974,9 @@
       "source_location": "L190",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_simulatedrisk",
-      "confidence_score": 1.0
+      "target": "js_app_simulatedrisk"
     },
     {
       "relation": "contains",
@@ -2623,9 +2985,9 @@
       "source_location": "L485",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_syncsbpslider",
-      "confidence_score": 1.0
+      "target": "js_app_syncsbpslider"
     },
     {
       "relation": "contains",
@@ -2634,9 +2996,9 @@
       "source_location": "L477",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_synctargetslider",
-      "confidence_score": 1.0
+      "target": "js_app_synctargetslider"
     },
     {
       "relation": "contains",
@@ -2645,9 +3007,9 @@
       "source_location": "L491",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app",
-      "target": "js_app_syncweightslider",
-      "confidence_score": 1.0
+      "target": "js_app_syncweightslider"
     },
     {
       "relation": "calls",
@@ -2657,9 +3019,9 @@
       "source_location": "L336",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_buildreport",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2669,9 +3031,9 @@
       "source_location": "L270",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderchart",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2681,9 +3043,9 @@
       "source_location": "L206",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendereducation",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2693,9 +3055,9 @@
       "source_location": "L183",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendergauge",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2705,9 +3067,9 @@
       "source_location": "L452",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderlifestyle",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2717,9 +3079,9 @@
       "source_location": "L144",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderresult",
-      "target": "js_app_fmtpct",
-      "confidence_score": 1.0
+      "target": "js_app_fmtpct"
     },
     {
       "relation": "calls",
@@ -2729,9 +3091,9 @@
       "source_location": "L341",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_buildreport",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "calls",
@@ -2741,9 +3103,9 @@
       "source_location": "L647",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "calls",
@@ -2753,9 +3115,9 @@
       "source_location": "L118",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_recompute",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "calls",
@@ -2765,9 +3127,9 @@
       "source_location": "L291",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderchart",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "calls",
@@ -2777,9 +3139,9 @@
       "source_location": "L204",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendereducation",
-      "target": "js_app_fmtg",
-      "confidence_score": 1.0
+      "target": "js_app_fmtg"
     },
     {
       "relation": "calls",
@@ -2789,9 +3151,9 @@
       "source_location": "L419",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderlifestyle",
-      "target": "js_app_fmt1",
-      "confidence_score": 1.0
+      "target": "js_app_fmt1"
     },
     {
       "relation": "calls",
@@ -2801,9 +3163,9 @@
       "source_location": "L77",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_bindseg",
-      "target": "js_app_recompute",
-      "confidence_score": 1.0
+      "target": "js_app_recompute"
     },
     {
       "relation": "calls",
@@ -2813,9 +3175,9 @@
       "source_location": "L545",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_bindseg",
-      "confidence_score": 1.0
+      "target": "js_app_bindseg"
     },
     {
       "relation": "calls",
@@ -2825,9 +3187,9 @@
       "source_location": "L547",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_setsegpressed",
-      "confidence_score": 1.0
+      "target": "js_app_setsegpressed"
     },
     {
       "relation": "calls",
@@ -2837,9 +3199,9 @@
       "source_location": "L208",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendereducation",
-      "target": "js_app_setsegpressed",
-      "confidence_score": 1.0
+      "target": "js_app_setsegpressed"
     },
     {
       "relation": "calls",
@@ -2849,9 +3211,9 @@
       "source_location": "L555",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_num",
-      "confidence_score": 1.0
+      "target": "js_app_num"
     },
     {
       "relation": "calls",
@@ -2861,9 +3223,9 @@
       "source_location": "L318",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_buildreport",
-      "target": "js_app_anchorldl",
-      "confidence_score": 1.0
+      "target": "js_app_anchorldl"
     },
     {
       "relation": "calls",
@@ -2873,9 +3235,9 @@
       "source_location": "L577",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_anchorldl",
-      "confidence_score": 1.0
+      "target": "js_app_anchorldl"
     },
     {
       "relation": "calls",
@@ -2885,9 +3247,9 @@
       "source_location": "L239",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderchart",
-      "target": "js_app_anchorldl",
-      "confidence_score": 1.0
+      "target": "js_app_anchorldl"
     },
     {
       "relation": "calls",
@@ -2897,9 +3259,9 @@
       "source_location": "L191",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_simulatedrisk",
-      "target": "js_app_anchorldl",
-      "confidence_score": 1.0
+      "target": "js_app_anchorldl"
     },
     {
       "relation": "calls",
@@ -2909,9 +3271,9 @@
       "source_location": "L317",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_buildreport",
-      "target": "js_app_patientparams",
-      "confidence_score": 1.0
+      "target": "js_app_patientparams"
     },
     {
       "relation": "calls",
@@ -2921,9 +3283,9 @@
       "source_location": "L610",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_patientparams",
-      "confidence_score": 1.0
+      "target": "js_app_patientparams"
     },
     {
       "relation": "calls",
@@ -2933,9 +3295,9 @@
       "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_recompute",
-      "target": "js_app_patientparams",
-      "confidence_score": 1.0
+      "target": "js_app_patientparams"
     },
     {
       "relation": "calls",
@@ -2945,9 +3307,9 @@
       "source_location": "L237",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderchart",
-      "target": "js_app_patientparams",
-      "confidence_score": 1.0
+      "target": "js_app_patientparams"
     },
     {
       "relation": "calls",
@@ -2957,9 +3319,9 @@
       "source_location": "L238",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderchart",
-      "target": "js_app_simchartparams",
-      "confidence_score": 1.0
+      "target": "js_app_simchartparams"
     },
     {
       "relation": "calls",
@@ -2969,9 +3331,9 @@
       "source_location": "L556",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_recompute",
-      "confidence_score": 1.0
+      "target": "js_app_recompute"
     },
     {
       "relation": "calls",
@@ -2981,9 +3343,9 @@
       "source_location": "L134",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_recompute",
-      "target": "js_app_rendereducation",
-      "confidence_score": 1.0
+      "target": "js_app_rendereducation"
     },
     {
       "relation": "calls",
@@ -2993,9 +3355,9 @@
       "source_location": "L135",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_recompute",
-      "target": "js_app_renderlifestyle",
-      "confidence_score": 1.0
+      "target": "js_app_renderlifestyle"
     },
     {
       "relation": "calls",
@@ -3005,9 +3367,9 @@
       "source_location": "L133",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_recompute",
-      "target": "js_app_renderresult",
-      "confidence_score": 1.0
+      "target": "js_app_renderresult"
     },
     {
       "relation": "calls",
@@ -3017,9 +3379,9 @@
       "source_location": "L164",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_renderresult",
-      "target": "js_app_rendergauge",
-      "confidence_score": 1.0
+      "target": "js_app_rendergauge"
     },
     {
       "relation": "calls",
@@ -3029,9 +3391,9 @@
       "source_location": "L200",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendereducation",
-      "target": "js_app_simulatedrisk",
-      "confidence_score": 1.0
+      "target": "js_app_simulatedrisk"
     },
     {
       "relation": "calls",
@@ -3041,9 +3403,9 @@
       "source_location": "L224",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_rendereducation",
-      "target": "js_app_renderchart",
-      "confidence_score": 1.0
+      "target": "js_app_renderchart"
     },
     {
       "relation": "calls",
@@ -3053,9 +3415,9 @@
       "source_location": "L610",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_buildreport",
-      "confidence_score": 1.0
+      "target": "js_app_buildreport"
     },
     {
       "relation": "calls",
@@ -3065,9 +3427,9 @@
       "source_location": "L572",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_synctargetslider",
-      "confidence_score": 1.0
+      "target": "js_app_synctargetslider"
     },
     {
       "relation": "calls",
@@ -3077,9 +3439,9 @@
       "source_location": "L483",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_synctargetslider",
-      "target": "js_app_pctofslider",
-      "confidence_score": 1.0
+      "target": "js_app_pctofslider"
     },
     {
       "relation": "calls",
@@ -3089,9 +3451,9 @@
       "source_location": "L563",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_syncsbpslider",
-      "confidence_score": 1.0
+      "target": "js_app_syncsbpslider"
     },
     {
       "relation": "calls",
@@ -3101,9 +3463,9 @@
       "source_location": "L489",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_syncsbpslider",
-      "target": "js_app_pctofslider",
-      "confidence_score": 1.0
+      "target": "js_app_pctofslider"
     },
     {
       "relation": "calls",
@@ -3113,9 +3475,9 @@
       "source_location": "L630",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_syncweightslider",
-      "confidence_score": 1.0
+      "target": "js_app_syncweightslider"
     },
     {
       "relation": "calls",
@@ -3125,9 +3487,9 @@
       "source_location": "L497",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_syncweightslider",
-      "target": "js_app_pctofslider",
-      "confidence_score": 1.0
+      "target": "js_app_pctofslider"
     },
     {
       "relation": "calls",
@@ -3137,15 +3499,15 @@
       "source_location": "L589",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "js_app_init",
-      "target": "js_app_pctofslider",
-      "confidence_score": 1.0
+      "target": "js_app_pctofslider"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/lifestyle.js",
-      "source_location": "L56",
+      "source_location": "L57",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_lifestyle",
@@ -3156,7 +3518,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/lifestyle.js",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_lifestyle",
@@ -3167,7 +3529,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "js/lifestyle.js",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "js_lifestyle",
@@ -3179,87 +3541,67 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "script",
       "weight": 1.0,
       "source": "index_html",
-      "target": "concept_esc_2021_2023"
+      "target": "index_html__drOnkh"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "script",
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "index_html_goToPortal"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "script",
+      "weight": 1.0,
+      "source": "index_html",
+      "target": "index_html_valid"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "script",
+      "weight": 1.0,
+      "source": "index_html__drOnkh",
+      "target": "index_html_valid"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "script",
+      "weight": 1.0,
+      "source": "index_html__drOnkh",
+      "target": "index_html_goToPortal"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "script",
       "weight": 1.0,
-      "source": "index_html",
+      "source": "index_html_goToPortal",
       "target": "concept_portail_dr_onkh"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "concept_score2_op"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "index_html_goToPortal"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "index_html_valid"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html__drOnkh",
-      "target": "index_html_valid"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html__drOnkh",
-      "target": "index_html_goToPortal"
     },
     {
       "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "a#reconnectBtn",
       "weight": 1.0,
       "source": "index_html_reconnectBtn",
       "target": "index_html_goToPortal"
@@ -3267,163 +3609,478 @@
     {
       "relation": "shares_data_with",
       "confidence": "INFERRED",
-      "confidence_score": 0.9,
+      "confidence_score": 0.8,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#sexSeg",
       "weight": 1.0,
-      "source": "index_html_resultBody",
-      "target": "index_html_ldlSlider"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_resultBody",
-      "target": "index_html_reportBtn"
+      "source": "index_html_sexSeg",
+      "target": "index_html_derived"
     },
     {
       "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_resultBody",
-      "target": "index_html_sbpSlider"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_resultBody",
-      "target": "index_html_simReset"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_resultBody",
-      "target": "index_html_simSmokeSeg"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_ldlSlider",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_sbpSlider",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simSmokeSeg",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "conceptually_related_to",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "input#age",
       "weight": 1.0,
-      "source": "index_html_weightSlider",
+      "source": "index_html_age",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#sbp",
+      "weight": 1.0,
+      "source": "index_html_sbp",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#smokeSeg",
+      "weight": 1.0,
+      "source": "index_html_smokeSeg",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#nonhdl",
+      "weight": 1.0,
+      "source": "index_html_nonhdl",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#hdl",
+      "weight": 1.0,
+      "source": "index_html_hdl",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#ldl",
+      "weight": 1.0,
+      "source": "index_html_ldl",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": "div#derived",
+      "weight": 1.0,
+      "source": "index_html_derived",
+      "target": "index_html_resultBody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "select#region",
+      "weight": 1.0,
+      "source": "index_html_region",
+      "target": "index_html_derived"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
       "target": "concept_score2"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "concept_score2_op"
     },
     {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_catBadge"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_gaugeScale"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_gaugeTrack"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_opNote"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_riskBig"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#resultBody",
+      "weight": 1.0,
+      "source": "index_html_resultBody",
+      "target": "index_html_riskCap"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "span#catBadge",
+      "weight": 1.0,
+      "source": "index_html_catBadge",
+      "target": "concept_esc_2021"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#chart",
+      "weight": 1.0,
+      "source": "index_html_chart",
+      "target": "index_html_ldlSlider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#ldlSlider",
+      "weight": 1.0,
+      "source": "index_html_ldlSlider",
+      "target": "index_html_simLdlVal"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "index.html",
+      "source_location": "button#simReset",
+      "weight": 1.0,
+      "source": "index_html_simReset",
+      "target": "index_html_ldlSlider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#chart",
+      "weight": 1.0,
+      "source": "index_html_chart",
+      "target": "index_html_sbpSlider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#sbpSlider",
+      "weight": 1.0,
+      "source": "index_html_sbpSlider",
+      "target": "index_html_simSbpVal"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "index.html",
+      "source_location": "button#simReset",
+      "weight": 1.0,
+      "source": "index_html_simReset",
+      "target": "index_html_sbpSlider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#chart",
+      "weight": 1.0,
+      "source": "index_html_chart",
+      "target": "index_html_simSmokeSeg"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.7,
+      "source_file": "index.html",
+      "source_location": "button#simReset",
+      "weight": 1.0,
+      "source": "index_html_simReset",
+      "target": "index_html_simSmokeSeg"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#simSmokeSeg",
+      "weight": 1.0,
+      "source": "index_html_simSmokeSeg",
+      "target": "index_html_simRiskVal"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#simBaseVal",
+      "weight": 1.0,
+      "source": "index_html_simBaseVal",
+      "target": "index_html_simDelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "div#simRiskVal",
+      "weight": 1.0,
+      "source": "index_html_simRiskVal",
+      "target": "index_html_simDelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#weight",
+      "weight": 1.0,
+      "source": "index_html_weight",
+      "target": "index_html_bmiNow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#height",
+      "weight": 1.0,
+      "source": "index_html_height",
+      "target": "index_html_bmiNow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#weightSlider",
+      "weight": 1.0,
+      "source": "index_html_weightSlider",
+      "target": "index_html_bmiTarget"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "input#weightSlider",
+      "weight": 1.0,
+      "source": "index_html_weightSlider",
+      "target": "index_html_weightTargetLbl"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": "div#dietSeg",
       "weight": 1.0,
       "source": "index_html_dietSeg",
       "target": "concept_predimed"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "index.html",
-      "source_location": null,
+      "source_location": "div#dietSeg",
       "weight": 1.0,
-      "source": "index_html_logoutScreen",
-      "target": "index_html_reconnectBtn"
+      "source": "index_html_dietSeg",
+      "target": "index_html_dietLevelDesc"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#bmiNow",
+      "weight": 1.0,
+      "source": "index_html_bmiNow",
+      "target": "index_html_bmiChipNow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#bmiTarget",
+      "weight": 1.0,
+      "source": "index_html_bmiTarget",
+      "target": "index_html_bmiChipTarget"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#wfNow",
+      "weight": 1.0,
+      "source": "index_html_wfNow",
+      "target": "index_html_lsDelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#wfNow",
+      "weight": 1.0,
+      "source": "index_html_wfNow",
+      "target": "index_html_wfNowBar"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#wfRf",
+      "weight": 1.0,
+      "source": "index_html_wfRf",
+      "target": "index_html_wfRfBar"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#wfDiet",
+      "weight": 1.0,
+      "source": "index_html_wfDiet",
+      "target": "index_html_lsDelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "index.html",
+      "source_location": "span#wfDiet",
+      "weight": 1.0,
+      "source": "index_html_wfDiet",
+      "target": "index_html_wfDietBar"
     }
   ],
   "hyperedges": [
     {
-      "id": "cardiovascular_risk_assessment_flow",
-      "label": "Cardiovascular Risk Assessment Flow",
+      "id": "auth_flow",
+      "label": "Dr ONKH Authentication Flow",
       "nodes": [
-        "index_html_sexSeg",
-        "index_html_age",
-        "index_html_sbp",
-        "index_html_smokeSeg",
-        "index_html_nonhdl",
-        "index_html_hdl",
-        "index_html_ldl",
-        "index_html_region",
-        "index_html_resultBody",
-        "concept_score2",
-        "concept_score2_op"
+        "index_html_valid",
+        "index_html_goToPortal",
+        "index_html__drOnkh",
+        "index_html_reconnectBtn",
+        "concept_portail_dr_onkh"
       ],
       "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.9,
       "source_file": "index.html"
     },
     {
-      "id": "simulation_controls_group",
-      "label": "Simulation Controls Group",
+      "id": "score2_simulation_flow",
+      "label": "SCORE2 Simulation Flow",
       "nodes": [
         "index_html_ldlSlider",
         "index_html_sbpSlider",
         "index_html_simSmokeSeg",
-        "index_html_simReset"
+        "index_html_simBaseVal",
+        "index_html_simRiskVal",
+        "index_html_simDelta",
+        "index_html_simReset",
+        "index_html_chart",
+        "concept_score2"
       ],
       "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
       "source_file": "index.html"
     },
     {
-      "id": "lifestyle_intervention_flow",
-      "label": "Lifestyle Intervention Flow",
+      "id": "lifestyle_risk_flow",
+      "label": "Lifestyle Risk Modification Flow",
       "nodes": [
         "index_html_weight",
         "index_html_height",
         "index_html_weightSlider",
         "index_html_dietSeg",
+        "index_html_bmiNow",
+        "index_html_bmiTarget",
+        "index_html_wfNow",
+        "index_html_wfRf",
+        "index_html_wfDiet",
+        "index_html_lsDelta",
         "concept_predimed"
       ],
       "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.85,
       "source_file": "index.html"
     },
     {
@@ -3491,5 +4148,5 @@
       "source_file": ".claude/skills/graphify/SKILL.md"
     }
   ],
-  "built_at_commit": "c8e8dc8d9b0bd5a6594300b3258c90d170bec15e"
+  "built_at_commit": "8180d597cec06ed7160a95c8fcff8e6ae957b5bd"
 }
