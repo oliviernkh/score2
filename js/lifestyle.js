@@ -37,9 +37,21 @@
      dSbp / dLdl : décalages appliqués aux facteurs SCORE2 (mmHg, g/L).
      rr          : risque relatif RÉSIDUEL (au-delà de PAS + LDL). */
   var DIET = {
-    0: { key: "low",  label: "Adhérence faible",   dSbp: 0,    dLdl: 0,     rr: 1.00 },
-    1: { key: "mod",  label: "Adhérence modérée",  dSbp: -1.5, dLdl: -0.05, rr: 0.93 },
-    2: { key: "high", label: "Adhérence élevée",   dSbp: -3.0, dLdl: -0.10, rr: 0.85 }
+    0: {
+      key: "low", label: "Adhérence faible", dSbp: 0, dLdl: 0, rr: 1.00,
+      desc: "Alimentation courante, sans régime méditerranéen particulier."
+    },
+    1: {
+      key: "mod", label: "Adhérence modérée", dSbp: -1.5, dLdl: -0.05, rr: 0.93,
+      desc: "Plusieurs composantes suivies régulièrement (huile d'olive, fruits/légumes, " +
+        "poisson, légumineuses), sans adhérence stricte."
+    },
+    2: {
+      key: "high", label: "Adhérence élevée", dSbp: -3.0, dLdl: -0.10, rr: 0.85,
+      desc: "Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et " +
+        "légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et " +
+        "de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED."
+    }
   };
 
   function bmi(weightKg, heightCm) {
