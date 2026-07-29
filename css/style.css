@@ -389,6 +389,81 @@ footer a:hover { color: var(--brand); }
 .wf-val { font-size: .95rem; font-weight: 800; letter-spacing: -.01em; white-space: nowrap; }
 .wf-val small { font-size: .6em; font-weight: 700; color: var(--ink-faint); }
 
+/* --- Rapport pédagogique (bouton + modal imprimable) ----------------------- */
+.report-btn {
+  appearance: none; cursor: pointer; font: inherit; font-size: .86rem; font-weight: 700;
+  color: #fff; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border: 0; border-radius: 10px; padding: 11px 16px;
+  box-shadow: 0 4px 14px var(--ring); transition: filter .18s;
+}
+.report-btn:hover { filter: brightness(1.06); }
+
+.report-overlay {
+  display: none; position: fixed; inset: 0; z-index: 200;
+  background: rgba(14,15,19,.55); padding: 24px; overflow-y: auto;
+}
+.report-overlay.show { display: block; }
+.report-modal {
+  background: var(--bg-2); border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  width: min(720px, 100%); margin: 0 auto 40px; overflow: hidden;
+}
+.report-actions {
+  display: flex; justify-content: flex-end; gap: 10px;
+  padding: 14px 16px; border-bottom: 1px solid var(--border); background: var(--bg);
+  position: sticky; top: 0;
+}
+.report-actions button {
+  appearance: none; cursor: pointer; font: inherit; font-size: .84rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 9px; border: 1px solid var(--border);
+  background: var(--bg-2); color: var(--ink-soft);
+}
+#reportPrint { color: #fff !important; background: var(--brand) !important; border-color: var(--brand) !important; }
+
+#reportDoc { padding: 28px 30px; color: var(--ink); }
+.rep-header { border-bottom: 2px solid var(--brand); padding-bottom: 14px; margin-bottom: 20px; }
+.rep-brand { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--brand); }
+.rep-header h1 { font-size: 1.25rem; margin: 6px 0 4px; letter-spacing: -.01em; }
+.rep-date { font-size: .8rem; color: var(--ink-faint); }
+
+.rep-section { margin-bottom: 22px; }
+.rep-section h2 { font-size: .95rem; margin: 0 0 10px; }
+.rep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: .86rem; }
+.rep-grid > div { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--border); padding-bottom: 4px; }
+.rep-grid .k { color: var(--ink-faint); }
+.rep-grid .v { font-weight: 700; }
+
+.rep-current { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.rep-current-val { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; }
+.rep-current-val small { font-size: .45em; font-weight: 700; color: var(--ink-faint); }
+.rep-cap { font-size: .8rem; color: var(--ink-faint); margin: 6px 0 0; }
+
+.rep-intro { font-size: .84rem; color: var(--ink-soft); margin: 0 0 14px; }
+.rep-row { margin-bottom: 14px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; }
+.rep-row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.rep-target { font-weight: 700; font-size: .92rem; }
+.rep-target small { display: block; font-weight: 500; color: var(--ink-faint); font-size: .74rem; }
+.rep-risk { font-weight: 800; font-size: 1.05rem; white-space: nowrap; }
+.rep-bar-wrap { height: 10px; border-radius: 999px; background: var(--bg); overflow: hidden; }
+.rep-bar { height: 100%; border-radius: 999px; background: var(--brand); }
+.rep-delta { margin-top: 6px; font-size: .8rem; font-weight: 700; color: var(--ink-faint); }
+.rep-delta.down { color: var(--ok); }
+
+.rep-note {
+  font-size: .82rem; color: var(--ink-soft); background: var(--bg);
+  border: 1px solid var(--border); border-left: 3px solid var(--brand);
+  border-radius: 10px; padding: 11px 14px; margin-bottom: 16px;
+}
+.rep-note b { color: var(--ink); }
+.rep-foot { font-size: .74rem; color: var(--ink-faint); line-height: 1.5; }
+
+@media print {
+  body * { visibility: hidden; }
+  #reportDoc, #reportDoc * { visibility: visible; }
+  #reportDoc { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
+  .report-modal { box-shadow: none; background: none; }
+  .no-print { display: none !important; }
+}
+
 /* --- Ajustements responsives (smartphone) --------------------------------- */
 @media (max-width: 560px) {
   .card { padding: 16px; }

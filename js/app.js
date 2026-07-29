@@ -312,6 +312,100 @@
     els.chart.innerHTML = svg.join("");
   }
 
+  /* --- Rapport pédagogique : bénéfice du LDL par palier ESC ---------------- */
+  function buildReport(res) {
+    var baseP = patientParams();
+    var anchor = anchorLdl();
+
+    var rows = LDL_TARGETS.map(function (t) {
+      var reached = anchor <= t.ldl + 1e-9;
+      // Cible déjà atteinte : le risque associé est déjà le risque actuel du
+      // patient (pas d'intérêt à simuler une remontée du LDL vers la cible).
+      var risk = reached ? res.risk : S.riskForLDL(baseP, anchor, t.ldl);
+      var absDelta = risk - res.risk;
+      var relDelta = res.risk > 0 ? (absDelta / res.risk) * 100 : 0;
+      return { target: t, risk: risk, absDelta: absDelta, relDelta: relDelta, reached: reached };
+    });
+
+    var maxBar = Math.max(res.risk, rows[0].risk, 1);
+    var barPct = function (v) { return Math.max(2, (v / maxBar) * 100); };
+
+    var rowsHtml = rows.map(function (r) {
+      var deltaTxt = r.reached
+        ? "Cible déjà atteinte au LDL actuel"
+        : "▼ " + fmtPct(Math.abs(r.absDelta)) + " pt · " +
+          Math.round(Math.abs(r.relDelta)) + " % de risque relatif en moins";
+      return (
+        '<div class="rep-row">' +
+          '<div class="rep-row-head">' +
+            '<span class="rep-target">' + fmtG(r.target.ldl) + ' g/L<small>' + r.target.label + '</small></span>' +
+            '<span class="rep-risk">' + fmtPct(r.risk) + ' %</span>' +
+          '</div>' +
+          '<div class="rep-bar-wrap"><div class="rep-bar" style="width:' + barPct(r.risk) + '%"></div></div>' +
+          '<div class="rep-delta' + (r.reached ? "" : " down") + '">' + deltaTxt + '</div>' +
+        '</div>'
+      );
+    }).join("");
+
+    var sexLbl = state.sex === "female" ? "Femme" : "Homme";
+    var smokeLbl = state.smoker ? "Fumeur" : "Non-fumeur";
+    var dateStr = new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
+
+    els.reportDoc.innerHTML =
+      '<div class="rep-header">' +
+        '<div class="rep-brand">SCORE2 &amp; SCORE2-OP — Dr ONKH</div>' +
+        '<h1>Rapport pédagogique : effet d’une baisse du LDL-cholestérol</h1>' +
+        '<div class="rep-date">Édité le ' + dateStr + '</div>' +
+      '</div>' +
+
+      '<div class="rep-section">' +
+        '<h2>Profil du patient</h2>' +
+        '<div class="rep-grid">' +
+          '<div><span class="k">Sexe</span><span class="v">' + sexLbl + '</span></div>' +
+          '<div><span class="k">Âge</span><span class="v">' + state.age + ' ans</span></div>' +
+          '<div><span class="k">Tabagisme</span><span class="v">' + smokeLbl + '</span></div>' +
+          '<div><span class="k">Pression artérielle systolique</span><span class="v">' + Math.round(state.sbp) + ' mmHg</span></div>' +
+          '<div><span class="k">LDL-cholestérol actuel</span><span class="v">' + fmtG(anchor) + ' g/L</span></div>' +
+          '<div><span class="k">Cholestérol non-HDL</span><span class="v">' + fmtG(state.nonHDL) + ' g/L</span></div>' +
+        '</div>' +
+      '</div>' +
+
+      '<div class="rep-section">' +
+        '<h2>Risque cardiovasculaire actuel</h2>' +
+        '<div class="rep-current">' +
+          '<div class="rep-current-val">' + fmtPct(res.risk) + ' <small>% à 10 ans</small></div>' +
+          '<span class="cat-badge cat-' + res.category.key + '"><span class="dot"></span>' + res.category.label + '</span>' +
+        '</div>' +
+        '<p class="rep-cap">Modèle ' + res.model + ' (' +
+          (res.model === "SCORE2-OP" ? "≥ 70 ans" : "40–69 ans") +
+          ') — région à bas risque (France).</p>' +
+      '</div>' +
+
+      '<div class="rep-section">' +
+        '<h2>Bénéfice attendu selon la cible LDL atteinte</h2>' +
+        '<p class="rep-intro">' +
+          'Les trois seuils ci-dessous sont les cibles LDL de l’ESC selon la catégorie de ' +
+          'risque (modéré, élevé, très élevé). Chaque ligne montre le risque SCORE2 recalculé ' +
+          'si le LDL du patient atteignait ce seuil, à PAS, tabac et HDL inchangés.' +
+        '</p>' +
+        rowsHtml +
+      '</div>' +
+
+      '<div class="rep-note">' +
+        '<b>Message au patient.</b> Abaisser le LDL-cholestérol réduit directement le risque ' +
+        'cardiovasculaire à 10 ans, indépendamment de tout autre changement. Plus la cible est ' +
+        'basse, plus la réduction de risque est importante — d’où l’intérêt d’un ' +
+        'traitement hypolipémiant adapté à la catégorie de risque.' +
+      '</div>' +
+
+      '<div class="rep-foot">' +
+        'Document généré à titre pédagogique à partir des algorithmes SCORE2 / SCORE2-OP ' +
+        '(ESC 2021/2023). Ne remplace pas le jugement clinique. Non valable en cas d’antécédent ' +
+        'cardiovasculaire, de diabète, d’insuffisance rénale chronique, d’hypercholestérolémie ' +
+        'familiale ou de grossesse.' +
+      '</div>';
+  }
+
   /* --- Module mode de vie (poids · IMC · régime) -------------------------- */
   function renderLifestyle(res) {
     $("lsPlaceholder").style.display = "none";
@@ -428,6 +522,8 @@
     els.simRiskVal = $("simRiskVal");
     els.simDelta = $("simDelta");
     els.chart = $("chart");
+    els.reportOverlay = $("reportOverlay");
+    els.reportDoc = $("reportDoc");
     // Mode de vie
     els.bmiNow = $("bmiNow");
     els.bmiTarget = $("bmiTarget");
@@ -505,6 +601,24 @@
       syncTargetSlider(); syncSbpSlider();
       setSegPressed("simSmokeSeg", state.simSmoker);
       recompute();
+    });
+
+    // Rapport pédagogique (bénéfice LDL par palier ESC)
+    $("reportBtn").addEventListener("click", function () {
+      buildReport(S.compute(patientParams()));
+      els.reportOverlay.classList.add("show");
+    });
+    $("reportClose").addEventListener("click", function () {
+      els.reportOverlay.classList.remove("show");
+    });
+    $("reportPrint").addEventListener("click", function () {
+      window.print();
+    });
+    els.reportOverlay.addEventListener("click", function (e) {
+      if (e.target === els.reportOverlay) els.reportOverlay.classList.remove("show");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") els.reportOverlay.classList.remove("show");
     });
 
     // Champs mode de vie
