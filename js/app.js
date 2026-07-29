@@ -312,41 +312,109 @@
     els.chart.innerHTML = svg.join("");
   }
 
-  /* --- Rapport pédagogique : bénéfice du LDL par palier ESC ---------------- */
+  /* --- Rapport pédagogique : bénéfice par levier modifiable ---------------- */
+  // Risque SCORE2 recalculé en ne changeant que les paramètres fournis,
+  // le reste restant à la situation actuelle du patient.
+  function riskWithOverrides(over) {
+    return S.compute(Object.assign({}, patientParams(), over)).risk;
+  }
+
+  function reportRowHtml(title, sub, risk, res, reached, reachedMsg) {
+    var maxBar = Math.max(res.risk, risk, 1);
+    var barPct = Math.max(2, (risk / maxBar) * 100);
+    var absDelta = risk - res.risk;
+    var relDelta = res.risk > 0 ? (absDelta / res.risk) * 100 : 0;
+    var deltaTxt = reached
+      ? reachedMsg
+      : "▼ " + fmtPct(Math.abs(absDelta)) + " pt · " +
+        Math.round(Math.abs(relDelta)) + " % de risque relatif en moins";
+    return (
+      '<div class="rep-row">' +
+        '<div class="rep-row-head">' +
+          '<span class="rep-target">' + title + '<small>' + sub + '</small></span>' +
+          '<span class="rep-risk">' + fmtPct(risk) + ' %</span>' +
+        '</div>' +
+        '<div class="rep-bar-wrap"><div class="rep-bar" style="width:' + barPct + '%"></div></div>' +
+        '<div class="rep-delta' + (reached ? "" : " down") + '">' + deltaTxt + '</div>' +
+      '</div>'
+    );
+  }
+
   function buildReport(res) {
     var baseP = patientParams();
     var anchor = anchorLdl();
 
-    var rows = LDL_TARGETS.map(function (t) {
+    /* -- 1. Cibles LDL de l'ESC (paliers 1,00 · 0,70 · 0,55 g/L) -------------- */
+    var ldlRowsHtml = LDL_TARGETS.map(function (t) {
       var reached = anchor <= t.ldl + 1e-9;
-      // Cible déjà atteinte : le risque associé est déjà le risque actuel du
-      // patient (pas d'intérêt à simuler une remontée du LDL vers la cible).
       var risk = reached ? res.risk : S.riskForLDL(baseP, anchor, t.ldl);
-      var absDelta = risk - res.risk;
-      var relDelta = res.risk > 0 ? (absDelta / res.risk) * 100 : 0;
-      return { target: t, risk: risk, absDelta: absDelta, relDelta: relDelta, reached: reached };
-    });
-
-    var maxBar = Math.max(res.risk, rows[0].risk, 1);
-    var barPct = function (v) { return Math.max(2, (v / maxBar) * 100); };
-
-    var rowsHtml = rows.map(function (r) {
-      var deltaTxt = r.reached
-        ? "Cible déjà atteinte au LDL actuel"
-        : "▼ " + fmtPct(Math.abs(r.absDelta)) + " pt · " +
-          Math.round(Math.abs(r.relDelta)) + " % de risque relatif en moins";
-      return (
-        '<div class="rep-row">' +
-          '<div class="rep-row-head">' +
-            '<span class="rep-target">' + fmtG(r.target.ldl) + ' g/L<small>' + r.target.label + '</small></span>' +
-            '<span class="rep-risk">' + fmtPct(r.risk) + ' %</span>' +
-          '</div>' +
-          '<div class="rep-bar-wrap"><div class="rep-bar" style="width:' + barPct(r.risk) + '%"></div></div>' +
-          '<div class="rep-delta' + (r.reached ? "" : " down") + '">' + deltaTxt + '</div>' +
-        '</div>'
+      return reportRowHtml(
+        fmtG(t.ldl) + " g/L", t.label, risk, res, reached, "Cible déjà atteinte au LDL actuel"
       );
     }).join("");
 
+    /* -- 2. Autres leviers modifiables, isolément ----------------------------- */
+    var rows = [];
+
+    // Tabac : arrêt complet.
+    if (state.smoker) {
+      var riskNoSmoke = riskWithOverrides({ smoker: 0 });
+      rows.push(reportRowHtml("Arrêt du tabac", "Fumeur → non-fumeur", riskNoSmoke, res, false));
+    } else {
+      rows.push(reportRowHtml("Tabac", "Patient non-fumeur", res.risk, res, true, "Non concerné — déjà non-fumeur"));
+    }
+
+    // Tension artérielle : cible simulée dans la carte de simulation.
+    var sbpReached = state.simSbp >= state.sbp - 1e-9;
+    var sbpRisk = sbpReached ? res.risk : riskWithOverrides({ sbp: state.simSbp });
+    rows.push(reportRowHtml(
+      "Tension artérielle",
+      sbpReached
+        ? "Cible simulée non abaissée (actuelle " + Math.round(state.sbp) + " mmHg)"
+        : "Cible simulée " + Math.round(state.simSbp) + " mmHg (actuelle " + Math.round(state.sbp) + " mmHg)",
+      sbpRisk, res, sbpReached, "Aucune baisse de PAS simulée"
+    ));
+
+    // Poids : perte isolée (sans effet du régime), via le module mode de vie.
+    var weightReached = state.weightTarget >= state.weight - 0.5;
+    var mWeight = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget, diet: 0 });
+    var weightRisk = weightReached ? res.risk : riskWithOverrides({
+      sbp: Math.max(80, Math.min(260, state.sbp + mWeight.dSbp)),
+      nonHDL: Math.max(0.3, state.nonHDL + mWeight.dLdl)
+    });
+    rows.push(reportRowHtml(
+      "Poids",
+      weightReached
+        ? "Poids cible non abaissé (actuel " + Math.round(state.weight) + " kg)"
+        : "Cible " + Math.round(state.weightTarget) + " kg (actuel " + Math.round(state.weight) +
+          " kg, −" + Math.round(state.weight - state.weightTarget) + " kg)",
+      weightRisk, res, weightReached, "Aucune perte de poids simulée"
+    ));
+
+    // Régime méditerranéen : adhérence isolée (à poids inchangé).
+    var dietReached = state.diet === 0;
+    var mDiet = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weight, diet: state.diet });
+    var dietRisk = dietReached ? res.risk : riskWithOverrides({
+      sbp: Math.max(80, Math.min(260, state.sbp + mDiet.dSbp)),
+      nonHDL: Math.max(0.3, state.nonHDL + mDiet.dLdl)
+    }) * mDiet.rr;
+    rows.push(reportRowHtml(
+      "Régime méditerranéen",
+      dietReached ? "Adhérence actuelle faible" : "Adhérence simulée : " + mDiet.diet.label.replace("Adhérence ", ""),
+      dietRisk, res, dietReached, "Non concerné — adhérence actuelle faible"
+    ));
+
+    var factorRowsHtml = rows.join("");
+
+    /* -- 3. Bénéfice combiné : tous les leviers simulés ensemble -------------- */
+    var mFull = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget, diet: state.diet });
+    var comboNonHDL = Math.max(0.1, state.nonHDL + (state.ldlTarget - anchor) + mFull.dLdl);
+    var comboSbp = Math.max(80, Math.min(260, state.simSbp + mFull.dSbp));
+    var comboRisk = riskWithOverrides({ nonHDL: comboNonHDL, sbp: comboSbp, smoker: state.simSmoker }) * mFull.rr;
+    var comboAbsDelta = comboRisk - res.risk;
+    var comboRelDelta = res.risk > 0 ? (comboAbsDelta / res.risk) * 100 : 0;
+
+    /* -- Rendu ------------------------------------------------------------ */
     var sexLbl = state.sex === "female" ? "Femme" : "Homme";
     var smokeLbl = state.smoker ? "Fumeur" : "Non-fumeur";
     var dateStr = new Date().toLocaleDateString("fr-FR", { day: "2-digit", month: "long", year: "numeric" });
@@ -354,7 +422,7 @@
     els.reportDoc.innerHTML =
       '<div class="rep-header">' +
         '<div class="rep-brand">SCORE2 &amp; SCORE2-OP — Dr ONKH</div>' +
-        '<h1>Rapport pédagogique : effet d’une baisse du LDL-cholestérol</h1>' +
+        '<h1>Rapport pédagogique : bénéfice attendu selon les leviers modifiables</h1>' +
         '<div class="rep-date">Édité le ' + dateStr + '</div>' +
       '</div>' +
 
@@ -367,6 +435,8 @@
           '<div><span class="k">Pression artérielle systolique</span><span class="v">' + Math.round(state.sbp) + ' mmHg</span></div>' +
           '<div><span class="k">LDL-cholestérol actuel</span><span class="v">' + fmtG(anchor) + ' g/L</span></div>' +
           '<div><span class="k">Cholestérol non-HDL</span><span class="v">' + fmtG(state.nonHDL) + ' g/L</span></div>' +
+          '<div><span class="k">Poids</span><span class="v">' + Math.round(state.weight) + ' kg</span></div>' +
+          '<div><span class="k">Régime méditerranéen</span><span class="v">' + L.DIET[state.diet].label + '</span></div>' +
         '</div>' +
       '</div>' +
 
@@ -388,21 +458,52 @@
           'risque (modéré, élevé, très élevé). Chaque ligne montre le risque SCORE2 recalculé ' +
           'si le LDL du patient atteignait ce seuil, à PAS, tabac et HDL inchangés.' +
         '</p>' +
-        rowsHtml +
+        ldlRowsHtml +
+      '</div>' +
+
+      '<div class="rep-section">' +
+        '<h2>Bénéfice attendu par autre levier modifiable</h2>' +
+        '<p class="rep-intro">' +
+          'Chaque ligne isole un seul changement — arrêt du tabac, cible de tension simulée, ' +
+          'perte de poids ou adhérence au régime méditerranéen — les autres paramètres restant ' +
+          'à la situation actuelle du patient.' +
+        '</p>' +
+        factorRowsHtml +
+      '</div>' +
+
+      '<div class="rep-section">' +
+        '<h2>Bénéfice combiné : tous les leviers simulés ensemble</h2>' +
+        '<p class="rep-intro">' +
+          'Cumul de la cible LDL, de la cible de tension, du tabac et du mode de vie ' +
+          '(poids et régime) actuellement simulés ci-dessus.' +
+        '</p>' +
+        '<div class="rep-combo">' +
+          '<div class="rep-current">' +
+            '<div class="rep-current-val">' + fmtPct(comboRisk) + ' <small>% à 10 ans</small></div>' +
+          '</div>' +
+          '<div class="rep-delta' + (Math.abs(comboAbsDelta) < 0.05 ? "" : " down") + '" style="margin-top:0">' + (
+            Math.abs(comboAbsDelta) < 0.05
+              ? "Aucun changement simulé vs risque actuel"
+              : "▼ " + fmtPct(Math.abs(comboAbsDelta)) + " pt · " +
+                Math.round(Math.abs(comboRelDelta)) + " % de risque relatif en moins vs risque actuel (" +
+                fmtPct(res.risk) + " %)"
+          ) + '</div>' +
+        '</div>' +
       '</div>' +
 
       '<div class="rep-note">' +
-        '<b>Message au patient.</b> Abaisser le LDL-cholestérol réduit directement le risque ' +
-        'cardiovasculaire à 10 ans, indépendamment de tout autre changement. Plus la cible est ' +
-        'basse, plus la réduction de risque est importante — d’où l’intérêt d’un ' +
-        'traitement hypolipémiant adapté à la catégorie de risque.' +
+        '<b>Message au patient.</b> Chaque levier — LDL, tabac, tension, poids, alimentation — ' +
+        'réduit le risque cardiovasculaire indépendamment des autres, et leurs effets se ' +
+        'cumulent. Plus les cibles atteintes sont ambitieuses, plus la réduction de risque est ' +
+        'importante — d’où l’intérêt d’une prise en charge combinée (traitement hypolipémiant, ' +
+        'contrôle tensionnel, sevrage tabagique, mode de vie).' +
       '</div>' +
 
       '<div class="rep-foot">' +
         'Document généré à titre pédagogique à partir des algorithmes SCORE2 / SCORE2-OP ' +
-        '(ESC 2021/2023). Ne remplace pas le jugement clinique. Non valable en cas d’antécédent ' +
-        'cardiovasculaire, de diabète, d’insuffisance rénale chronique, d’hypercholestérolémie ' +
-        'familiale ou de grossesse.' +
+        '(ESC 2021/2023) et du module mode de vie (illustratif, non validé). Ne remplace pas le ' +
+        'jugement clinique. Non valable en cas d’antécédent cardiovasculaire, de diabète, ' +
+        'd’insuffisance rénale chronique, d’hypercholestérolémie familiale ou de grossesse.' +
       '</div>';
   }
 
