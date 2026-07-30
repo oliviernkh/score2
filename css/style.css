@@ -448,6 +448,11 @@ footer a:hover { color: var(--brand); }
 .rep-delta { margin-top: 6px; font-size: .8rem; font-weight: 700; color: var(--ink-faint); }
 .rep-delta.down { color: var(--ok); }
 
+.rep-combo {
+  padding: 14px 16px; border: 1px solid var(--ring); background: var(--brand-soft);
+  border-radius: 10px;
+}
+
 .rep-note {
   font-size: .82rem; color: var(--ink-soft); background: var(--bg);
   border: 1px solid var(--border); border-left: 3px solid var(--brand);
