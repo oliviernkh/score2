@@ -534,6 +534,7 @@
     var m = L.modifiers({
       weightCurrent: state.weight, weightTarget: state.weightTarget, diet: state.diet
     });
+    els.dietLevelDesc.textContent = m.diet.desc;
 
     // Étape 1 : PAS et LDL améliorés (poids + effet mécanistique du régime).
     var newSbp = Math.max(80, Math.min(260, state.sbp + m.dSbp));
@@ -639,6 +640,7 @@
     els.wfRfBar = $("wfRfBar");
     els.wfDietBar = $("wfDietBar");
     els.lsDelta = $("lsDelta");
+    els.dietLevelDesc = $("dietLevelDesc");
 
     // Segments patient — le tabac patient réinitialise le tabac simulé.
     bindSeg("sexSeg", "sex");

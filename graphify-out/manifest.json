@@ -1,16 +1,16 @@
 {
   "js/app.js": {
-    "mtime": 1785354057.9380953,
-    "ast_hash": "925a13ee02fa0e69fca5805876c73de5",
-    "semantic_hash": "925a13ee02fa0e69fca5805876c73de5"
+    "mtime": 1785353638.467698,
+    "ast_hash": "e79fccaf547c8fc1ec5e45aee54dc5e4",
+    "semantic_hash": "e79fccaf547c8fc1ec5e45aee54dc5e4"
   },
   "js/lifestyle.js": {
-    "mtime": 1785354057.938832,
-    "ast_hash": "6b157dbc20161e285d0be194ad53aa7d",
-    "semantic_hash": "6b157dbc20161e285d0be194ad53aa7d"
+    "mtime": 1785353638.4686306,
+    "ast_hash": "84c46a89cde32641f3efcea2b4f02a08",
+    "semantic_hash": "84c46a89cde32641f3efcea2b4f02a08"
   },
   "js/score2.js": {
-    "mtime": 1785354057.938832,
+    "mtime": 1785353638.4686306,
     "ast_hash": "5fac24eb96cdf9a6b7daeabe0de76d63",
     "semantic_hash": "5fac24eb96cdf9a6b7daeabe0de76d63"
   },
@@ -20,12 +20,12 @@
     "semantic_hash": "95c20cf06bd814b03d8c70d11a1b3c4a"
   },
   "index.html": {
-    "mtime": 1785354057.9377275,
-    "ast_hash": "7f0dbda18515abb5f77b6b8f2bef3e83",
-    "semantic_hash": "7f0dbda18515abb5f77b6b8f2bef3e83"
+    "mtime": 1785353638.467698,
+    "ast_hash": "950e5377fcfd8a19e5b77c9b4dcec53b",
+    "semantic_hash": "950e5377fcfd8a19e5b77c9b4dcec53b"
   },
   ".claude/settings.json": {
-    "mtime": 1785354057.935939,
+    "mtime": 1785353638.4658935,
     "ast_hash": "2ef3a76cf0fc1ee336a6ea3fbe0a536a",
     "semantic_hash": "2ef3a76cf0fc1ee336a6ea3fbe0a536a"
   },
