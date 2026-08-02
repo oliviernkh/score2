@@ -7,17 +7,21 @@
         "id": "cardiovascular_risk_assessment_flow",
         "label": "Cardiovascular Risk Assessment Flow",
         "nodes": [
-          "index_html_sexSeg",
+          "index_html_sexseg",
           "index_html_age",
           "index_html_sbp",
-          "index_html_smokeSeg",
+          "index_html_smokeseg",
           "index_html_nonhdl",
           "index_html_hdl",
           "index_html_ldl",
           "index_html_region",
-          "index_html_derived",
-          "index_html_riskBig",
-          "index_html_catBadge"
+          "index_html_resultbody",
+          "index_html_riskbig",
+          "index_html_riskcap",
+          "index_html_catbadge",
+          "index_html_opnote",
+          "index_html_gaugetrack",
+          "index_html_gaugescale"
         ],
         "relation": "participate_in",
         "confidence": "INFERRED",
@@ -25,39 +29,46 @@
         "source_file": "index.html"
       },
       {
-        "id": "lifestyle_simulation_flow",
-        "label": "Lifestyle Simulation Flow",
+        "id": "simulation_controls_flow",
+        "label": "Simulation Controls Flow",
+        "nodes": [
+          "index_html_ldlslider",
+          "index_html_sbpslider",
+          "index_html_simsmokeseg",
+          "index_html_simldlval",
+          "index_html_simsbpval",
+          "index_html_simbaseval",
+          "index_html_simriskval",
+          "index_html_simdelta",
+          "index_html_simreset",
+          "index_html_chart"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "index.html"
+      },
+      {
+        "id": "lifestyle_intervention_flow",
+        "label": "Lifestyle Intervention Flow",
         "nodes": [
           "index_html_weight",
           "index_html_height",
-          "index_html_weightSlider",
-          "index_html_dietSeg",
-          "index_html_bmiNow",
-          "index_html_bmiTarget",
-          "index_html_wfNow",
-          "index_html_wfRf",
-          "index_html_wfDiet",
-          "index_html_lsDelta"
-        ],
-        "relation": "participate_in",
-        "confidence": "INFERRED",
-        "confidence_score": 0.85,
-        "source_file": "index.html"
-      },
-      {
-        "id": "risk_simulation_flow",
-        "label": "Risk Simulation Flow",
-        "nodes": [
-          "index_html_ldlSlider",
-          "index_html_sbpSlider",
-          "index_html_simSmokeSeg",
-          "index_html_simLdlVal",
-          "index_html_simSbpVal",
-          "index_html_simBaseVal",
-          "index_html_simRiskVal",
-          "index_html_simDelta",
-          "index_html_simReset",
-          "index_html_chart"
+          "index_html_weightslider",
+          "index_html_dietseg",
+          "index_html_bminow",
+          "index_html_bmichipnow",
+          "index_html_bmiarrow",
+          "index_html_bmitarget",
+          "index_html_bmichiptarget",
+          "index_html_wfnow",
+          "index_html_wfnowbar",
+          "index_html_wfrf",
+          "index_html_wfrfbar",
+          "index_html_wfdiet",
+          "index_html_wfdietbar",
+          "index_html_lsdelta",
+          "index_html_reportbtn"
         ],
         "relation": "participate_in",
         "confidence": "INFERRED",
@@ -672,7 +683,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "github clone",
       "_origin": "semantic",
       "id": "claude_skills_graphify_skill_github_clone"
@@ -686,7 +697,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "cross-repo merge",
       "_origin": "semantic",
       "id": "claude_skills_graphify_skill_cross_repo_merge"
@@ -756,7 +767,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 0,
       "norm_label": "github and merge reference",
       "_origin": "semantic",
       "id": "claude_skills_graphify_references_github_and_merge"
@@ -798,7 +809,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 15,
+      "community": 16,
       "norm_label": "transcribe reference",
       "_origin": "semantic",
       "id": "claude_skills_graphify_references_transcribe"
@@ -966,7 +977,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 11,
       "norm_label": "debug-ci-failure job",
       "_origin": "semantic",
       "id": "github_workflows_claude_auto_debug_debug_ci_failure"
@@ -980,7 +991,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 11,
       "norm_label": "triage-issue job",
       "_origin": "semantic",
       "id": "github_workflows_claude_auto_debug_triage_issue"
@@ -994,7 +1005,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 11,
       "norm_label": "actions/checkout@v4",
       "_origin": "semantic",
       "id": "actions_checkout_v4"
@@ -1008,7 +1019,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 11,
       "norm_label": "anthropics/claude-code-action@v1",
       "_origin": "semantic",
       "id": "anthropics_claude_code_action_v1"
@@ -1282,7 +1293,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L1",
       "_origin": "ast",
-      "community": 10,
+      "community": 12,
       "norm_label": "lifestyle.js",
       "id": "js_lifestyle"
     },
@@ -1292,7 +1303,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L57",
       "_origin": "ast",
-      "community": 10,
+      "community": 12,
       "norm_label": "bmi()",
       "id": "js_lifestyle_bmi"
     },
@@ -1302,7 +1313,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L63",
       "_origin": "ast",
-      "community": 10,
+      "community": 12,
       "norm_label": "bmiclass()",
       "id": "js_lifestyle_bmiclass"
     },
@@ -1312,7 +1323,7 @@
       "source_file": "js/lifestyle.js",
       "source_location": "L74",
       "_origin": "ast",
-      "community": 10,
+      "community": 12,
       "norm_label": "modifiers()",
       "id": "js_lifestyle_modifiers"
     },
@@ -1325,9 +1336,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html",
-      "community": 5,
-      "norm_label": "index.html"
+      "community": 9,
+      "norm_label": "index.html",
+      "_origin": "semantic",
+      "id": "index_html"
     },
     {
       "label": "valid (token validation function)",
@@ -1337,9 +1349,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_valid",
-      "community": 5,
-      "norm_label": "valid (token validation function)"
+      "community": 9,
+      "norm_label": "valid (token validation function)",
+      "_origin": "semantic",
+      "id": "index_html_valid"
     },
     {
       "label": "goToPortal (redirection function)",
@@ -1349,9 +1362,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_goToPortal",
-      "community": 5,
-      "norm_label": "gotoportal (redirection function)"
+      "community": 9,
+      "norm_label": "gotoportal (redirection function)",
+      "_origin": "semantic",
+      "id": "index_html_gotoportal"
     },
     {
       "label": "__drOnkh (global object)",
@@ -1359,12 +1373,12 @@
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
-      "source_url": null,
       "author": null,
       "contributor": null,
-      "id": "index_html___dronkh",
-      "community": 5,
-      "norm_label": "__dronkh (global object)"
+      "community": 9,
+      "norm_label": "__dronkh (global object)",
+      "_origin": "semantic",
+      "id": "index_html__dronkh"
     },
     {
       "label": "logoutScreen (UI element)",
@@ -1374,9 +1388,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_logoutScreen",
-      "community": 23,
-      "norm_label": "logoutscreen (ui element)"
+      "community": 19,
+      "norm_label": "logoutscreen (ui element)",
+      "_origin": "semantic",
+      "id": "index_html_logoutscreen"
     },
     {
       "label": "reconnectBtn (reconnection button)",
@@ -1386,9 +1401,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_reconnectBtn",
-      "community": 5,
-      "norm_label": "reconnectbtn (reconnection button)"
+      "community": 13,
+      "norm_label": "reconnectbtn (reconnection button)",
+      "_origin": "semantic",
+      "id": "index_html_reconnectbtn"
     },
     {
       "label": "sexSeg (sex selection segment)",
@@ -1398,9 +1414,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_sexSeg",
       "community": 2,
-      "norm_label": "sexseg (sex selection segment)"
+      "norm_label": "sexseg (sex selection segment)",
+      "_origin": "semantic",
+      "id": "index_html_sexseg"
     },
     {
       "label": "age (input field)",
@@ -1410,21 +1427,23 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_age",
       "community": 2,
-      "norm_label": "age (input field)"
+      "norm_label": "age (input field)",
+      "_origin": "semantic",
+      "id": "index_html_age"
     },
     {
-      "label": "sbp (systolic blood pressure input field)",
+      "label": "sbp (systolic blood pressure input)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_sbp",
       "community": 2,
-      "norm_label": "sbp (systolic blood pressure input field)"
+      "norm_label": "sbp (systolic blood pressure input)",
+      "_origin": "semantic",
+      "id": "index_html_sbp"
     },
     {
       "label": "smokeSeg (smoking status segment)",
@@ -1434,45 +1453,49 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_smokeSeg",
       "community": 2,
-      "norm_label": "smokeseg (smoking status segment)"
+      "norm_label": "smokeseg (smoking status segment)",
+      "_origin": "semantic",
+      "id": "index_html_smokeseg"
     },
     {
-      "label": "nonhdl (non-HDL cholesterol input field)",
+      "label": "nonhdl (non-HDL cholesterol input)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_nonhdl",
       "community": 2,
-      "norm_label": "nonhdl (non-hdl cholesterol input field)"
+      "norm_label": "nonhdl (non-hdl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_nonhdl"
     },
     {
-      "label": "hdl (HDL cholesterol input field)",
+      "label": "hdl (HDL cholesterol input)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_hdl",
       "community": 2,
-      "norm_label": "hdl (hdl cholesterol input field)"
+      "norm_label": "hdl (hdl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_hdl"
     },
     {
-      "label": "ldl (LDL cholesterol input field)",
+      "label": "ldl (LDL cholesterol input)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldl",
       "community": 2,
-      "norm_label": "ldl (ldl cholesterol input field)"
+      "norm_label": "ldl (ldl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_ldl"
     },
     {
       "label": "ldlWarn (LDL warning message)",
@@ -1482,9 +1505,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldlWarn",
-      "community": 22,
-      "norm_label": "ldlwarn (ldl warning message)"
+      "community": 2,
+      "norm_label": "ldlwarn (ldl warning message)",
+      "_origin": "semantic",
+      "id": "index_html_ldlwarn"
     },
     {
       "label": "derived (derived values display)",
@@ -1494,9 +1518,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_derived",
-      "community": 2,
-      "norm_label": "derived (derived values display)"
+      "community": 18,
+      "norm_label": "derived (derived values display)",
+      "_origin": "semantic",
+      "id": "index_html_derived"
     },
     {
       "label": "region (risk region selector)",
@@ -1506,177 +1531,49 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_region",
       "community": 2,
-      "norm_label": "region (risk region selector)"
+      "norm_label": "region (risk region selector)",
+      "_origin": "semantic",
+      "id": "index_html_region"
     },
     {
-      "label": "weight (weight input field)",
+      "label": "modelBadge (SCORE2/SCORE2-OP badge)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_weight",
-      "community": 12,
-      "norm_label": "weight (weight input field)"
+      "community": 21,
+      "norm_label": "modelbadge (score2/score2-op badge)",
+      "_origin": "semantic",
+      "id": "index_html_modelbadge"
     },
     {
-      "label": "height (height input field)",
+      "label": "resultPlaceholder (result placeholder)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_height",
-      "community": 12,
-      "norm_label": "height (height input field)"
+      "community": 22,
+      "norm_label": "resultplaceholder (result placeholder)",
+      "_origin": "semantic",
+      "id": "index_html_resultplaceholder"
     },
     {
-      "label": "weightSlider (weight target slider)",
+      "label": "resultBody (result display area)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_weightSlider",
-      "community": 13,
-      "norm_label": "weightslider (weight target slider)"
-    },
-    {
-      "label": "dietSeg (Mediterranean diet adherence segment)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_dietSeg",
-      "community": 8,
-      "norm_label": "dietseg (mediterranean diet adherence segment)"
-    },
-    {
-      "label": "bmiNow (current BMI display)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_bmiNow",
-      "community": 12,
-      "norm_label": "bminow (current bmi display)"
-    },
-    {
-      "label": "bmiChipNow (current BMI category)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_bmiChipNow",
-      "community": 17,
-      "norm_label": "bmichipnow (current bmi category)"
-    },
-    {
-      "label": "bmiArrow (BMI change arrow)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_bmiArrow",
-      "community": 16,
-      "norm_label": "bmiarrow (bmi change arrow)"
-    },
-    {
-      "label": "bmiTarget (target BMI display)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_bmiTarget",
-      "community": 13,
-      "norm_label": "bmitarget (target bmi display)"
-    },
-    {
-      "label": "bmiChipTarget (target BMI category)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_bmiChipTarget",
-      "community": 18,
-      "norm_label": "bmichiptarget (target bmi category)"
-    },
-    {
-      "label": "wfNow (current risk in waterfall chart)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_wfNow",
-      "community": 8,
-      "norm_label": "wfnow (current risk in waterfall chart)"
-    },
-    {
-      "label": "wfRf (risk after weight/PAS/LDL improvement)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_wfRf",
-      "community": 13,
-      "norm_label": "wfrf (risk after weight/pas/ldl improvement)"
-    },
-    {
-      "label": "wfDiet (risk after Mediterranean diet benefit)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_wfDiet",
-      "community": 8,
-      "norm_label": "wfdiet (risk after mediterranean diet benefit)"
-    },
-    {
-      "label": "lsDelta (lifestyle risk delta)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_lsDelta",
-      "community": 8,
-      "norm_label": "lsdelta (lifestyle risk delta)"
-    },
-    {
-      "label": "reportBtn (report generation button)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_reportBtn",
-      "community": 25,
-      "norm_label": "reportbtn (report generation button)"
+      "community": 2,
+      "norm_label": "resultbody (result display area)",
+      "_origin": "semantic",
+      "id": "index_html_resultbody"
     },
     {
       "label": "riskBig (main risk display)",
@@ -1686,9 +1583,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_riskBig",
       "community": 2,
-      "norm_label": "riskbig (main risk display)"
+      "norm_label": "riskbig (main risk display)",
+      "_origin": "semantic",
+      "id": "index_html_riskbig"
     },
     {
       "label": "riskCap (risk caption)",
@@ -1698,9 +1596,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_riskCap",
-      "community": 26,
-      "norm_label": "riskcap (risk caption)"
+      "community": 2,
+      "norm_label": "riskcap (risk caption)",
+      "_origin": "semantic",
+      "id": "index_html_riskcap"
     },
     {
       "label": "catBadge (risk category badge)",
@@ -1710,9 +1609,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_catBadge",
       "community": 2,
-      "norm_label": "catbadge (risk category badge)"
+      "norm_label": "catbadge (risk category badge)",
+      "_origin": "semantic",
+      "id": "index_html_catbadge"
     },
     {
       "label": "opNote (older patient note)",
@@ -1722,9 +1622,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_opNote",
-      "community": 24,
-      "norm_label": "opnote (older patient note)"
+      "community": 2,
+      "norm_label": "opnote (older patient note)",
+      "_origin": "semantic",
+      "id": "index_html_opnote"
     },
     {
       "label": "gaugeTrack (risk gauge track)",
@@ -1734,9 +1635,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_gaugeTrack",
-      "community": 21,
-      "norm_label": "gaugetrack (risk gauge track)"
+      "community": 2,
+      "norm_label": "gaugetrack (risk gauge track)",
+      "_origin": "semantic",
+      "id": "index_html_gaugetrack"
     },
     {
       "label": "gaugeScale (risk gauge scale)",
@@ -1746,45 +1648,23 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_gaugeScale",
-      "community": 20,
-      "norm_label": "gaugescale (risk gauge scale)"
+      "community": 2,
+      "norm_label": "gaugescale (risk gauge scale)",
+      "_origin": "semantic",
+      "id": "index_html_gaugescale"
     },
     {
-      "label": "ldlSlider (LDL target slider)",
+      "label": "ldlSlider (LDL simulation slider)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldlSlider",
-      "community": 7,
-      "norm_label": "ldlslider (ldl target slider)"
-    },
-    {
-      "label": "sbpSlider (systolic blood pressure slider)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_sbpSlider",
-      "community": 7,
-      "norm_label": "sbpslider (systolic blood pressure slider)"
-    },
-    {
-      "label": "simSmokeSeg (simulated smoking status segment)",
-      "file_type": "code",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "index_html_simSmokeSeg",
-      "community": 7,
-      "norm_label": "simsmokeseg (simulated smoking status segment)"
+      "community": 5,
+      "norm_label": "ldlslider (ldl simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_ldlslider"
     },
     {
       "label": "simLdlVal (simulated LDL value display)",
@@ -1794,9 +1674,23 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simLdlVal",
-      "community": 27,
-      "norm_label": "simldlval (simulated ldl value display)"
+      "community": 5,
+      "norm_label": "simldlval (simulated ldl value display)",
+      "_origin": "semantic",
+      "id": "index_html_simldlval"
+    },
+    {
+      "label": "sbpSlider (systolic BP simulation slider)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 5,
+      "norm_label": "sbpslider (systolic bp simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_sbpslider"
     },
     {
       "label": "simSbpVal (simulated SBP value display)",
@@ -1806,21 +1700,36 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simSbpVal",
-      "community": 28,
-      "norm_label": "simsbpval (simulated sbp value display)"
+      "community": 5,
+      "norm_label": "simsbpval (simulated sbp value display)",
+      "_origin": "semantic",
+      "id": "index_html_simsbpval"
     },
     {
-      "label": "simBaseVal (current risk value in simulation)",
+      "label": "simSmokeSeg (simulated smoking segment)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simBaseVal",
-      "community": 7,
-      "norm_label": "simbaseval (current risk value in simulation)"
+      "community": 5,
+      "norm_label": "simsmokeseg (simulated smoking segment)",
+      "_origin": "semantic",
+      "id": "index_html_simsmokeseg"
+    },
+    {
+      "label": "simBaseVal (base risk value)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 5,
+      "norm_label": "simbaseval (base risk value)",
+      "_origin": "semantic",
+      "id": "index_html_simbaseval"
     },
     {
       "label": "simRiskVal (simulated risk value)",
@@ -1830,21 +1739,23 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simRiskVal",
-      "community": 7,
-      "norm_label": "simriskval (simulated risk value)"
+      "community": 5,
+      "norm_label": "simriskval (simulated risk value)",
+      "_origin": "semantic",
+      "id": "index_html_simriskval"
     },
     {
-      "label": "simDelta (simulation risk delta)",
+      "label": "simDelta (simulation delta display)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simDelta",
-      "community": 7,
-      "norm_label": "simdelta (simulation risk delta)"
+      "community": 5,
+      "norm_label": "simdelta (simulation delta display)",
+      "_origin": "semantic",
+      "id": "index_html_simdelta"
     },
     {
       "label": "simReset (simulation reset button)",
@@ -1854,45 +1765,310 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simReset",
+      "community": 5,
+      "norm_label": "simreset (simulation reset button)",
+      "_origin": "semantic",
+      "id": "index_html_simreset"
+    },
+    {
+      "label": "chart (risk simulation chart)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 17,
+      "norm_label": "chart (risk simulation chart)",
+      "_origin": "semantic",
+      "id": "index_html_chart"
+    },
+    {
+      "label": "weight (weight input)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
       "community": 7,
-      "norm_label": "simreset (simulation reset button)"
+      "norm_label": "weight (weight input)",
+      "_origin": "semantic",
+      "id": "index_html_weight"
     },
     {
-      "label": "chart (risk vs LDL chart)",
+      "label": "height (height input)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_chart",
-      "community": 19,
-      "norm_label": "chart (risk vs ldl chart)"
+      "community": 7,
+      "norm_label": "height (height input)",
+      "_origin": "semantic",
+      "id": "index_html_height"
     },
     {
-      "label": "modelBadge (SCORE2/SCORE2-OP model indicator)",
+      "label": "weightSlider (weight simulation slider)",
       "file_type": "code",
       "source_file": "index.html",
       "source_location": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_modelBadge",
-      "community": 2,
-      "norm_label": "modelbadge (score2/score2-op model indicator)"
+      "community": 10,
+      "norm_label": "weightslider (weight simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_weightslider"
+    },
+    {
+      "label": "weightTargetLbl (weight target label)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 10,
+      "norm_label": "weighttargetlbl (weight target label)",
+      "_origin": "semantic",
+      "id": "index_html_weighttargetlbl"
+    },
+    {
+      "label": "dietSeg (Mediterranean diet adherence segment)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "dietseg (mediterranean diet adherence segment)",
+      "_origin": "semantic",
+      "id": "index_html_dietseg"
+    },
+    {
+      "label": "dietLevelDesc (diet level description)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "dietleveldesc (diet level description)",
+      "_origin": "semantic",
+      "id": "index_html_dietleveldesc"
+    },
+    {
+      "label": "bmiNow (current BMI display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "bminow (current bmi display)",
+      "_origin": "semantic",
+      "id": "index_html_bminow"
+    },
+    {
+      "label": "bmiChipNow (current BMI category chip)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "bmichipnow (current bmi category chip)",
+      "_origin": "semantic",
+      "id": "index_html_bmichipnow"
+    },
+    {
+      "label": "bmiArrow (BMI change arrow)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 10,
+      "norm_label": "bmiarrow (bmi change arrow)",
+      "_origin": "semantic",
+      "id": "index_html_bmiarrow"
+    },
+    {
+      "label": "bmiTarget (target BMI display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 10,
+      "norm_label": "bmitarget (target bmi display)",
+      "_origin": "semantic",
+      "id": "index_html_bmitarget"
+    },
+    {
+      "label": "bmiChipTarget (target BMI category chip)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 10,
+      "norm_label": "bmichiptarget (target bmi category chip)",
+      "_origin": "semantic",
+      "id": "index_html_bmichiptarget"
+    },
+    {
+      "label": "wfNow (current risk in waterfall)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "wfnow (current risk in waterfall)",
+      "_origin": "semantic",
+      "id": "index_html_wfnow"
+    },
+    {
+      "label": "wfNowBar (current risk bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "wfnowbar (current risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfnowbar"
+    },
+    {
+      "label": "wfRf (risk with improved weight/PAS/LDL)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 15,
+      "norm_label": "wfrf (risk with improved weight/pas/ldl)",
+      "_origin": "semantic",
+      "id": "index_html_wfrf"
+    },
+    {
+      "label": "wfRfBar (improved risk bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 15,
+      "norm_label": "wfrfbar (improved risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfrfbar"
+    },
+    {
+      "label": "wfDiet (risk with Mediterranean diet)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "wfdiet (risk with mediterranean diet)",
+      "_origin": "semantic",
+      "id": "index_html_wfdiet"
+    },
+    {
+      "label": "wfDietBar (Mediterranean diet risk bar)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "wfdietbar (mediterranean diet risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfdietbar"
+    },
+    {
+      "label": "lsDelta (lifestyle delta display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 8,
+      "norm_label": "lsdelta (lifestyle delta display)",
+      "_origin": "semantic",
+      "id": "index_html_lsdelta"
+    },
+    {
+      "label": "reportBtn (report generation button)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "reportbtn (report generation button)",
+      "_origin": "semantic",
+      "id": "index_html_reportbtn"
+    },
+    {
+      "label": "lsPlaceholder (lifestyle placeholder)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 20,
+      "norm_label": "lsplaceholder (lifestyle placeholder)",
+      "_origin": "semantic",
+      "id": "index_html_lsplaceholder"
+    },
+    {
+      "label": "lsBody (lifestyle results display)",
+      "file_type": "code",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "lsbody (lifestyle results display)",
+      "_origin": "semantic",
+      "id": "index_html_lsbody"
     },
     {
       "label": "SCORE2 (cardiovascular risk model)",
       "file_type": "concept",
       "source_file": "index.html",
       "source_location": null,
+      "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_score2",
       "community": 2,
-      "norm_label": "score2 (cardiovascular risk model)"
+      "norm_label": "score2 (cardiovascular risk model)",
+      "_origin": "semantic",
+      "id": "concept_score2"
     },
     {
       "label": "SCORE2-OP (cardiovascular risk model for older patients)",
@@ -1902,45 +2078,24 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_score2_op",
       "community": 2,
-      "norm_label": "score2-op (cardiovascular risk model for older patients)"
+      "norm_label": "score2-op (cardiovascular risk model for older patients)",
+      "_origin": "semantic",
+      "id": "concept_score2_op"
     },
     {
-      "label": "ESC 2021 Guidelines (European Society of Cardiology)",
+      "label": "ESC 2021/2023 Guidelines",
       "file_type": "document",
       "source_file": "index.html",
       "source_location": null,
+      "source_url": null,
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_esc_2021",
-      "community": 5,
-      "norm_label": "esc 2021 guidelines (european society of cardiology)"
-    },
-    {
-      "label": "ESC 2023 Guidelines (European Society of Cardiology)",
-      "file_type": "document",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "concept_esc_2023",
-      "community": 5,
-      "norm_label": "esc 2023 guidelines (european society of cardiology)"
-    },
-    {
-      "label": "PREDIMED Trial (Mediterranean diet study)",
-      "file_type": "document",
-      "source_file": "index.html",
-      "source_location": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "concept_predimed",
-      "community": 8,
-      "norm_label": "predimed trial (mediterranean diet study)"
+      "community": 9,
+      "norm_label": "esc 2021/2023 guidelines",
+      "_origin": "semantic",
+      "id": "concept_esc_2021_2023"
     },
     {
       "label": "Dr ONKH Portal",
@@ -1950,9 +2105,23 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_portail_dr_onkh",
-      "community": 5,
-      "norm_label": "dr onkh portal"
+      "community": 13,
+      "norm_label": "dr onkh portal",
+      "_origin": "semantic",
+      "id": "concept_portail_dr_onkh"
+    },
+    {
+      "label": "PREDIMED Trial",
+      "file_type": "document",
+      "source_file": "index.html",
+      "source_location": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "community": 7,
+      "norm_label": "predimed trial",
+      "_origin": "semantic",
+      "id": "concept_predimed"
     }
   ],
   "links": [
@@ -3692,8 +3861,559 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html",
-      "target": "concept_esc_2021"
+      "target": "concept_esc_2021_2023"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html",
+      "target": "index_html__dronkh"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html",
+      "target": "index_html_gotoportal"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html",
+      "target": "index_html_valid"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html__dronkh",
+      "target": "index_html_valid"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html__dronkh",
+      "target": "index_html_gotoportal"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_reconnectbtn",
+      "target": "concept_portail_dr_onkh"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_sexseg",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_age",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_sbp",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_smokeseg",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_nonhdl",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_hdl",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_ldl",
+      "target": "index_html_ldlwarn"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_ldl",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_region",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_reportbtn",
+      "target": "index_html_resultbody"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "concept_score2"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "concept_score2_op"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_catbadge"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_gaugescale"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_gaugetrack"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_opnote"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_riskbig"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_resultbody",
+      "target": "index_html_riskcap"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_ldlslider",
+      "target": "index_html_simldlval"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_ldlslider",
+      "target": "index_html_simriskval"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simreset",
+      "target": "index_html_ldlslider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_sbpslider",
+      "target": "index_html_simriskval"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_sbpslider",
+      "target": "index_html_simsbpval"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simreset",
+      "target": "index_html_sbpslider"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simreset",
+      "target": "index_html_simsmokeseg"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simsmokeseg",
+      "target": "index_html_simriskval"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simbaseval",
+      "target": "index_html_simdelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_simriskval",
+      "target": "index_html_simdelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weight",
+      "target": "index_html_bmichipnow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weight",
+      "target": "index_html_bminow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weight",
+      "target": "index_html_lsbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_height",
+      "target": "index_html_lsbody"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weightslider",
+      "target": "index_html_bmiarrow"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weightslider",
+      "target": "index_html_bmichiptarget"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weightslider",
+      "target": "index_html_bmitarget"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_weightslider",
+      "target": "index_html_weighttargetlbl"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_dietseg",
+      "target": "index_html_dietleveldesc"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_dietseg",
+      "target": "index_html_wfdiet"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_wfnow",
+      "target": "index_html_lsdelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_wfnow",
+      "target": "index_html_wfnowbar"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_wfrf",
+      "target": "index_html_wfrfbar"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_wfdiet",
+      "target": "index_html_lsdelta"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_wfdiet",
+      "target": "index_html_wfdietbar"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "index.html",
+      "source_location": null,
+      "weight": 1.0,
+      "_origin": "semantic",
+      "source": "index_html_reportbtn",
+      "target": "index_html_lsbody"
     },
     {
       "relation": "cites",
@@ -3702,358 +4422,9 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
-      "source": "index_html",
-      "target": "concept_esc_2023"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "index_html___dronkh"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "index_html_goToPortal"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html",
-      "target": "index_html_valid"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_goToPortal",
-      "target": "concept_portail_dr_onkh"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_reconnectBtn",
-      "target": "concept_portail_dr_onkh"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_sexSeg",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_age",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_sbp",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_smokeSeg",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_nonhdl",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_hdl",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_ldl",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_derived",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_derived",
-      "target": "concept_score2_op"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_derived",
-      "target": "index_html_catBadge"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_derived",
-      "target": "index_html_riskBig"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_region",
-      "target": "index_html_derived"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_weight",
-      "target": "index_html_bmiNow"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_height",
-      "target": "index_html_bmiNow"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_weightSlider",
-      "target": "index_html_bmiTarget"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_weightSlider",
-      "target": "index_html_wfRf"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_dietSeg",
+      "_origin": "semantic",
+      "source": "index_html_lsbody",
       "target": "concept_predimed"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_dietSeg",
-      "target": "index_html_wfDiet"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfNow",
-      "target": "index_html_lsDelta"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_wfDiet",
-      "target": "index_html_lsDelta"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_ldlSlider",
-      "target": "index_html_simRiskVal"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simReset",
-      "target": "index_html_ldlSlider"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_sbpSlider",
-      "target": "index_html_simRiskVal"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simReset",
-      "target": "index_html_sbpSlider"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simReset",
-      "target": "index_html_simSmokeSeg"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simSmokeSeg",
-      "target": "index_html_simRiskVal"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simBaseVal",
-      "target": "index_html_simDelta"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_simRiskVal",
-      "target": "index_html_simDelta"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_modelBadge",
-      "target": "concept_score2"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "index_html_modelBadge",
-      "target": "concept_score2_op"
     }
   ],
   "hyperedges": [
@@ -4061,17 +4432,21 @@
       "id": "cardiovascular_risk_assessment_flow",
       "label": "Cardiovascular Risk Assessment Flow",
       "nodes": [
-        "index_html_sexSeg",
+        "index_html_sexseg",
         "index_html_age",
         "index_html_sbp",
-        "index_html_smokeSeg",
+        "index_html_smokeseg",
         "index_html_nonhdl",
         "index_html_hdl",
         "index_html_ldl",
         "index_html_region",
-        "index_html_derived",
-        "index_html_riskBig",
-        "index_html_catBadge"
+        "index_html_resultbody",
+        "index_html_riskbig",
+        "index_html_riskcap",
+        "index_html_catbadge",
+        "index_html_opnote",
+        "index_html_gaugetrack",
+        "index_html_gaugescale"
       ],
       "relation": "participate_in",
       "confidence": "INFERRED",
@@ -4079,39 +4454,46 @@
       "source_file": "index.html"
     },
     {
-      "id": "lifestyle_simulation_flow",
-      "label": "Lifestyle Simulation Flow",
+      "id": "simulation_controls_flow",
+      "label": "Simulation Controls Flow",
+      "nodes": [
+        "index_html_ldlslider",
+        "index_html_sbpslider",
+        "index_html_simsmokeseg",
+        "index_html_simldlval",
+        "index_html_simsbpval",
+        "index_html_simbaseval",
+        "index_html_simriskval",
+        "index_html_simdelta",
+        "index_html_simreset",
+        "index_html_chart"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "index.html"
+    },
+    {
+      "id": "lifestyle_intervention_flow",
+      "label": "Lifestyle Intervention Flow",
       "nodes": [
         "index_html_weight",
         "index_html_height",
-        "index_html_weightSlider",
-        "index_html_dietSeg",
-        "index_html_bmiNow",
-        "index_html_bmiTarget",
-        "index_html_wfNow",
-        "index_html_wfRf",
-        "index_html_wfDiet",
-        "index_html_lsDelta"
-      ],
-      "relation": "participate_in",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "index.html"
-    },
-    {
-      "id": "risk_simulation_flow",
-      "label": "Risk Simulation Flow",
-      "nodes": [
-        "index_html_ldlSlider",
-        "index_html_sbpSlider",
-        "index_html_simSmokeSeg",
-        "index_html_simLdlVal",
-        "index_html_simSbpVal",
-        "index_html_simBaseVal",
-        "index_html_simRiskVal",
-        "index_html_simDelta",
-        "index_html_simReset",
-        "index_html_chart"
+        "index_html_weightslider",
+        "index_html_dietseg",
+        "index_html_bminow",
+        "index_html_bmichipnow",
+        "index_html_bmiarrow",
+        "index_html_bmitarget",
+        "index_html_bmichiptarget",
+        "index_html_wfnow",
+        "index_html_wfnowbar",
+        "index_html_wfrf",
+        "index_html_wfrfbar",
+        "index_html_wfdiet",
+        "index_html_wfdietbar",
+        "index_html_lsdelta",
+        "index_html_reportbtn"
       ],
       "relation": "participate_in",
       "confidence": "INFERRED",
@@ -4183,5 +4565,5 @@
       "source_file": ".claude/skills/graphify/SKILL.md"
     }
   ],
-  "built_at_commit": "00574e317b06a31055fe25327453043aff92e5d0"
+  "built_at_commit": "61203cd5a9c985ea3a0b0fb41c66c01af1246ddd"
 }
