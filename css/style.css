@@ -123,6 +123,8 @@ header.site {
 }
 @media (max-width: 880px) { .layout { grid-template-columns: 1fr; } }
 
+.col-left { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
 .card {
   background: var(--bg-2); border: 1px solid var(--border);
   border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px;
@@ -353,10 +355,11 @@ footer a:hover { color: var(--brand); }
 .chart .curve-base { fill: none; stroke: var(--ink-faint); stroke-width: 1.6; stroke-dasharray: 4 4; opacity: .7; }
 .chart .pt-base { fill: var(--bg-2); stroke: var(--ink-faint); stroke-width: 2; }
 
-/* --- Carte mode de vie (poids · IMC · régime) ----------------------------- */
-.lifestyle { margin: 4px 0 10px; }
-.ls-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 22px; align-items: start; }
-@media (max-width: 620px) { .ls-grid { grid-template-columns: 1fr; } }
+/* --- Carte mode de vie (poids · IMC · régime) -----------------------------
+   Empilée en portrait sous « Paramètres du patient » (même colonne) plutôt
+   qu'en pleine largeur, pour combler l'espace laissé par la carte « Risque
+   estimé », plus haute. */
+.ls-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 
 .bmi-readout {
   display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
