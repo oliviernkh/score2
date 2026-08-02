@@ -462,12 +462,11 @@ footer a:hover { color: var(--brand); }
 .rep-foot { font-size: .74rem; color: var(--ink-faint); line-height: 1.5; }
 
 @media print {
-  body * { visibility: hidden; }
-  #reportDoc, #reportDoc * { visibility: visible; }
+  body > *:not(.report-overlay) { display: none !important; }
   html, body { height: auto !important; overflow: visible !important; }
   .report-overlay {
     display: block !important; position: static !important; inset: auto;
-    overflow: visible !important; height: auto !important; padding: 0;
+    overflow: visible !important; height: auto !important; padding: 0; background: none;
   }
   .report-modal {
     position: static !important; overflow: visible !important; height: auto !important;
