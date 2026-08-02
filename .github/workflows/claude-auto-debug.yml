@@ -4,10 +4,23 @@ name: Claude Auto-Debug
 #
 # Trois declencheurs :
 #   1. Un workflow de CI se termine en ECHEC  -> Claude lit les logs, diagnostique
-#      la cause racine et ouvre une DRAFT PR avec un correctif minimal.
+#      la cause racine, ouvre une PR avec un correctif minimal et active le
+#      MERGE AUTOMATIQUE : la PR fusionne des que les tests CI repassent au vert,
+#      sans attendre de relecture humaine.
 #   2. Une issue etiquetee "bug" est ouverte  -> Claude analyse, propose une piste
-#      et, s'il est sur de lui, ouvre une draft PR.
+#      et, s'il est sur de lui, ouvre une PR avec merge automatique (idem cas 1).
 #   3. Une mention @claude dans un commentaire -> invocation manuelle a la demande.
+#
+# Une fois une PR fusionnee sur la branche par defaut, le DEPLOIEMENT suit le
+# pipeline CD deja en place sur ce depot (ex : deploiement automatique Vercel
+# sur push vers la branche par defaut). Ce workflow ne declenche pas de deploiement
+# lui-meme, il se contente de fusionner des que les tests passent.
+#
+# Prerequis depot (une fois, dans Settings) pour que le merge auto attende
+# vraiment les tests plutot que de fusionner immediatement :
+#   - Settings -> General -> Pull Requests -> cocher "Allow auto-merge".
+#   - Settings -> Branches -> proteger la branche par defaut avec au moins un
+#     "required status check" correspondant a ton workflow de CI.
 #
 # Installation (app Claude GitHub + secret ANTHROPIC_API_KEY) : voir oliviernkh/claude/auto-debug/README.md
 # Ce depot n'a pas de workflow de CI/build dedie pour l'instant (seulement Graphify) ;
@@ -65,13 +78,22 @@ jobs:
                - un probleme de config/dependance/environnement.
             3. Si tu es CONFIANT dans un correctif minimal et surement correct :
                cree une branche `claude/fix-ci-${{ github.event.workflow_run.id }}`,
-               applique le correctif, et ouvre une PR en mode DRAFT qui explique
-               clairement la cause racine et la correction.
+               applique le correctif, et ouvre une PR (PAS en mode draft) qui
+               explique clairement la cause racine et la correction. Juste apres
+               l'avoir ouverte, active le merge automatique avec
+               `gh pr merge --auto --squash --delete-branch <numero-ou-url-de-la-PR>`
+               afin qu'elle fusionne d'elle-meme des que les checks CI repassent
+               au vert, sans attendre de relecture humaine. Si `gh pr merge --auto`
+               echoue (auto-merge non active sur le depot, ou aucun check requis
+               configure), signale-le clairement dans un commentaire sur la PR
+               plutot que d'echouer silencieusement.
             4. Si tu n'es PAS sur (correctif ambigu, refonte necessaire, cause
                externe) : n'ouvre PAS de PR. Redige plutot un diagnostic clair
                et les options possibles, sans deviner.
 
             Reste minimal et cible : corrige la cause, ne refactorise pas alentour.
+            Le deploiement en production suit ensuite le pipeline CD deja en place
+            sur ce depot une fois la PR fusionnee ; tu n'as rien d'autre a declencher.
           claude_args: |
             --max-turns 40
 
@@ -110,10 +132,20 @@ jobs:
             3. Si c'est un bug : localise la cause racine dans le code.
             4. Si tu es CONFIANT dans un correctif : cree une branche
                `claude/fix-issue-${{ github.event.issue.number }}`, corrige, et ouvre
-               une DRAFT PR liee a l'issue (Closes #${{ github.event.issue.number }}).
+               une PR (PAS en mode draft) liee a l'issue
+               (Closes #${{ github.event.issue.number }}). Juste apres l'avoir
+               ouverte, active le merge automatique avec
+               `gh pr merge --auto --squash --delete-branch <numero-ou-url-de-la-PR>`
+               afin qu'elle fusionne d'elle-meme des que les checks CI repassent
+               au vert, sans attendre de relecture humaine. Si `gh pr merge --auto`
+               echoue (auto-merge non active sur le depot, ou aucun check requis
+               configure), signale-le clairement dans un commentaire sur la PR
+               plutot que d'echouer silencieusement.
             5. Sinon : poste un commentaire avec le diagnostic et une solution
                proposee, sans modifier le code.
 
-            Reste minimal et cible.
+            Reste minimal et cible. Le deploiement en production suit ensuite le
+            pipeline CD deja en place sur ce depot une fois la PR fusionnee ; tu
+            n'as rien d'autre a declencher.
           claude_args: |
             --max-turns 40
