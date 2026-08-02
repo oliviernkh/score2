@@ -98,6 +98,7 @@
 
     <div class="layout">
       <!-- ================= COLONNE SAISIE ================= -->
+      <div class="col-left">
       <section class="card" aria-labelledby="t-saisie">
         <h2 id="t-saisie">Paramètres du patient</h2>
         <p class="sub">Sujet apparemment sain, sans antécédent cardiovasculaire ni diabète.</p>
@@ -181,6 +182,116 @@
         </details>
       </section>
 
+      <!-- ================= MODE DE VIE : POIDS · IMC · RÉGIME ================= -->
+      <section class="card lifestyle" aria-labelledby="t-ls">
+        <div class="result-head">
+          <div>
+            <h2 id="t-ls">Mode de vie : poids, IMC &amp; alimentation</h2>
+            <p class="sub" style="margin-bottom:0">Évolution du risque cardiovasculaire selon le poids et le régime</p>
+          </div>
+          <span class="model-badge">Pédagogique</span>
+        </div>
+
+        <div id="lsPlaceholder" class="placeholder">Renseignez d'abord les paramètres du patient ci-dessus.</div>
+
+        <div id="lsBody" style="display:none">
+          <div class="ls-grid">
+            <div class="row2">
+              <div class="field" style="margin-bottom:14px">
+                <label class="lbl" for="weight">Poids actuel</label>
+                <div class="inline-unit">
+                  <input type="number" id="weight" min="35" max="250" step="1" inputmode="numeric">
+                  <span class="u">kg</span>
+                </div>
+              </div>
+              <div class="field" style="margin-bottom:14px">
+                <label class="lbl" for="height">Taille</label>
+                <div class="inline-unit">
+                  <input type="number" id="height" min="130" max="220" step="1" inputmode="numeric">
+                  <span class="u">cm</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lbl" for="weightSlider">Poids cible <span class="hint" id="weightTargetLbl"></span></label>
+              <input type="range" id="weightSlider" aria-label="Poids cible simulé">
+            </div>
+
+            <div class="field" style="margin-bottom:8px">
+              <label class="lbl">Adhérence au régime méditerranéen <span class="hint">autodéclarée</span></label>
+              <div class="seg" id="dietSeg" role="group" aria-label="Adhérence au régime méditerranéen">
+                <button type="button" data-val="0" aria-pressed="true" title="Alimentation courante, sans régime méditerranéen particulier">Faible</button>
+                <button type="button" data-val="1" aria-pressed="false" title="Plusieurs composantes suivies régulièrement (huile d'olive, fruits/légumes, poisson, légumineuses), sans adhérence stricte">Modérée</button>
+                <button type="button" data-val="2" aria-pressed="false" title="Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED">Élevée</button>
+              </div>
+              <div class="hint" id="dietLevelDesc" style="margin-top:6px; line-height:1.4"></div>
+            </div>
+
+            <div class="bmi-readout">
+              <span class="bmi-v" id="bmiNow"></span>
+              <span class="bmi-chip" id="bmiChipNow"></span>
+              <span class="bmi-arrow" id="bmiArrow" style="display:none">→</span>
+              <span class="bmi-v" id="bmiTarget" style="display:none"></span>
+              <span class="bmi-chip" id="bmiChipTarget" style="display:none"></span>
+            </div>
+
+            <div class="waterfall">
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">Risque <b>actuel</b></span>
+                  <span class="wf-val" id="wfNow"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-now" id="wfNowBar"></div></div>
+              </div>
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">+ <b>poids &amp; PAS/LDL</b> améliorés</span>
+                  <span class="wf-val" id="wfRf"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-rf" id="wfRfBar"></div></div>
+              </div>
+              <div>
+                <div class="wf-step">
+                  <span class="wf-label">+ <b>régime méditerranéen</b> (bénéfice résiduel)</span>
+                  <span class="wf-val" id="wfDiet"></span>
+                </div>
+                <div class="wf-bar-wrap"><div class="wf-bar b-diet" id="wfDietBar"></div></div>
+              </div>
+            </div>
+            <div style="margin-top:12px"><span class="delta-pill" id="lsDelta"></span></div>
+          </div>
+
+          <div class="note">
+            <b>Comment lire cette carte.</b> SCORE2 n'intègre pas directement le poids, l'IMC
+            ni l'alimentation. Ici, une perte de poids et l'adhérence au régime méditerranéen
+            sont traduites en baisse plausible de la <b>PAS</b> et du <b>LDL</b> (recalculées
+            par SCORE2), puis un <b>bénéfice résiduel</b> du régime méditerranéen (essai
+            PREDIMED) est appliqué en plus. C'est une <b>illustration</b> des ordres de
+            grandeur attendus, pas une prédiction individuelle.
+            <br><br>
+            Le niveau d'adhérence est <b>autodéclaré</b> (aucun score n'est calculé) :
+            <b>faible</b> = alimentation courante ; <b>modérée</b> = plusieurs composantes du
+            régime suivies régulièrement (huile d'olive, fruits/légumes, poisson,
+            légumineuses…) sans adhérence stricte ; <b>élevée</b> = huile d'olive au quotidien,
+            fruits/légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine,
+            très peu de viande rouge/charcuterie et de sucreries (niveau le plus strict, proche
+            du groupe intervention de l'essai PREDIMED).
+          </div>
+
+          <div style="margin-top:14px">
+            <button type="button" class="report-btn" id="reportBtn">
+              📄 Générer le rapport pédagogique
+            </button>
+            <p class="sub" style="margin:8px 0 0">
+              Reprend les cibles LDL et les leviers simulés dans la carte « Risque estimé »
+              ainsi que le poids et le régime méditerranéen renseignés ci-dessus.
+            </p>
+          </div>
+        </div>
+      </section>
+      </div>
+
       <!-- ================= COLONNE RÉSULTAT ================= -->
       <section class="card" aria-labelledby="t-res">
         <div class="result-head">
@@ -263,121 +374,6 @@
         </div>
       </section>
     </div>
-
-    <!-- ================= MODE DE VIE : POIDS · IMC · RÉGIME ================= -->
-    <section class="card lifestyle" aria-labelledby="t-ls">
-      <div class="result-head">
-        <div>
-          <h2 id="t-ls">Mode de vie : poids, IMC &amp; alimentation</h2>
-          <p class="sub" style="margin-bottom:0">Évolution du risque cardiovasculaire selon le poids et le régime</p>
-        </div>
-        <span class="model-badge">Pédagogique</span>
-      </div>
-
-      <div id="lsPlaceholder" class="placeholder">Renseignez d'abord les paramètres du patient ci-dessus.</div>
-
-      <div id="lsBody" style="display:none">
-        <div class="ls-grid">
-          <!-- Colonne saisie -->
-          <div>
-            <div class="row2">
-              <div class="field" style="margin-bottom:14px">
-                <label class="lbl" for="weight">Poids actuel</label>
-                <div class="inline-unit">
-                  <input type="number" id="weight" min="35" max="250" step="1" inputmode="numeric">
-                  <span class="u">kg</span>
-                </div>
-              </div>
-              <div class="field" style="margin-bottom:14px">
-                <label class="lbl" for="height">Taille</label>
-                <div class="inline-unit">
-                  <input type="number" id="height" min="130" max="220" step="1" inputmode="numeric">
-                  <span class="u">cm</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="lbl" for="weightSlider">Poids cible <span class="hint" id="weightTargetLbl"></span></label>
-              <input type="range" id="weightSlider" aria-label="Poids cible simulé">
-            </div>
-
-            <div class="field" style="margin-bottom:8px">
-              <label class="lbl">Adhérence au régime méditerranéen <span class="hint">autodéclarée</span></label>
-              <div class="seg" id="dietSeg" role="group" aria-label="Adhérence au régime méditerranéen">
-                <button type="button" data-val="0" aria-pressed="true" title="Alimentation courante, sans régime méditerranéen particulier">Faible</button>
-                <button type="button" data-val="1" aria-pressed="false" title="Plusieurs composantes suivies régulièrement (huile d'olive, fruits/légumes, poisson, légumineuses), sans adhérence stricte">Modérée</button>
-                <button type="button" data-val="2" aria-pressed="false" title="Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED">Élevée</button>
-              </div>
-              <div class="hint" id="dietLevelDesc" style="margin-top:6px; line-height:1.4"></div>
-            </div>
-
-            <div class="bmi-readout">
-              <span class="bmi-v" id="bmiNow"></span>
-              <span class="bmi-chip" id="bmiChipNow"></span>
-              <span class="bmi-arrow" id="bmiArrow" style="display:none">→</span>
-              <span class="bmi-v" id="bmiTarget" style="display:none"></span>
-              <span class="bmi-chip" id="bmiChipTarget" style="display:none"></span>
-            </div>
-          </div>
-
-          <!-- Colonne résultat : cascade -->
-          <div>
-            <div class="waterfall">
-              <div>
-                <div class="wf-step">
-                  <span class="wf-label">Risque <b>actuel</b></span>
-                  <span class="wf-val" id="wfNow"></span>
-                </div>
-                <div class="wf-bar-wrap"><div class="wf-bar b-now" id="wfNowBar"></div></div>
-              </div>
-              <div>
-                <div class="wf-step">
-                  <span class="wf-label">+ <b>poids &amp; PAS/LDL</b> améliorés</span>
-                  <span class="wf-val" id="wfRf"></span>
-                </div>
-                <div class="wf-bar-wrap"><div class="wf-bar b-rf" id="wfRfBar"></div></div>
-              </div>
-              <div>
-                <div class="wf-step">
-                  <span class="wf-label">+ <b>régime méditerranéen</b> (bénéfice résiduel)</span>
-                  <span class="wf-val" id="wfDiet"></span>
-                </div>
-                <div class="wf-bar-wrap"><div class="wf-bar b-diet" id="wfDietBar"></div></div>
-              </div>
-            </div>
-            <div style="margin-top:12px"><span class="delta-pill" id="lsDelta"></span></div>
-          </div>
-        </div>
-
-        <div class="note">
-          <b>Comment lire cette carte.</b> SCORE2 n'intègre pas directement le poids, l'IMC
-          ni l'alimentation. Ici, une perte de poids et l'adhérence au régime méditerranéen
-          sont traduites en baisse plausible de la <b>PAS</b> et du <b>LDL</b> (recalculées
-          par SCORE2), puis un <b>bénéfice résiduel</b> du régime méditerranéen (essai
-          PREDIMED) est appliqué en plus. C'est une <b>illustration</b> des ordres de
-          grandeur attendus, pas une prédiction individuelle.
-          <br><br>
-          Le niveau d'adhérence est <b>autodéclaré</b> (aucun score n'est calculé) :
-          <b>faible</b> = alimentation courante ; <b>modérée</b> = plusieurs composantes du
-          régime suivies régulièrement (huile d'olive, fruits/légumes, poisson,
-          légumineuses…) sans adhérence stricte ; <b>élevée</b> = huile d'olive au quotidien,
-          fruits/légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine,
-          très peu de viande rouge/charcuterie et de sucreries (niveau le plus strict, proche
-          du groupe intervention de l'essai PREDIMED).
-        </div>
-
-        <div style="margin-top:14px">
-          <button type="button" class="report-btn" id="reportBtn">
-            📄 Générer le rapport pédagogique
-          </button>
-          <p class="sub" style="margin:8px 0 0">
-            Reprend les cibles LDL et les leviers simulés dans la carte « Risque estimé »
-            ainsi que le poids et le régime méditerranéen renseignés ci-dessus.
-          </p>
-        </div>
-      </div>
-    </section>
 
     <!-- ================= À PROPOS / MÉTHODE ================= -->
     <section class="about">
