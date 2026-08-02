@@ -464,8 +464,16 @@ footer a:hover { color: var(--brand); }
 @media print {
   body * { visibility: hidden; }
   #reportDoc, #reportDoc * { visibility: visible; }
-  #reportDoc { position: absolute; left: 0; top: 0; width: 100%; padding: 0; }
-  .report-modal { box-shadow: none; background: none; }
+  html, body { height: auto !important; overflow: visible !important; }
+  .report-overlay {
+    display: block !important; position: static !important; inset: auto;
+    overflow: visible !important; height: auto !important; padding: 0;
+  }
+  .report-modal {
+    position: static !important; overflow: visible !important; height: auto !important;
+    width: 100%; margin: 0; box-shadow: none; background: none;
+  }
+  #reportDoc { position: static; width: 100%; padding: 0; }
   .no-print { display: none !important; }
 }
 

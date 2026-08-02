@@ -259,6 +259,7 @@
       "community": 4,
       "norm_label": "score2 & score2-op readme",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme"
     },
     {
@@ -268,6 +269,7 @@
       "community": 4,
       "norm_label": "score2 algorithm",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_score2"
     },
     {
@@ -277,6 +279,7 @@
       "community": 4,
       "norm_label": "score2-op algorithm",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_score2_op"
     },
     {
@@ -286,6 +289,7 @@
       "community": 4,
       "norm_label": "ldl/pas/tabac simulation",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_simulation"
     },
     {
@@ -295,6 +299,7 @@
       "community": 4,
       "norm_label": "lifestyle module (weight/imc/mediterranean diet)",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_lifestyle_module"
     },
     {
@@ -304,6 +309,7 @@
       "community": 4,
       "norm_label": "esc 2021 guidelines",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_esc_2021"
     },
     {
@@ -313,6 +319,7 @@
       "community": 4,
       "norm_label": "esc 2023 guidelines",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_esc_2023"
     },
     {
@@ -322,6 +329,7 @@
       "community": 4,
       "norm_label": "predimed trial",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_predimed"
     },
     {
@@ -331,6 +339,7 @@
       "community": 4,
       "norm_label": "neter et al. (hypertension 2003)",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_neter_2003"
     },
     {
@@ -340,6 +349,7 @@
       "community": 4,
       "norm_label": "score2.selftest()",
       "community_name": "Cardiovascular Risk Guidelines",
+      "_origin": "semantic",
       "id": "readme_self_test"
     },
     {
@@ -353,6 +363,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify",
+      "_origin": "semantic",
       "id": "claude_graphify"
     },
     {
@@ -366,6 +377,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "knowledge graph",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_knowledge_graph"
     },
     {
@@ -379,6 +391,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "community detection",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_community_detection"
     },
     {
@@ -392,6 +405,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cross-file relationships",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_cross_file_relationships"
     },
     {
@@ -405,6 +419,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify query",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graphify_query"
     },
     {
@@ -418,6 +433,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify path",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graphify_path"
     },
     {
@@ -431,6 +447,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify explain",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graphify_explain"
     },
     {
@@ -444,6 +461,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphify update",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graphify_update"
     },
     {
@@ -457,6 +475,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "extraction (ast + semantic)",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_extraction"
     },
     {
@@ -470,6 +489,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "structural extraction (ast)",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_structural_extraction"
     },
     {
@@ -483,6 +503,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "semantic extraction (llm)",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_semantic_extraction"
     },
     {
@@ -496,6 +517,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "gemini backend",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_gemini_backend"
     },
     {
@@ -509,6 +531,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "hyperedges",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_hyperedges"
     },
     {
@@ -522,6 +545,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "community labeling",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_community_labeling"
     },
     {
@@ -535,6 +559,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "obsidian vault export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_obsidian_vault"
     },
     {
@@ -548,6 +573,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "html export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_html_export"
     },
     {
@@ -561,6 +587,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "wiki export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_wiki_export"
     },
     {
@@ -574,6 +601,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "neo4j export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_neo4j_export"
     },
     {
@@ -587,6 +615,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "falkordb export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_falkordb_export"
     },
     {
@@ -600,6 +629,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "svg export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_svg_export"
     },
     {
@@ -613,6 +643,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graphml export",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graphml_export"
     },
     {
@@ -626,6 +657,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "mcp server",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_mcp_server"
     },
     {
@@ -639,6 +671,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "token reduction benchmark",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_token_reduction_benchmark"
     },
     {
@@ -652,6 +685,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "github clone",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_github_clone"
     },
     {
@@ -665,6 +699,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cross-repo merge",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_cross_repo_merge"
     },
     {
@@ -678,6 +713,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "git commit hook",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_git_commit_hook"
     },
     {
@@ -691,6 +727,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "claude.md integration",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_claude_integration"
     },
     {
@@ -704,6 +741,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "honesty rules",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_honesty_rules"
     },
     {
@@ -717,6 +755,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "extraction specification",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_extraction_spec"
     },
     {
@@ -730,6 +769,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "github and merge reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_github_and_merge"
     },
     {
@@ -743,6 +783,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "add/watch reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_add_watch"
     },
     {
@@ -756,6 +797,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "exports reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_exports"
     },
     {
@@ -769,6 +811,7 @@
       "contributor": null,
       "community": 16,
       "norm_label": "transcribe reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_transcribe"
     },
     {
@@ -782,6 +825,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "update reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_update"
     },
     {
@@ -795,6 +839,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "query reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_query"
     },
     {
@@ -808,6 +853,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "hooks reference",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_references_hooks"
     },
     {
@@ -821,6 +867,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "update graphify knowledge graph job",
+      "_origin": "semantic",
       "id": "github_workflows_graphify_yml_update_graph_job"
     },
     {
@@ -834,6 +881,7 @@
       "contributor": null,
       "community": 6,
       "norm_label": "mistral backend",
+      "_origin": "semantic",
       "id": "github_workflows_graphify_yml_mistral_backend"
     },
     {
@@ -847,6 +895,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "deep mode",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_deep_mode"
     },
     {
@@ -860,6 +909,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "directed graph",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_directed_graph"
     },
     {
@@ -873,6 +923,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "whisper model",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_whisper_model"
     },
     {
@@ -886,6 +937,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cluster-only mode",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_cluster_only"
     },
     {
@@ -899,6 +951,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "graph health check",
+      "_origin": "semantic",
       "id": "claude_skills_graphify_skill_graph_health_check"
     },
     {
@@ -912,6 +965,7 @@
       "contributor": null,
       "community": 14,
       "norm_label": "claude auto-debug workflow",
+      "_origin": "semantic",
       "id": "github_workflows_claude_auto_debug"
     },
     {
@@ -925,6 +979,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "debug-ci-failure job",
+      "_origin": "semantic",
       "id": "github_workflows_claude_auto_debug_debug_ci_failure"
     },
     {
@@ -938,6 +993,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "triage-issue job",
+      "_origin": "semantic",
       "id": "github_workflows_claude_auto_debug_triage_issue"
     },
     {
@@ -951,6 +1007,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "actions/checkout@v4",
+      "_origin": "semantic",
       "id": "actions_checkout_v4"
     },
     {
@@ -964,6 +1021,7 @@
       "contributor": null,
       "community": 11,
       "norm_label": "anthropics/claude-code-action@v1",
+      "_origin": "semantic",
       "id": "anthropics_claude_code_action_v1"
     },
     {
@@ -976,6 +1034,7 @@
       "contributor": null,
       "community": 14,
       "norm_label": "ci workflow",
+      "_origin": "semantic",
       "id": "github_workflows_ci"
     },
     {
@@ -1277,9 +1336,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html",
       "community": 9,
-      "norm_label": "index.html"
+      "norm_label": "index.html",
+      "_origin": "semantic",
+      "id": "index_html"
     },
     {
       "label": "valid (token validation function)",
@@ -1289,9 +1349,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_valid",
       "community": 9,
-      "norm_label": "valid (token validation function)"
+      "norm_label": "valid (token validation function)",
+      "_origin": "semantic",
+      "id": "index_html_valid"
     },
     {
       "label": "goToPortal (redirection function)",
@@ -1301,9 +1362,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_gotoportal",
       "community": 9,
-      "norm_label": "gotoportal (redirection function)"
+      "norm_label": "gotoportal (redirection function)",
+      "_origin": "semantic",
+      "id": "index_html_gotoportal"
     },
     {
       "label": "__drOnkh (global object)",
@@ -1313,9 +1375,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html__dronkh",
       "community": 9,
-      "norm_label": "__dronkh (global object)"
+      "norm_label": "__dronkh (global object)",
+      "_origin": "semantic",
+      "id": "index_html__dronkh"
     },
     {
       "label": "logoutScreen (UI element)",
@@ -1325,9 +1388,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_logoutscreen",
       "community": 19,
-      "norm_label": "logoutscreen (ui element)"
+      "norm_label": "logoutscreen (ui element)",
+      "_origin": "semantic",
+      "id": "index_html_logoutscreen"
     },
     {
       "label": "reconnectBtn (reconnection button)",
@@ -1337,9 +1401,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_reconnectbtn",
       "community": 13,
-      "norm_label": "reconnectbtn (reconnection button)"
+      "norm_label": "reconnectbtn (reconnection button)",
+      "_origin": "semantic",
+      "id": "index_html_reconnectbtn"
     },
     {
       "label": "sexSeg (sex selection segment)",
@@ -1349,9 +1414,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_sexseg",
       "community": 2,
-      "norm_label": "sexseg (sex selection segment)"
+      "norm_label": "sexseg (sex selection segment)",
+      "_origin": "semantic",
+      "id": "index_html_sexseg"
     },
     {
       "label": "age (input field)",
@@ -1361,9 +1427,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_age",
       "community": 2,
-      "norm_label": "age (input field)"
+      "norm_label": "age (input field)",
+      "_origin": "semantic",
+      "id": "index_html_age"
     },
     {
       "label": "sbp (systolic blood pressure input)",
@@ -1373,9 +1440,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_sbp",
       "community": 2,
-      "norm_label": "sbp (systolic blood pressure input)"
+      "norm_label": "sbp (systolic blood pressure input)",
+      "_origin": "semantic",
+      "id": "index_html_sbp"
     },
     {
       "label": "smokeSeg (smoking status segment)",
@@ -1385,9 +1453,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_smokeseg",
       "community": 2,
-      "norm_label": "smokeseg (smoking status segment)"
+      "norm_label": "smokeseg (smoking status segment)",
+      "_origin": "semantic",
+      "id": "index_html_smokeseg"
     },
     {
       "label": "nonhdl (non-HDL cholesterol input)",
@@ -1397,9 +1466,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_nonhdl",
       "community": 2,
-      "norm_label": "nonhdl (non-hdl cholesterol input)"
+      "norm_label": "nonhdl (non-hdl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_nonhdl"
     },
     {
       "label": "hdl (HDL cholesterol input)",
@@ -1409,9 +1479,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_hdl",
       "community": 2,
-      "norm_label": "hdl (hdl cholesterol input)"
+      "norm_label": "hdl (hdl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_hdl"
     },
     {
       "label": "ldl (LDL cholesterol input)",
@@ -1421,9 +1492,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldl",
       "community": 2,
-      "norm_label": "ldl (ldl cholesterol input)"
+      "norm_label": "ldl (ldl cholesterol input)",
+      "_origin": "semantic",
+      "id": "index_html_ldl"
     },
     {
       "label": "ldlWarn (LDL warning message)",
@@ -1433,9 +1505,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldlwarn",
       "community": 2,
-      "norm_label": "ldlwarn (ldl warning message)"
+      "norm_label": "ldlwarn (ldl warning message)",
+      "_origin": "semantic",
+      "id": "index_html_ldlwarn"
     },
     {
       "label": "derived (derived values display)",
@@ -1445,9 +1518,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_derived",
       "community": 18,
-      "norm_label": "derived (derived values display)"
+      "norm_label": "derived (derived values display)",
+      "_origin": "semantic",
+      "id": "index_html_derived"
     },
     {
       "label": "region (risk region selector)",
@@ -1457,9 +1531,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_region",
       "community": 2,
-      "norm_label": "region (risk region selector)"
+      "norm_label": "region (risk region selector)",
+      "_origin": "semantic",
+      "id": "index_html_region"
     },
     {
       "label": "modelBadge (SCORE2/SCORE2-OP badge)",
@@ -1469,9 +1544,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_modelbadge",
       "community": 21,
-      "norm_label": "modelbadge (score2/score2-op badge)"
+      "norm_label": "modelbadge (score2/score2-op badge)",
+      "_origin": "semantic",
+      "id": "index_html_modelbadge"
     },
     {
       "label": "resultPlaceholder (result placeholder)",
@@ -1481,9 +1557,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_resultplaceholder",
       "community": 22,
-      "norm_label": "resultplaceholder (result placeholder)"
+      "norm_label": "resultplaceholder (result placeholder)",
+      "_origin": "semantic",
+      "id": "index_html_resultplaceholder"
     },
     {
       "label": "resultBody (result display area)",
@@ -1493,9 +1570,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_resultbody",
       "community": 2,
-      "norm_label": "resultbody (result display area)"
+      "norm_label": "resultbody (result display area)",
+      "_origin": "semantic",
+      "id": "index_html_resultbody"
     },
     {
       "label": "riskBig (main risk display)",
@@ -1505,9 +1583,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_riskbig",
       "community": 2,
-      "norm_label": "riskbig (main risk display)"
+      "norm_label": "riskbig (main risk display)",
+      "_origin": "semantic",
+      "id": "index_html_riskbig"
     },
     {
       "label": "riskCap (risk caption)",
@@ -1517,9 +1596,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_riskcap",
       "community": 2,
-      "norm_label": "riskcap (risk caption)"
+      "norm_label": "riskcap (risk caption)",
+      "_origin": "semantic",
+      "id": "index_html_riskcap"
     },
     {
       "label": "catBadge (risk category badge)",
@@ -1529,9 +1609,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_catbadge",
       "community": 2,
-      "norm_label": "catbadge (risk category badge)"
+      "norm_label": "catbadge (risk category badge)",
+      "_origin": "semantic",
+      "id": "index_html_catbadge"
     },
     {
       "label": "opNote (older patient note)",
@@ -1541,9 +1622,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_opnote",
       "community": 2,
-      "norm_label": "opnote (older patient note)"
+      "norm_label": "opnote (older patient note)",
+      "_origin": "semantic",
+      "id": "index_html_opnote"
     },
     {
       "label": "gaugeTrack (risk gauge track)",
@@ -1553,9 +1635,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_gaugetrack",
       "community": 2,
-      "norm_label": "gaugetrack (risk gauge track)"
+      "norm_label": "gaugetrack (risk gauge track)",
+      "_origin": "semantic",
+      "id": "index_html_gaugetrack"
     },
     {
       "label": "gaugeScale (risk gauge scale)",
@@ -1565,9 +1648,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_gaugescale",
       "community": 2,
-      "norm_label": "gaugescale (risk gauge scale)"
+      "norm_label": "gaugescale (risk gauge scale)",
+      "_origin": "semantic",
+      "id": "index_html_gaugescale"
     },
     {
       "label": "ldlSlider (LDL simulation slider)",
@@ -1577,9 +1661,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_ldlslider",
       "community": 5,
-      "norm_label": "ldlslider (ldl simulation slider)"
+      "norm_label": "ldlslider (ldl simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_ldlslider"
     },
     {
       "label": "simLdlVal (simulated LDL value display)",
@@ -1589,9 +1674,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simldlval",
       "community": 5,
-      "norm_label": "simldlval (simulated ldl value display)"
+      "norm_label": "simldlval (simulated ldl value display)",
+      "_origin": "semantic",
+      "id": "index_html_simldlval"
     },
     {
       "label": "sbpSlider (systolic BP simulation slider)",
@@ -1601,9 +1687,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_sbpslider",
       "community": 5,
-      "norm_label": "sbpslider (systolic bp simulation slider)"
+      "norm_label": "sbpslider (systolic bp simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_sbpslider"
     },
     {
       "label": "simSbpVal (simulated SBP value display)",
@@ -1613,9 +1700,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simsbpval",
       "community": 5,
-      "norm_label": "simsbpval (simulated sbp value display)"
+      "norm_label": "simsbpval (simulated sbp value display)",
+      "_origin": "semantic",
+      "id": "index_html_simsbpval"
     },
     {
       "label": "simSmokeSeg (simulated smoking segment)",
@@ -1625,9 +1713,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simsmokeseg",
       "community": 5,
-      "norm_label": "simsmokeseg (simulated smoking segment)"
+      "norm_label": "simsmokeseg (simulated smoking segment)",
+      "_origin": "semantic",
+      "id": "index_html_simsmokeseg"
     },
     {
       "label": "simBaseVal (base risk value)",
@@ -1637,9 +1726,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simbaseval",
       "community": 5,
-      "norm_label": "simbaseval (base risk value)"
+      "norm_label": "simbaseval (base risk value)",
+      "_origin": "semantic",
+      "id": "index_html_simbaseval"
     },
     {
       "label": "simRiskVal (simulated risk value)",
@@ -1649,9 +1739,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simriskval",
       "community": 5,
-      "norm_label": "simriskval (simulated risk value)"
+      "norm_label": "simriskval (simulated risk value)",
+      "_origin": "semantic",
+      "id": "index_html_simriskval"
     },
     {
       "label": "simDelta (simulation delta display)",
@@ -1661,9 +1752,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simdelta",
       "community": 5,
-      "norm_label": "simdelta (simulation delta display)"
+      "norm_label": "simdelta (simulation delta display)",
+      "_origin": "semantic",
+      "id": "index_html_simdelta"
     },
     {
       "label": "simReset (simulation reset button)",
@@ -1673,9 +1765,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_simreset",
       "community": 5,
-      "norm_label": "simreset (simulation reset button)"
+      "norm_label": "simreset (simulation reset button)",
+      "_origin": "semantic",
+      "id": "index_html_simreset"
     },
     {
       "label": "chart (risk simulation chart)",
@@ -1685,9 +1778,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_chart",
       "community": 17,
-      "norm_label": "chart (risk simulation chart)"
+      "norm_label": "chart (risk simulation chart)",
+      "_origin": "semantic",
+      "id": "index_html_chart"
     },
     {
       "label": "weight (weight input)",
@@ -1697,9 +1791,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_weight",
       "community": 7,
-      "norm_label": "weight (weight input)"
+      "norm_label": "weight (weight input)",
+      "_origin": "semantic",
+      "id": "index_html_weight"
     },
     {
       "label": "height (height input)",
@@ -1709,9 +1804,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_height",
       "community": 7,
-      "norm_label": "height (height input)"
+      "norm_label": "height (height input)",
+      "_origin": "semantic",
+      "id": "index_html_height"
     },
     {
       "label": "weightSlider (weight simulation slider)",
@@ -1721,9 +1817,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_weightslider",
       "community": 10,
-      "norm_label": "weightslider (weight simulation slider)"
+      "norm_label": "weightslider (weight simulation slider)",
+      "_origin": "semantic",
+      "id": "index_html_weightslider"
     },
     {
       "label": "weightTargetLbl (weight target label)",
@@ -1733,9 +1830,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_weighttargetlbl",
       "community": 10,
-      "norm_label": "weighttargetlbl (weight target label)"
+      "norm_label": "weighttargetlbl (weight target label)",
+      "_origin": "semantic",
+      "id": "index_html_weighttargetlbl"
     },
     {
       "label": "dietSeg (Mediterranean diet adherence segment)",
@@ -1745,9 +1843,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_dietseg",
       "community": 8,
-      "norm_label": "dietseg (mediterranean diet adherence segment)"
+      "norm_label": "dietseg (mediterranean diet adherence segment)",
+      "_origin": "semantic",
+      "id": "index_html_dietseg"
     },
     {
       "label": "dietLevelDesc (diet level description)",
@@ -1757,9 +1856,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_dietleveldesc",
       "community": 8,
-      "norm_label": "dietleveldesc (diet level description)"
+      "norm_label": "dietleveldesc (diet level description)",
+      "_origin": "semantic",
+      "id": "index_html_dietleveldesc"
     },
     {
       "label": "bmiNow (current BMI display)",
@@ -1769,9 +1869,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_bminow",
       "community": 7,
-      "norm_label": "bminow (current bmi display)"
+      "norm_label": "bminow (current bmi display)",
+      "_origin": "semantic",
+      "id": "index_html_bminow"
     },
     {
       "label": "bmiChipNow (current BMI category chip)",
@@ -1781,9 +1882,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_bmichipnow",
       "community": 7,
-      "norm_label": "bmichipnow (current bmi category chip)"
+      "norm_label": "bmichipnow (current bmi category chip)",
+      "_origin": "semantic",
+      "id": "index_html_bmichipnow"
     },
     {
       "label": "bmiArrow (BMI change arrow)",
@@ -1793,9 +1895,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_bmiarrow",
       "community": 10,
-      "norm_label": "bmiarrow (bmi change arrow)"
+      "norm_label": "bmiarrow (bmi change arrow)",
+      "_origin": "semantic",
+      "id": "index_html_bmiarrow"
     },
     {
       "label": "bmiTarget (target BMI display)",
@@ -1805,9 +1908,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_bmitarget",
       "community": 10,
-      "norm_label": "bmitarget (target bmi display)"
+      "norm_label": "bmitarget (target bmi display)",
+      "_origin": "semantic",
+      "id": "index_html_bmitarget"
     },
     {
       "label": "bmiChipTarget (target BMI category chip)",
@@ -1817,9 +1921,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_bmichiptarget",
       "community": 10,
-      "norm_label": "bmichiptarget (target bmi category chip)"
+      "norm_label": "bmichiptarget (target bmi category chip)",
+      "_origin": "semantic",
+      "id": "index_html_bmichiptarget"
     },
     {
       "label": "wfNow (current risk in waterfall)",
@@ -1829,9 +1934,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfnow",
       "community": 8,
-      "norm_label": "wfnow (current risk in waterfall)"
+      "norm_label": "wfnow (current risk in waterfall)",
+      "_origin": "semantic",
+      "id": "index_html_wfnow"
     },
     {
       "label": "wfNowBar (current risk bar)",
@@ -1841,9 +1947,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfnowbar",
       "community": 8,
-      "norm_label": "wfnowbar (current risk bar)"
+      "norm_label": "wfnowbar (current risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfnowbar"
     },
     {
       "label": "wfRf (risk with improved weight/PAS/LDL)",
@@ -1853,9 +1960,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfrf",
       "community": 15,
-      "norm_label": "wfrf (risk with improved weight/pas/ldl)"
+      "norm_label": "wfrf (risk with improved weight/pas/ldl)",
+      "_origin": "semantic",
+      "id": "index_html_wfrf"
     },
     {
       "label": "wfRfBar (improved risk bar)",
@@ -1865,9 +1973,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfrfbar",
       "community": 15,
-      "norm_label": "wfrfbar (improved risk bar)"
+      "norm_label": "wfrfbar (improved risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfrfbar"
     },
     {
       "label": "wfDiet (risk with Mediterranean diet)",
@@ -1877,9 +1986,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfdiet",
       "community": 8,
-      "norm_label": "wfdiet (risk with mediterranean diet)"
+      "norm_label": "wfdiet (risk with mediterranean diet)",
+      "_origin": "semantic",
+      "id": "index_html_wfdiet"
     },
     {
       "label": "wfDietBar (Mediterranean diet risk bar)",
@@ -1889,9 +1999,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_wfdietbar",
       "community": 8,
-      "norm_label": "wfdietbar (mediterranean diet risk bar)"
+      "norm_label": "wfdietbar (mediterranean diet risk bar)",
+      "_origin": "semantic",
+      "id": "index_html_wfdietbar"
     },
     {
       "label": "lsDelta (lifestyle delta display)",
@@ -1901,9 +2012,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_lsdelta",
       "community": 8,
-      "norm_label": "lsdelta (lifestyle delta display)"
+      "norm_label": "lsdelta (lifestyle delta display)",
+      "_origin": "semantic",
+      "id": "index_html_lsdelta"
     },
     {
       "label": "reportBtn (report generation button)",
@@ -1913,9 +2025,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_reportbtn",
       "community": 7,
-      "norm_label": "reportbtn (report generation button)"
+      "norm_label": "reportbtn (report generation button)",
+      "_origin": "semantic",
+      "id": "index_html_reportbtn"
     },
     {
       "label": "lsPlaceholder (lifestyle placeholder)",
@@ -1925,9 +2038,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_lsplaceholder",
       "community": 20,
-      "norm_label": "lsplaceholder (lifestyle placeholder)"
+      "norm_label": "lsplaceholder (lifestyle placeholder)",
+      "_origin": "semantic",
+      "id": "index_html_lsplaceholder"
     },
     {
       "label": "lsBody (lifestyle results display)",
@@ -1937,9 +2051,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "index_html_lsbody",
       "community": 7,
-      "norm_label": "lsbody (lifestyle results display)"
+      "norm_label": "lsbody (lifestyle results display)",
+      "_origin": "semantic",
+      "id": "index_html_lsbody"
     },
     {
       "label": "SCORE2 (cardiovascular risk model)",
@@ -1950,9 +2065,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_score2",
       "community": 2,
-      "norm_label": "score2 (cardiovascular risk model)"
+      "norm_label": "score2 (cardiovascular risk model)",
+      "_origin": "semantic",
+      "id": "concept_score2"
     },
     {
       "label": "SCORE2-OP (cardiovascular risk model for older patients)",
@@ -1962,9 +2078,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_score2_op",
       "community": 2,
-      "norm_label": "score2-op (cardiovascular risk model for older patients)"
+      "norm_label": "score2-op (cardiovascular risk model for older patients)",
+      "_origin": "semantic",
+      "id": "concept_score2_op"
     },
     {
       "label": "ESC 2021/2023 Guidelines",
@@ -1975,9 +2092,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_esc_2021_2023",
       "community": 9,
-      "norm_label": "esc 2021/2023 guidelines"
+      "norm_label": "esc 2021/2023 guidelines",
+      "_origin": "semantic",
+      "id": "concept_esc_2021_2023"
     },
     {
       "label": "Dr ONKH Portal",
@@ -1987,9 +2105,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_portail_dr_onkh",
       "community": 13,
-      "norm_label": "dr onkh portal"
+      "norm_label": "dr onkh portal",
+      "_origin": "semantic",
+      "id": "concept_portail_dr_onkh"
     },
     {
       "label": "PREDIMED Trial",
@@ -1999,9 +2118,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "concept_predimed",
       "community": 7,
-      "norm_label": "predimed trial"
+      "norm_label": "predimed trial",
+      "_origin": "semantic",
+      "id": "concept_predimed"
     }
   ],
   "links": [
@@ -2205,6 +2325,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_esc_2021"
     },
@@ -2213,6 +2334,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_esc_2023"
     },
@@ -2221,6 +2343,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_lifestyle_module"
     },
@@ -2229,6 +2352,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_neter_2003"
     },
@@ -2237,6 +2361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_predimed"
     },
@@ -2245,6 +2370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_score2"
     },
@@ -2253,6 +2379,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_score2_op"
     },
@@ -2261,6 +2388,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_self_test"
     },
@@ -2269,6 +2397,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
+      "_origin": "semantic",
       "source": "readme",
       "target": "readme_simulation"
     },
@@ -2279,6 +2408,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_references_add_watch"
     },
@@ -2289,6 +2419,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_claude_integration"
     },
@@ -2299,6 +2430,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_cluster_only"
     },
@@ -2309,6 +2441,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_community_detection"
     },
@@ -2319,6 +2452,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_community_labeling"
     },
@@ -2329,6 +2463,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_cross_file_relationships"
     },
@@ -2339,6 +2474,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_deep_mode"
     },
@@ -2349,6 +2485,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_directed_graph"
     },
@@ -2359,6 +2496,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_extraction"
     },
@@ -2369,6 +2507,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_falkordb_export"
     },
@@ -2379,6 +2518,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_git_commit_hook"
     },
@@ -2389,6 +2529,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_github_clone"
     },
@@ -2399,6 +2540,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graph_health_check"
     },
@@ -2409,6 +2551,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graphify_explain"
     },
@@ -2419,6 +2562,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graphify_path"
     },
@@ -2429,6 +2573,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graphify_query"
     },
@@ -2439,6 +2584,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graphify_update"
     },
@@ -2449,6 +2595,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_graphml_export"
     },
@@ -2459,6 +2606,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_honesty_rules"
     },
@@ -2469,6 +2617,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_html_export"
     },
@@ -2479,6 +2628,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_hyperedges"
     },
@@ -2489,6 +2639,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_knowledge_graph"
     },
@@ -2499,6 +2650,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_mcp_server"
     },
@@ -2509,6 +2661,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_neo4j_export"
     },
@@ -2519,6 +2672,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_obsidian_vault"
     },
@@ -2529,6 +2683,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_svg_export"
     },
@@ -2539,6 +2694,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_token_reduction_benchmark"
     },
@@ -2549,6 +2705,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_whisper_model"
     },
@@ -2559,6 +2716,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_graphify",
       "target": "claude_skills_graphify_skill_wiki_export"
     },
@@ -2569,6 +2727,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_graphify_query",
       "target": "claude_skills_graphify_references_query"
     },
@@ -2579,6 +2738,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_graphify_path",
       "target": "claude_skills_graphify_references_query"
     },
@@ -2589,6 +2749,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_graphify_explain",
       "target": "claude_skills_graphify_references_query"
     },
@@ -2599,6 +2760,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_graphify_update",
       "target": "claude_skills_graphify_references_update"
     },
@@ -2609,6 +2771,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_extraction",
       "target": "claude_skills_graphify_skill_semantic_extraction"
     },
@@ -2619,6 +2782,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_extraction",
       "target": "claude_skills_graphify_skill_structural_extraction"
     },
@@ -2629,6 +2793,7 @@
       "source_file": ".github/workflows/graphify.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_graphify_yml_update_graph_job",
       "target": "claude_skills_graphify_skill_extraction"
     },
@@ -2639,6 +2804,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_semantic_extraction",
       "target": "claude_skills_graphify_references_extraction_spec"
     },
@@ -2649,6 +2815,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_semantic_extraction",
       "target": "claude_skills_graphify_skill_gemini_backend"
     },
@@ -2659,6 +2826,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_wiki_export",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2669,6 +2837,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_neo4j_export",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2679,6 +2848,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_falkordb_export",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2689,6 +2859,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_svg_export",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2699,6 +2870,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_graphml_export",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2709,6 +2881,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_mcp_server",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2719,6 +2892,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_token_reduction_benchmark",
       "target": "claude_skills_graphify_references_exports"
     },
@@ -2729,6 +2903,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_github_clone",
       "target": "claude_skills_graphify_references_github_and_merge"
     },
@@ -2739,6 +2914,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_github_clone",
       "target": "claude_skills_graphify_skill_cross_repo_merge"
     },
@@ -2749,6 +2925,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_git_commit_hook",
       "target": "claude_skills_graphify_references_hooks"
     },
@@ -2759,6 +2936,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_claude_integration",
       "target": "claude_skills_graphify_references_hooks"
     },
@@ -2769,6 +2947,7 @@
       "source_file": ".claude/skills/graphify/SKILL.md",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "claude_skills_graphify_skill_cluster_only",
       "target": "claude_skills_graphify_references_update"
     },
@@ -2779,6 +2958,7 @@
       "source_file": ".github/workflows/graphify.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_graphify_yml_update_graph_job",
       "target": "github_workflows_graphify_yml_mistral_backend"
     },
@@ -2789,6 +2969,7 @@
       "source_file": ".github/workflows/claude-auto-debug.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_claude_auto_debug",
       "target": "github_workflows_ci"
     },
@@ -2799,6 +2980,7 @@
       "source_file": ".github/workflows/claude-auto-debug.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_claude_auto_debug_debug_ci_failure",
       "target": "actions_checkout_v4"
     },
@@ -2809,6 +2991,7 @@
       "source_file": ".github/workflows/claude-auto-debug.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_claude_auto_debug_debug_ci_failure",
       "target": "anthropics_claude_code_action_v1"
     },
@@ -2819,6 +3002,7 @@
       "source_file": ".github/workflows/claude-auto-debug.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_claude_auto_debug_triage_issue",
       "target": "actions_checkout_v4"
     },
@@ -2829,6 +3013,7 @@
       "source_file": ".github/workflows/claude-auto-debug.yml",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "github_workflows_claude_auto_debug_triage_issue",
       "target": "anthropics_claude_code_action_v1"
     },
@@ -3676,6 +3861,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html",
       "target": "concept_esc_2021_2023"
     },
@@ -3686,6 +3872,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html",
       "target": "index_html__dronkh"
     },
@@ -3696,6 +3883,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html",
       "target": "index_html_gotoportal"
     },
@@ -3706,6 +3894,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html",
       "target": "index_html_valid"
     },
@@ -3716,6 +3905,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html__dronkh",
       "target": "index_html_valid"
     },
@@ -3726,6 +3916,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html__dronkh",
       "target": "index_html_gotoportal"
     },
@@ -3736,6 +3927,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_reconnectbtn",
       "target": "concept_portail_dr_onkh"
     },
@@ -3746,6 +3938,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_sexseg",
       "target": "index_html_resultbody"
     },
@@ -3756,6 +3949,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_age",
       "target": "index_html_resultbody"
     },
@@ -3766,6 +3960,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_sbp",
       "target": "index_html_resultbody"
     },
@@ -3776,6 +3971,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_smokeseg",
       "target": "index_html_resultbody"
     },
@@ -3786,6 +3982,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_nonhdl",
       "target": "index_html_resultbody"
     },
@@ -3796,6 +3993,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_hdl",
       "target": "index_html_resultbody"
     },
@@ -3806,6 +4004,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_ldl",
       "target": "index_html_ldlwarn"
     },
@@ -3816,6 +4015,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_ldl",
       "target": "index_html_resultbody"
     },
@@ -3826,6 +4026,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_region",
       "target": "index_html_resultbody"
     },
@@ -3836,6 +4037,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_reportbtn",
       "target": "index_html_resultbody"
     },
@@ -3846,6 +4048,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "concept_score2"
     },
@@ -3856,6 +4059,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "concept_score2_op"
     },
@@ -3866,6 +4070,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_catbadge"
     },
@@ -3876,6 +4081,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_gaugescale"
     },
@@ -3886,6 +4092,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_gaugetrack"
     },
@@ -3896,6 +4103,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_opnote"
     },
@@ -3906,6 +4114,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_riskbig"
     },
@@ -3916,6 +4125,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_resultbody",
       "target": "index_html_riskcap"
     },
@@ -3926,6 +4136,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_ldlslider",
       "target": "index_html_simldlval"
     },
@@ -3936,6 +4147,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_ldlslider",
       "target": "index_html_simriskval"
     },
@@ -3946,6 +4158,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simreset",
       "target": "index_html_ldlslider"
     },
@@ -3956,6 +4169,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_sbpslider",
       "target": "index_html_simriskval"
     },
@@ -3966,6 +4180,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_sbpslider",
       "target": "index_html_simsbpval"
     },
@@ -3976,6 +4191,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simreset",
       "target": "index_html_sbpslider"
     },
@@ -3986,6 +4202,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simreset",
       "target": "index_html_simsmokeseg"
     },
@@ -3996,6 +4213,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simsmokeseg",
       "target": "index_html_simriskval"
     },
@@ -4006,6 +4224,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simbaseval",
       "target": "index_html_simdelta"
     },
@@ -4016,6 +4235,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_simriskval",
       "target": "index_html_simdelta"
     },
@@ -4026,6 +4246,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weight",
       "target": "index_html_bmichipnow"
     },
@@ -4036,6 +4257,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weight",
       "target": "index_html_bminow"
     },
@@ -4046,6 +4268,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weight",
       "target": "index_html_lsbody"
     },
@@ -4056,6 +4279,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_height",
       "target": "index_html_lsbody"
     },
@@ -4066,6 +4290,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weightslider",
       "target": "index_html_bmiarrow"
     },
@@ -4076,6 +4301,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weightslider",
       "target": "index_html_bmichiptarget"
     },
@@ -4086,6 +4312,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weightslider",
       "target": "index_html_bmitarget"
     },
@@ -4096,6 +4323,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_weightslider",
       "target": "index_html_weighttargetlbl"
     },
@@ -4106,6 +4334,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_dietseg",
       "target": "index_html_dietleveldesc"
     },
@@ -4116,6 +4345,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_dietseg",
       "target": "index_html_wfdiet"
     },
@@ -4126,6 +4356,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_wfnow",
       "target": "index_html_lsdelta"
     },
@@ -4136,6 +4367,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_wfnow",
       "target": "index_html_wfnowbar"
     },
@@ -4146,6 +4378,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_wfrf",
       "target": "index_html_wfrfbar"
     },
@@ -4156,6 +4389,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_wfdiet",
       "target": "index_html_lsdelta"
     },
@@ -4166,6 +4400,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_wfdiet",
       "target": "index_html_wfdietbar"
     },
@@ -4176,6 +4411,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_reportbtn",
       "target": "index_html_lsbody"
     },
@@ -4186,6 +4422,7 @@
       "source_file": "index.html",
       "source_location": null,
       "weight": 1.0,
+      "_origin": "semantic",
       "source": "index_html_lsbody",
       "target": "concept_predimed"
     }
@@ -4328,5 +4565,5 @@
       "source_file": ".claude/skills/graphify/SKILL.md"
     }
   ],
-  "built_at_commit": "a22cab30d745db6aa563d033749735d84ca012f9"
+  "built_at_commit": "b47f90995bf03d4d0bed538aaa1519e112a583c8"
 }
