@@ -218,9 +218,18 @@
               <input type="range" id="weightSlider" aria-label="Poids cible simulé">
             </div>
 
+            <div class="field" style="margin-bottom:14px">
+              <label class="lbl">Adhérence actuelle au régime méditerranéen <span class="hint">autodéclarée</span></label>
+              <div class="seg" id="dietCurSeg" role="group" aria-label="Adhérence actuelle au régime méditerranéen">
+                <button type="button" data-val="0" aria-pressed="true" title="Alimentation courante, sans régime méditerranéen particulier">Faible</button>
+                <button type="button" data-val="1" aria-pressed="false" title="Plusieurs composantes suivies régulièrement (huile d'olive, fruits/légumes, poisson, légumineuses), sans adhérence stricte">Modérée</button>
+                <button type="button" data-val="2" aria-pressed="false" title="Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED">Élevée</button>
+              </div>
+            </div>
+
             <div class="field" style="margin-bottom:8px">
-              <label class="lbl">Adhérence au régime méditerranéen <span class="hint">autodéclarée</span></label>
-              <div class="seg" id="dietSeg" role="group" aria-label="Adhérence au régime méditerranéen">
+              <label class="lbl">Adhérence visée <span class="hint">simulation</span></label>
+              <div class="seg" id="dietSeg" role="group" aria-label="Adhérence visée au régime méditerranéen">
                 <button type="button" data-val="0" aria-pressed="true" title="Alimentation courante, sans régime méditerranéen particulier">Faible</button>
                 <button type="button" data-val="1" aria-pressed="false" title="Plusieurs composantes suivies régulièrement (huile d'olive, fruits/légumes, poisson, légumineuses), sans adhérence stricte">Modérée</button>
                 <button type="button" data-val="2" aria-pressed="false" title="Huile d'olive au quotidien, fruits et légumes à chaque repas, poisson et légumineuses plusieurs fois par semaine, très peu de viande rouge/charcuterie et de sucreries — niveau le plus strict, proche du groupe intervention de l'essai PREDIMED">Élevée</button>
@@ -270,7 +279,10 @@
             PREDIMED) est appliqué en plus. C'est une <b>illustration</b> des ordres de
             grandeur attendus, pas une prédiction individuelle.
             <br><br>
-            Le niveau d'adhérence est <b>autodéclaré</b> (aucun score n'est calculé) :
+            Le niveau d'adhérence actuel est <b>autodéclaré</b> (aucun score n'est calculé).
+            Le risque n'est modulé que par le <b>passage</b> du niveau actuel au niveau visé
+            (faible → modérée, faible → élevée ou modérée → élevée) ; un niveau visé inférieur
+            à l'actuel n'a pas d'effet. Définitions :
             <b>faible</b> = alimentation courante ; <b>modérée</b> = plusieurs composantes du
             régime suivies régulièrement (huile d'olive, fruits/légumes, poisson,
             légumineuses…) sans adhérence stricte ; <b>élevée</b> = huile d'olive au quotidien,

@@ -40,7 +40,8 @@
     weight: 85,      // kg
     height: 172,     // cm
     weightTarget: 85,// kg (cible)
-    diet: 0          // 0 habituel · 1 modérée · 2 élevée
+    dietCurrent: 0,  // adhérence actuelle autodéclarée : 0 faible · 1 modérée · 2 élevée
+    diet: 0          // adhérence visée (simulée), toujours ≥ dietCurrent
   };
 
   // Cibles LDL de référence ESC 2019/2021 (g/L) selon catégorie de risque.
@@ -81,6 +82,16 @@
     var c = $(containerId);
     Array.prototype.forEach.call(c.querySelectorAll("button"), function (btn) {
       btn.setAttribute("aria-pressed", String(btn.dataset.val) === String(val) ? "true" : "false");
+    });
+  }
+
+  // Le niveau visé ne peut pas être inférieur au niveau actuel autodéclaré.
+  function syncDietSegs() {
+    if (state.diet < state.dietCurrent) state.diet = state.dietCurrent;
+    setSegPressed("dietCurSeg", state.dietCurrent);
+    setSegPressed("dietSeg", state.diet);
+    Array.prototype.forEach.call($("dietSeg").querySelectorAll("button"), function (btn) {
+      btn.disabled = parseInt(btn.dataset.val, 10) < state.dietCurrent;
     });
   }
 
@@ -377,7 +388,7 @@
 
     // Poids : perte isolée (sans effet du régime), via le module mode de vie.
     var weightReached = state.weightTarget >= state.weight - 0.5;
-    var mWeight = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget, diet: 0 });
+    var mWeight = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget, dietCurrent: state.dietCurrent, diet: state.dietCurrent });
     var weightRisk = weightReached ? res.risk : riskWithOverrides({
       sbp: Math.max(80, Math.min(260, state.sbp + mWeight.dSbp)),
       nonHDL: Math.max(0.3, state.nonHDL + mWeight.dLdl)
@@ -392,22 +403,28 @@
     ));
 
     // Régime méditerranéen : adhérence isolée (à poids inchangé).
-    var dietReached = state.diet === 0;
-    var mDiet = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weight, diet: state.diet });
+    var dietReached = state.diet <= state.dietCurrent;
+    var mDiet = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weight,
+      dietCurrent: state.dietCurrent, diet: state.diet });
     var dietRisk = dietReached ? res.risk : riskWithOverrides({
       sbp: Math.max(80, Math.min(260, state.sbp + mDiet.dSbp)),
       nonHDL: Math.max(0.3, state.nonHDL + mDiet.dLdl)
     }) * mDiet.rr;
     rows.push(reportRowHtml(
       "Régime méditerranéen",
-      dietReached ? "Adhérence actuelle faible" : "Adhérence simulée : " + mDiet.diet.label.replace("Adhérence ", ""),
-      dietRisk, res, dietReached, "Non concerné — adhérence actuelle faible"
+      dietReached
+        ? "Adhérence actuelle " + L.DIET[state.dietCurrent].label.replace("Adhérence ", "")
+        : "Adhérence " + mDiet.dietFrom.label.replace("Adhérence ", "") + " → " +
+          mDiet.diet.label.replace("Adhérence ", ""),
+      dietRisk, res, dietReached,
+      state.dietCurrent === 2 ? "Non concerné — adhérence actuelle déjà élevée" : "Aucune hausse d'adhérence simulée"
     ));
 
     var factorRowsHtml = rows.join("");
 
     /* -- 3. Bénéfice combiné : tous les leviers simulés ensemble -------------- */
-    var mFull = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget, diet: state.diet });
+    var mFull = L.modifiers({ weightCurrent: state.weight, weightTarget: state.weightTarget,
+      dietCurrent: state.dietCurrent, diet: state.diet });
     var comboNonHDL = Math.max(0.1, state.nonHDL + (state.ldlTarget - anchor) + mFull.dLdl);
     var comboSbp = Math.max(80, Math.min(260, state.simSbp + mFull.dSbp));
     var comboRisk = riskWithOverrides({ nonHDL: comboNonHDL, sbp: comboSbp, smoker: state.simSmoker }) * mFull.rr;
@@ -436,7 +453,7 @@
           '<div><span class="k">LDL-cholestérol actuel</span><span class="v">' + fmtG(anchor) + ' g/L</span></div>' +
           '<div><span class="k">Cholestérol non-HDL</span><span class="v">' + fmtG(state.nonHDL) + ' g/L</span></div>' +
           '<div><span class="k">Poids</span><span class="v">' + Math.round(state.weight) + ' kg</span></div>' +
-          '<div><span class="k">Régime méditerranéen</span><span class="v">' + L.DIET[state.diet].label + '</span></div>' +
+          '<div><span class="k">Régime méditerranéen</span><span class="v">' + L.DIET[state.dietCurrent].label + ' (autodéclarée)</span></div>' +
         '</div>' +
       '</div>' +
 
@@ -532,7 +549,8 @@
     }
 
     var m = L.modifiers({
-      weightCurrent: state.weight, weightTarget: state.weightTarget, diet: state.diet
+      weightCurrent: state.weight, weightTarget: state.weightTarget,
+      dietCurrent: state.dietCurrent, diet: state.diet
     });
     els.dietLevelDesc.textContent = m.diet.desc;
 
@@ -649,7 +667,8 @@
     });
     // Segments simulation / mode de vie
     bindSeg("simSmokeSeg", "simSmoker", function (v) { return parseInt(v, 10); });
-    bindSeg("dietSeg", "diet", function (v) { return parseInt(v, 10); });
+    bindSeg("dietCurSeg", "dietCurrent", function (v) { return parseInt(v, 10); }, syncDietSegs);
+    bindSeg("dietSeg", "diet", function (v) { return parseInt(v, 10); }, syncDietSegs);
 
     // Champs numériques patient
     $("age").addEventListener("input", function () {
@@ -753,6 +772,7 @@
     syncTargetSlider();
     syncSbpSlider();
     syncWeightSlider();
+    syncDietSegs();
 
     recompute();
   }

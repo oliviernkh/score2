@@ -153,6 +153,7 @@ header.site {
   font: inherit; font-weight: 600; font-size: .88rem; color: var(--ink-soft);
   padding: 9px 8px; border-radius: 9px; transition: background .18s, color .18s;
 }
+.seg button:disabled { opacity: .4; cursor: not-allowed; }
 .seg button[aria-pressed="true"] {
   background: var(--bg-2); color: var(--brand);
   box-shadow: var(--shadow);
