@@ -70,16 +70,26 @@
   }
 
   /* Décalages appliqués aux facteurs SCORE2 + RR résiduel régime.
-     opts : { weightCurrent, weightTarget, diet } (diet = 0|1|2) */
+     opts : { weightCurrent, weightTarget, dietCurrent, diet }
+            dietCurrent = niveau autodéclaré actuel (0|1|2, défaut 0)
+            diet        = niveau d'adhérence visé (0|1|2)
+     Le risque « actuel » reflète déjà le niveau actuel : seule la DIFFÉRENCE
+     entre niveau visé et niveau actuel module le risque (faible→modérée,
+     faible→élevée, modérée→élevée). Un niveau visé inférieur à l'actuel est
+     ramené au niveau actuel (pas de modulation à la baisse). */
   function modifiers(opts) {
     var dw = (opts.weightTarget - opts.weightCurrent);   // <0 = perte de poids
-    var diet = DIET[opts.diet] || DIET[0];
+    var cur = DIET[opts.dietCurrent] ? opts.dietCurrent : 0;
+    var tgt = DIET[opts.diet] ? opts.diet : 0;
+    if (tgt < cur) tgt = cur;
+    var from = DIET[cur], diet = DIET[tgt];
     return {
       deltaWeight: dw,
-      dSbp: K_SBP_PER_KG * dw + diet.dSbp,   // mmHg (négatif = baisse)
-      dLdl: K_LDL_PER_KG * dw + diet.dLdl,   // g/L  (négatif = baisse)
-      rr: diet.rr,
-      diet: diet
+      dSbp: K_SBP_PER_KG * dw + (diet.dSbp - from.dSbp),   // mmHg (négatif = baisse)
+      dLdl: K_LDL_PER_KG * dw + (diet.dLdl - from.dLdl),   // g/L  (négatif = baisse)
+      rr: diet.rr / from.rr,
+      diet: diet,
+      dietFrom: from
     };
   }
 

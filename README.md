@@ -68,6 +68,13 @@ Material, p. 9) :
     conservatrice du bénéfice de l'essai **PREDIMED** (*Estruch et al., NEJM 2018*,
     HR global ≈ 0,70).
 
+  - l'adhérence au régime est **autodéclarée** (faible / modérée / élevée) pour le
+    niveau actuel et pour le niveau visé. Seul le **passage** d'un niveau à un
+    niveau supérieur module le risque (faible → modérée, faible → élevée,
+    modérée → élevée) : décalages de PAS/LDL = différence entre les deux niveaux,
+    RR résiduel = RR(visé) / RR(actuel). Un niveau visé inférieur à l'actuel est
+    bloqué (aucune modulation à la baisse).
+
   Il s'agit d'**ordres de grandeur pédagogiques**, non d'une prédiction individuelle.
   Un modèle dédié à la trajectoire au long cours (*LIFE-CVD*) pourrait être intégré
   ultérieurement.
